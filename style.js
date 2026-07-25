@@ -5,15 +5,14 @@ function toggleAISidebar() {
     const aiWidget = document.getElementById('ai-widget');
     const bodyElement = document.body;
     const triggerTab = document.getElementById('ai-sidebar-trigger');
-    
-    aiWidget.classList.toggle('open');
-    bodyElement.classList.toggle('ai-open');
-    
-    // Hide the toggle tab when open so it stays perfectly clean
-    if (aiWidget.classList.contains('open')) {
-        triggerTab.style.right = '-50px';
-    } else {
-        triggerTab.style.right = '0';
+
+    aiWidget.classList.toggle('open');  
+    bodyElement.classList.toggle('ai-open');  
+      
+    if (aiWidget.classList.contains('open')) {  
+        triggerTab.style.right = '-50px';  
+    } else {  
+        triggerTab.style.right = '0';  
     }
 }
 
@@ -24,13 +23,13 @@ function updatePipeline(element, trackValue) {
     element.classList.add('active');
     selectedTrackPipeline = trackValue;
 
-    const allCards = document.querySelectorAll('.pipeline-card');
-    allCards.forEach(card => card.style.display = 'none');
+    const allCards = document.querySelectorAll('.pipeline-card');  
+    allCards.forEach(card => card.style.display = 'none');  
 
-    const targetCard = document.getElementById(`track-${trackValue}`);
-    if (targetCard) {
-        targetCard.style.display = 'block';
-        targetCard.style.animation = 'fadeEffect 0.4s ease-in-out';
+    const targetCard = document.getElementById(`track-${trackValue}`);  
+    if (targetCard) {  
+        targetCard.style.display = 'block';  
+        targetCard.style.animation = 'fadeEffect 0.4s ease-in-out';  
     }
 }
 
@@ -41,18 +40,18 @@ function runCalculationEngine() {
     const val = parseInt(selectElem.value);
     const interest = Math.round(val * 0.2);
     const total = val + interest;
-    
-    document.getElementById('interestDisplay').innerText = interest.toLocaleString();
-    document.getElementById('totalDisplay').innerText = total.toLocaleString();
-    
-    const baseDate = new Date();
-    const targetDate = new Date();
-    targetDate.setDate(baseDate.getDate() + 30);
-    
-    const graceLimitDate = new Date();
-    graceLimitDate.setDate(targetDate.getDate() + 3);
-    
-    document.getElementById('targetReturnDate').innerText = targetDate.toLocaleDateString();
+
+    document.getElementById('interestDisplay').innerText = interest.toLocaleString();  
+    document.getElementById('totalDisplay').innerText = total.toLocaleString();  
+      
+    const baseDate = new Date();  
+    const targetDate = new Date();  
+    targetDate.setDate(baseDate.getDate() + 30);  
+      
+    const graceLimitDate = new Date();  
+    graceLimitDate.setDate(targetDate.getDate() + 3);  
+      
+    document.getElementById('targetReturnDate').innerText = targetDate.toLocaleDateString();  
     document.getElementById('gracePeriodLimit').innerText = graceLimitDate.toLocaleDateString();
 }
 
@@ -61,17 +60,17 @@ function downloadContractDocument() {
     const amountText = document.getElementById('loanAmount').value;
     const interestText = document.getElementById('interestDisplay').innerText;
     const totalText = document.getElementById('totalDisplay').innerText;
-    
-    const plainText = `LIZKEMI CAPITAL LTD - STRATEGIC AGREEMENT\n` +
-                      `Selected Principal Matrix: ${amountText}\n` +
-                      `Accrued 20% Interest Calculation: ${interestText}\n` +
-                      `Total Repayment Obligation: ${totalText}\n\n` +
-                      `Generated under live secure browser token. 3-Day Grace period bounds apply strictly.`;
-                      
-    const blob = new Blob([plainText], { type: "text/plain" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "LizKemi_Loan_Manifest.txt";
+
+    const plainText = `LIZKEMI CAPITAL LTD - STRATEGIC AGREEMENT\n` +  
+                      `Selected Principal Matrix: ${amountText}\n` +  
+                      `Accrued 20% Interest Calculation: ${interestText}\n` +  
+                      `Total Repayment Obligation: ${totalText}\n\n` +  
+                      `Generated under live secure browser token. 3-Day Grace period bounds apply strictly.`;  
+                        
+    const blob = new Blob([plainText], { type: "text/plain" });  
+    const link = document.createElement("a");  
+    link.href = URL.createObjectURL(blob);  
+    link.download = "LizKemi_Loan_Manifest.txt";  
     link.click();
 }
 
@@ -81,18 +80,17 @@ function runInvestmentEngine() {
     const durationInput = document.getElementById('investmentDuration');
     if(!capitalInput || !durationInput) return;
 
-    const capital = parseInt(capitalInput.value);
-    const years = parseInt(durationInput.value);
-    
-    document.getElementById('capitalVal').innerText = '$' + capital.toLocaleString();
-    document.getElementById('durationVal').innerText = years + (years === 1 ? ' Year' : ' Years');
-    
-    const assumedRate = 0.10;
-    const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));
-    
-    document.getElementById('matureValuationDisplay').innerText = '$' + projectedYield.toLocaleString();
+    const capital = parseInt(capitalInput.value);  
+    const years = parseInt(durationInput.value);  
+      
+    document.getElementById('capitalVal').innerText = '$' + capital.toLocaleString();  
+    document.getElementById('durationVal').innerText = years + (years === 1 ? ' Year' : ' Years');  
+      
+    const assumedRate = 0.10;  
+    const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));  
+      
+    document.getElementById('matureValuationDisplay').innerText = '$' + projectedYield.toLocaleString();  
 
-    // Render HTML5 Trajectory Chart
     drawGrowthChart(capital, assumedRate, years);
 }
 
@@ -100,66 +98,58 @@ function drawGrowthChart(principal, rate, periods) {
     const chartCanvas = document.getElementById('growthChart');
     if (!chartCanvas) return;
     const gctx = chartCanvas.getContext('2d');
-    
-    // Set internal resolution attributes explicitly
-    chartCanvas.width = chartCanvas.clientWidth;
-    chartCanvas.height = 150;
-    
-    const w = chartCanvas.width;
-    const h = chartCanvas.height;
-    gctx.clearRect(0, 0, w, h);
-    
-    // Generate exponential vector data arrays
-    let points = [];
-    for (let i = 0; i <= periods; i++) {
-        points.push(principal * Math.pow((1 + rate), i));
-    }
-    
-    const maxVal = points[points.length - 1];
-    const minVal = points[0];
-    
-    gctx.beginPath();
-    gctx.strokeStyle = '#00f2fe';
-    gctx.lineWidth = 3;
-    
-    for (let i = 0; i < points.length; i++) {
-        const xPos = (i / periods) * (w - 40) + 20;
-        const yPos = h - ((points[i] / maxVal) * (h - 30) + 10);
-        if (i === 0) gctx.moveTo(xPos, yPos);
-        else gctx.lineTo(xPos, yPos);
-        
-        // Draw localized dot highlights
-        gctx.fillStyle = '#ffffff';
-        gctx.fillRect(xPos - 2, yPos - 2, 4, 4);
-    }
+
+    chartCanvas.width = chartCanvas.clientWidth;  
+    chartCanvas.height = 150;  
+      
+    const w = chartCanvas.width;  
+    const h = chartCanvas.height;  
+    gctx.clearRect(0, 0, w, h);  
+      
+    let points = [];  
+    for (let i = 0; i <= periods; i++) {  
+        points.push(principal * Math.pow((1 + rate), i));  
+    }  
+      
+    const maxVal = points[points.length - 1];  
+      
+    gctx.beginPath();  
+    gctx.strokeStyle = '#00f2fe';  
+    gctx.lineWidth = 3;  
+      
+    for (let i = 0; i < points.length; i++) {  
+        const xPos = (i / periods) * (w - 40) + 20;  
+        const yPos = h - ((points[i] / maxVal) * (h - 30) + 10);  
+        if (i === 0) gctx.moveTo(xPos, yPos);  
+        else gctx.lineTo(xPos, yPos);  
+          
+        gctx.fillStyle = '#ffffff';  
+        gctx.fillRect(xPos - 2, yPos - 2, 4, 4);  
+    }  
     gctx.stroke();
 }
 
 /* --- Currency Matrix Conversion Engine --- */
 function convertEquityMatrix() {
     const currency = document.getElementById('currencySelector').value;
-    
-    // Fixed baseline metric scale (1 USD = 22.50 SLE Leones)
-    const rate = (currency === "SLL") ? 22.5 : 1;
-    const symbol = (currency === "SLL") ? "Le " : "$";
+    const rate = (currency === "SLL") ? 22.5 : 1;  
+    const symbol = (currency === "SLL") ? "Le " : "$";  
 
-    const data = {
-        aInit: 1.00 * rate,
-        aCurr: 1.45 * rate,
-        bInit: 2.50 * rate,
-        bCurr: 3.10 * rate,
-        dashCap: 154200.00 * rate,
-        dashYld: 12480.00 * rate
-    };
+    const data = {  
+        aInit: 1.00 * rate,  
+        aCurr: 1.45 * rate,  
+        bInit: 2.50 * rate,  
+        bCurr: 3.10 * rate,  
+        dashCap: 154200.00 * rate,  
+        dashYld: 12480.00 * rate  
+    };  
 
-    // Update Shares Table values
-    document.getElementById('seriesAInit').innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesACurr').innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBInit').innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBCurr').innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('seriesAInit').innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});  
+    document.getElementById('seriesACurr').innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});  
+    document.getElementById('seriesBInit').innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});  
+    document.getElementById('seriesBCurr').innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});  
 
-    // Update Client Portal values dynamically
-    document.getElementById('dashCapital').innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('dashCapital').innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});  
     document.getElementById('dashYield').innerText = (currency === "SLL" ? "+Le " : "+$") + data.dashYld.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
@@ -170,6 +160,7 @@ const logs = [
     "[INFO] Star map graphics synchronized with parallax layers.",
     "[METRIC] Cohort trade scorecards updated on current frame."
 ];
+
 function appendLiveLogs() {
     const logBox = document.getElementById("systemLog");
     if(!logBox) return;
@@ -178,53 +169,64 @@ function appendLiveLogs() {
 }
 setInterval(appendLiveLogs, 7000);
 
-/* --- Responsive Floating Chat Assist Logic Engine --- */
-function sendMessage(){
-    let input = document.getElementById("userInput");
-    let chat = document.getElementById("ai-chat");
+/* --- Real AI Agent Frontend Integration --- */
+async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chat = document.getElementById("ai-chat");
     if(!input || !chat) return;
 
-    let userText = input.value.trim();
-    if(userText === "") return;
+    const message = input.value.trim();
+    if (!message) return;
 
-    chat.innerHTML += `<div class="user">${userText}</div>`;
+    chat.innerHTML += `<div class="user">${escapeHTML(message)}</div>`;
+    input.value = "";
     chat.scrollTop = chat.scrollHeight;
 
-    let message = userText.toLowerCase();
-    let reply = "Thank you for reaching out to LizKemi Capital Firm. An advisor will review your entry.";
+    try {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
 
-    if(message.includes("loan")){
-        reply = "We offer flexible student, individual, and business loan credit frameworks featuring a transparent 20% interest allocation system.";
-    }
-    else if(message.includes("investment") || message.includes("yield")){
-        reply = "Our investment services prioritize asset structure planning and capital optimization strategy blueprints.";
-    }
-    else if(message.includes("trading") || message.includes("class")){
-        reply = "Our Practical Classes path pairs student cohorts with skilled active traders to teach live market mechanics.";
-    }
-    else if(message.includes("hello") || message.includes("hi")){
-        reply = "Hello! Welcome to the LizKemi Capital interface console. How may our team guide your financial strategy today?";
+        const data = await response.json();
+
+        if (response.ok) {
+            chat.innerHTML += `<div class="bot">${escapeHTML(data.reply)}</div>`;
+        } else {
+            chat.innerHTML += `<div class="bot error">System Error: ${escapeHTML(data.error || "Failed to fetch response.")}</div>`;
+        }
+    } catch (err) {
+        chat.innerHTML += `<div class="bot error">Network connection error with LizKEMI backend agent.</div>`;
     }
 
-    setTimeout(() => {
-        chat.innerHTML += `<div class="bot">${reply}</div>`;
-        chat.scrollTop = chat.scrollHeight;
-    }, 400);
+    chat.scrollTop = chat.scrollHeight;
+}
 
-    input.value = "";
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
 }
 
 // Window Loading Routines
 window.addEventListener('DOMContentLoaded', () => {
     runCalculationEngine();
     runInvestmentEngine();
-    convertEquityMatrix(); // Set up standard baseline values on mount
-    
-    document.getElementById("userInput").addEventListener("keydown", function(e){
-        if(e.key === "Enter"){
-            sendMessage();
-        }
-    });
+    convertEquityMatrix();
+
+    const userInputElem = document.getElementById("userInput");
+    if(userInputElem) {
+        userInputElem.addEventListener("keydown", function(e){  
+            if(e.key === "Enter"){  
+                sendMessage();  
+            }  
+        });
+    }
 });
 
 /* --- Stellar Cosmic Particle Constellation Rendering System --- */
@@ -271,23 +273,22 @@ function initParticles() {
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    
-    // Scale down text layout dynamically for smaller viewport frames
-    if(width < 768) { ctx.font = "bold 32px Arial"; }
-    
-    ctx.fillText("Liz KEMI Capital FIRM", width / 2, height / 2);
 
-    const imageData = ctx.getImageData(0, 0, width, height);
-    const data = imageData.data;
-    particles = [];
+    if(width < 768) { ctx.font = "bold 32px Arial"; }  
+      
+    ctx.fillText("Liz KEMI Capital FIRM", width / 2, height / 2);  
 
-    for (let y = 0; y < height; y += 5) {
-        for (let x = 0; x < width; x += 5) {
-            const index = (y * width + x) * 4;
-            if (data[index + 3] > 128) {
-                particles.push(new Particle(x, y));
-            }
-        }
+    const imageData = ctx.getImageData(0, 0, width, height);  
+    const data = imageData.data;  
+    particles = [];  
+
+    for (let y = 0; y < height; y += 5) {  
+        for (let x = 0; x < width; x += 5) {  
+            const index = (y * width + x) * 4;  
+            if (data[index + 3] > 128) {  
+                particles.push(new Particle(x, y));  
+            }  
+        }  
     }
 }
 
