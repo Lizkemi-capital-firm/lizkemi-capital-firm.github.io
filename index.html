@@ -1517,7 +1517,26 @@
 
 <!-- Main JavaScript Execution Core -->
 <script>
-let selectedTrackPipeline = "Standard";
+import { db } from "./firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+
+async function saveInvestmentPortfolio(userId, planName, investedAmount) {
+    try {
+        await addDoc(collection(db, "portfolios"), {
+            uid: userId,
+            plan: planName,
+            amount: investedAmount,
+            status: "active",
+            createdAt: new Date().toISOString()
+        });
+        alert("Investment portfolio created successfully!");
+    } catch (error) {
+        console.error("Error saving portfolio:", error);
+        alert("Failed to save investment portfolio.");
+    }
+}
+
+    let selectedTrackPipeline = "Standard";
 
 function toggleAISidebar() {
     const aiWidget = document.getElementById('ai-widget');
@@ -1864,6 +1883,7 @@ function sendLoanEmail(event) {
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script src="style.js"></script>    
+<script src="style.js"></script> 
+    
 </body>
 </html>
