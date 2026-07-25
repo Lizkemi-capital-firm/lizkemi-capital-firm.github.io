@@ -1519,6 +1519,65 @@
 <script>
 
  import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// 1. Submit Loan Application
+window.submitLoanApplication = async function(event) {
+    event.preventDefault();
+    try {
+        await addDoc(collection(db, "Loan application"), {
+            Name: document.getElementById('loanName').value,
+            Amount: document.getElementById('loanAmountInput').value,
+            Purpose: document.getElementById('loanPurpose').value,
+            status: "Pending",
+            timestamp: new Date().toISOString()
+        });
+        alert("Loan application successfully saved to Firebase!");
+        document.getElementById('loanForm').reset();
+    } catch (error) {
+        console.error("Error saving loan application: ", error);
+        alert("Failed to submit loan application.");
+    }
+};
+
+// 2. Submit Investment Portfolio
+window.submitInvestmentPortfolio = async function(event) {
+    event.preventDefault();
+    try {
+        await addDoc(collection(db, "Investment portfolios"), {
+            Name: document.getElementById('investorName').value,
+            Package: document.getElementById('investmentPackage').value,
+            Capital: document.getElementById('investmentCapital').value,
+            status: "Active",
+            timestamp: new Date().toISOString()
+        });
+        alert("Investment portfolio successfully saved to Firebase!");
+        document.getElementById('investmentForm').reset();
+    } catch (error) {
+        console.error("Error saving investment portfolio: ", error);
+        alert("Failed to submit investment portfolio.");
+    }
+};
+
+// 3. Submit User Profile / Registration
+window.submitUserProfile = async function(event) {
+    event.preventDefault();
+    try {
+        await addDoc(collection(db, "Users portfolios"), {
+            Name: document.getElementById('userName').value,
+            Email: document.getElementById('userEmail').value,
+            Role: document.getElementById('userRole').value || "Client",
+            timestamp: new Date().toISOString()
+        });
+        alert("User profile successfully registered in Firebase!");
+        document.getElementById('userForm').reset();
+    } catch (error) {
+        console.error("Error saving user profile: ", error);
+        alert("Failed to register user profile.");
+    }
+};
+
+    import { db } from "./firebase.js";
 import { doc, setDoc } from "firebase/firestore";
 
 async function saveUserProfile(userId, fullName, email) {
