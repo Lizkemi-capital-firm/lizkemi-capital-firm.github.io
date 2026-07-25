@@ -1517,7 +1517,45 @@
 
 <!-- Main JavaScript Execution Core -->
 <script>
-import { db } from "./firebase.js";
+
+ import { db } from "./firebase.js";
+import { doc, setDoc } from "firebase/firestore";
+
+async function saveUserProfile(userId, fullName, email) {
+    try {
+        await setDoc(doc(db, "Users", userId), {
+            Name: fullName,
+            email: email,
+            role: "client",
+            createdAt: new Date().toISOString()
+        });
+        console.log("User profile saved to Firestore.");
+    } catch (error) {
+        console.error("Error saving user profile:", error);
+    }
+}
+   
+    import { db } from "./firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+
+async function submitLoanApplication(userId, fullName, loanAmount, loanPurpose) {
+    try {
+        await addDoc(collection(db, "Loan application"), {
+            uid: userId,
+            Name: fullName,
+            "Desired Loan Amount": loanAmount,
+            "Loan Purpose": loanPurpose,
+            status: "Pending",
+            createdAt: new Date().toISOString()
+        });
+        alert("Loan application submitted successfully!");
+    } catch (error) {
+        console.error("Error submitting loan application:", error);
+        alert("Failed to submit loan application.");
+    }
+}
+
+    import { db } from "./firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 
 async function saveInvestmentPortfolio(userId, planName, investedAmount) {
