@@ -1,3 +1,7 @@
+/* --- Firebase Firestore Integration --- */
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
 let selectedTrackPipeline = "Standard";
 
 /* --- Over-Spreading AI Sidebar Mechanical Controls --- */
@@ -305,3 +309,23 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
+/* --- Firebase Firestore Loan Application Submission --- */
+window.submitLoanApplication = async function(event) {
+    event.preventDefault();
+    try {
+        await addDoc(collection(db, "Loan application"), {
+            Name: document.getElementById('loanName').value,
+            Amount: document.getElementById('loanAmount').value,
+            Interest: document.getElementById('interestDisplay').innerText,
+            TotalRepayment: document.getElementById('totalDisplay').innerText,
+            status: "Pending",
+            timestamp: new Date().toISOString()
+        });
+        alert("Loan application successfully saved to Firebase Firestore!");
+        document.getElementById('loanForm').reset();
+    } catch (error) {
+        console.error("Error saving loan application: ", error);
+        alert("Transmission failed. Check system logs.");
+    }
+};
+
