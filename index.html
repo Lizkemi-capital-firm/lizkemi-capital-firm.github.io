@@ -1514,191 +1514,98 @@
         <button onclick="sendMessage()">TRANSMIT</button>
     </div>
 </div>
-
 <!-- Main JavaScript Execution Core -->
+<script type="module">
+    import { db } from "./firebase.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // 1. Submit Loan Application
+    window.submitLoanApplication = async function(event) {
+        event.preventDefault();
+        try {
+            await addDoc(collection(db, "Loan application"), {
+                Name: document.getElementById('loanName').value,
+                Amount: document.getElementById('loanAmountInput').value,
+                Purpose: document.getElementById('loanPurpose').value,
+                status: "Pending",
+                timestamp: new Date().toISOString()
+            });
+            alert("Loan application successfully saved to Firebase!");
+            document.getElementById('loanForm').reset();
+        } catch (error) {
+            console.error("Error saving loan application: ", error);
+            alert("Failed to submit loan application.");
+        }
+    };
+</script>
+
 <script>
-
- import { db } from "./firebase.js";
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-// 1. Submit Loan Application
-window.submitLoanApplication = async function(event) {
-    event.preventDefault();
-    try {
-        await addDoc(collection(db, "Loan application"), {
-            Name: document.getElementById('loanName').value,
-            Amount: document.getElementById('loanAmountInput').value,
-            Purpose: document.getElementById('loanPurpose').value,
-            status: "Pending",
-            timestamp: new Date().toISOString()
-        });
-        alert("Loan application successfully saved to Firebase!");
-        document.getElementById('loanForm').reset();
-    } catch (error) {
-        console.error("Error saving loan application: ", error);
-        alert("Failed to submit loan application.");
-    }
-};
-
-// 2. Submit Investment Portfolio
-window.submitInvestmentPortfolio = async function(event) {
-    event.preventDefault();
-    try {
-        await addDoc(collection(db, "Investment portfolios"), {
-            Name: document.getElementById('investorName').value,
-            Package: document.getElementById('investmentPackage').value,
-            Capital: document.getElementById('investmentCapital').value,
-            status: "Active",
-            timestamp: new Date().toISOString()
-        });
-        alert("Investment portfolio successfully saved to Firebase!");
-        document.getElementById('investmentForm').reset();
-    } catch (error) {
-        console.error("Error saving investment portfolio: ", error);
-        alert("Failed to submit investment portfolio.");
-    }
-};
-
-// 3. Submit User Profile / Registration
-window.submitUserProfile = async function(event) {
-    event.preventDefault();
-    try {
-        await addDoc(collection(db, "Users portfolios"), {
-            Name: document.getElementById('userName').value,
-            Email: document.getElementById('userEmail').value,
-            Role: document.getElementById('userRole').value || "Client",
-            timestamp: new Date().toISOString()
-        });
-        alert("User profile successfully registered in Firebase!");
-        document.getElementById('userForm').reset();
-    } catch (error) {
-        console.error("Error saving user profile: ", error);
-        alert("Failed to register user profile.");
-    }
-};
-
-    import { db } from "./firebase.js";
-import { doc, setDoc } from "firebase/firestore";
-
-async function saveUserProfile(userId, fullName, email) {
-    try {
-        await setDoc(doc(db, "Users", userId), {
-            Name: fullName,
-            email: email,
-            role: "client",
-            createdAt: new Date().toISOString()
-        });
-        console.log("User profile saved to Firestore.");
-    } catch (error) {
-        console.error("Error saving user profile:", error);
-    }
-}
-   
-    import { db } from "./firebase.js";
-import { collection, addDoc } from "firebase/firestore";
-
-async function submitLoanApplication(userId, fullName, loanAmount, loanPurpose) {
-    try {
-        await addDoc(collection(db, "Loan application"), {
-            uid: userId,
-            Name: fullName,
-            "Desired Loan Amount": loanAmount,
-            "Loan Purpose": loanPurpose,
-            status: "Pending",
-            createdAt: new Date().toISOString()
-        });
-        alert("Loan application submitted successfully!");
-    } catch (error) {
-        console.error("Error submitting loan application:", error);
-        alert("Failed to submit loan application.");
-    }
-}
-
-    import { db } from "./firebase.js";
-import { collection, addDoc } from "firebase/firestore";
-
-async function saveInvestmentPortfolio(userId, planName, investedAmount) {
-    try {
-        await addDoc(collection(db, "portfolios"), {
-            uid: userId,
-            plan: planName,
-            amount: investedAmount,
-            status: "active",
-            createdAt: new Date().toISOString()
-        });
-        alert("Investment portfolio created successfully!");
-    } catch (error) {
-        console.error("Error saving portfolio:", error);
-        alert("Failed to save investment portfolio.");
-    }
-}
-
     let selectedTrackPipeline = "Standard";
 
-function toggleAISidebar() {
-    const aiWidget = document.getElementById('ai-widget');
-    const bodyElement = document.body;
-    const triggerTab = document.getElementById('ai-sidebar-trigger');
-    
-    aiWidget.classList.toggle('open');
-    bodyElement.classList.toggle('ai-open');
-    
-    if (aiWidget.classList.contains('open')) {
-        triggerTab.style.right = '-60px';
-    } else {
-        triggerTab.style.right = '0';
+    function toggleAISidebar() {
+        const aiWidget = document.getElementById('ai-widget');
+        const bodyElement = document.body;
+        const triggerTab = document.getElementById('ai-sidebar-trigger');
+        
+        aiWidget.classList.toggle('open');
+        bodyElement.classList.toggle('ai-open');
+        
+        if (aiWidget.classList.contains('open')) {
+            triggerTab.style.right = '-60px';
+        } else {
+            triggerTab.style.right = '0';
+        }
     }
-}
 
-function updatePipeline(element, trackValue) {
-    element.parentElement.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    element.classList.add('active');
-    selectedTrackPipeline = trackValue;
+    function updatePipeline(element, trackValue) {
+        element.parentElement.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        selectedTrackPipeline = trackValue;
 
-    document.querySelectorAll('.pipeline-card').forEach(card => card.style.display = 'none');
+        document.querySelectorAll('.pipeline-card').forEach(card => card.style.display = 'none');
 
-    const targetCard = document.getElementById(`track-${trackValue}`);
-    if (targetCard) {
-        targetCard.style.display = 'block';
-        targetCard.style.animation = 'fadeEffect 0.3s ease-in-out';
+        const targetCard = document.getElementById(`track-${trackValue}`);
+        if (targetCard) {
+            targetCard.style.display = 'block';
+            targetCard.style.animation = 'fadeEffect 0.3s ease-in-out';
+        }
     }
-}
 
-function runCalculationEngine() {
-    const selectElem = document.getElementById('loanAmount');
-    if(!selectElem) return;
-    const val = parseInt(selectElem.value);
-    const interest = Math.round(val * 0.2);
-    const total = val + interest;
-    
-    const interestDisplay = document.getElementById('interestDisplay');
-    const totalDisplay = document.getElementById('totalDisplay');
-    if(interestDisplay) interestDisplay.innerText = interest.toLocaleString();
-    if(totalDisplay) totalDisplay.innerText = total.toLocaleString();
-    
-    const baseDate = new Date();
-    const targetDate = new Date();
-    targetDate.setDate(baseDate.getDate() + 30);
-    
-    const graceLimitDate = new Date();
-    graceLimitDate.setDate(targetDate.getDate() + 3);
-    
-    const targetReturnDate = document.getElementById('targetReturnDate');
-    const gracePeriodLimit = document.getElementById('gracePeriodLimit');
-    if(targetReturnDate) targetReturnDate.innerText = targetDate.toLocaleDateString();
-    if(gracePeriodLimit) gracePeriodLimit.innerText = graceLimitDate.toLocaleDateString();
-}
+    function runCalculationEngine() {
+        const selectElem = document.getElementById('loanAmount');
+        if(!selectElem) return;
+        const val = parseInt(selectElem.value);
+        const interest = Math.round(val * 0.2);
+        const total = val + interest;
+        
+        const interestDisplay = document.getElementById('interestDisplay');
+        const totalDisplay = document.getElementById('totalDisplay');
+        if(interestDisplay) interestDisplay.innerText = interest.toLocaleString();
+        if(totalDisplay) totalDisplay.innerText = total.toLocaleString();
+        
+        const baseDate = new Date();
+        const targetDate = new Date();
+        targetDate.setDate(baseDate.getDate() + 30);
+        
+        const graceLimitDate = new Date();
+        graceLimitDate.setDate(targetDate.getDate() + 3);
+        
+        const targetReturnDate = document.getElementById('targetReturnDate');
+        const gracePeriodLimit = document.getElementById('gracePeriodLimit');
+        if(targetReturnDate) targetReturnDate.innerText = targetDate.toLocaleDateString();
+        if(gracePeriodLimit) gracePeriodLimit.innerText = graceLimitDate.toLocaleDateString();
+    }
 
-function downloadContractDocument() {
-    const amountEl = document.getElementById('loanAmount');
-    const interestEl = document.getElementById('interestDisplay');
-    const totalEl = document.getElementById('totalDisplay');
+    function downloadContractDocument() {
+        const amountEl = document.getElementById('loanAmount');
+        const interestEl = document.getElementById('interestDisplay');
+        const totalEl = document.getElementById('totalDisplay');
 
-    const amountText = amountEl ? amountEl.options[amountEl.selectedIndex].text : "N/A";
-    const interestText = interestEl ? interestEl.innerText : "0";
-    const totalText = totalEl ? totalEl.innerText : "0";
+        const amountText = amountEl ? amountEl.options[amountEl.selectedIndex].text : "N/A";
+        const interestText = interestEl ? interestEl.innerText : "0";
+        const totalText = totalEl ? totalEl.innerText : "0";
 
-    const fileContent = `LIZKEMI CAPITAL FIRM LTD - TRANSACTION OVERVIEW MANIFEST
+        const fileContent = `LIZKEMI CAPITAL FIRM LTD - TRANSACTION OVERVIEW MANIFEST
 ---------------------------------------------------------
 Chosen Principal Layer: ${amountText}
 Computed 20% Interest Margin: ${interestText}
@@ -1707,275 +1614,276 @@ Total Settlement Bounds: ${totalText}
 Generated: ${new Date().toLocaleString()}
 Strict 3-day grace constraints applied.`;
 
-    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "LizKemi_Manifest.txt";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-function runInvestmentEngine() {
-    const capitalInput = document.getElementById('investmentCapital');
-    const durationInput = document.getElementById('investmentDuration');
-    if(!capitalInput || !durationInput) return;
-
-    const capital = parseInt(capitalInput.value);
-    const years = parseInt(durationInput.value);
-    
-    document.getElementById('capitalVal').innerText = '$' + capital.toLocaleString();
-    document.getElementById('durationVal').innerText = years + (years === 1 ? ' Year' : ' Years');
-    
-    const assumedRate = 0.10;
-    const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));
-    
-    document.getElementById('matureValuationDisplay').innerText = '$' + projectedYield.toLocaleString();
-    drawGrowthChart(capital, assumedRate, years);
-}
-
-function drawGrowthChart(principal, rate, periods) {
-    const chartCanvas = document.getElementById('growthChart');
-    if (!chartCanvas) return;
-    const gctx = chartCanvas.getContext('2d');
-    
-    chartCanvas.width = chartCanvas.clientWidth;
-    chartCanvas.height = 120;
-    
-    const w = chartCanvas.width;
-    const h = chartCanvas.height;
-    gctx.clearRect(0, 0, w, h);
-    
-    let points = [];
-    for (let i = 0; i <= periods; i++) {
-        points.push(principal * Math.pow((1 + rate), i));
+        const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "LizKemi_Manifest.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
     }
-    
-    const maxVal = points[points.length - 1];
-    
-    gctx.beginPath();
-    gctx.strokeStyle = '#00f2fe';
-    gctx.lineWidth = 2;
-    
-    for (let i = 0; i < points.length; i++) {
-        const xPos = (i / periods) * (w - 40) + 20;
-        const yPos = h - ((points[i] / maxVal) * (h - 24) + 12);
-        if (i === 0) gctx.moveTo(xPos, yPos);
-        else gctx.lineTo(xPos, yPos);
+
+    function runInvestmentEngine() {
+        const capitalInput = document.getElementById('investmentCapital');
+        const durationInput = document.getElementById('investmentDuration');
+        if(!capitalInput || !durationInput) return;
+
+        const capital = parseInt(capitalInput.value);
+        const years = parseInt(durationInput.value);
         
-        gctx.fillStyle = '#00ff88';
-        gctx.fillRect(xPos - 2, yPos - 2, 4, 4);
-    }
-    gctx.stroke();
-}
-
-function convertEquityMatrix() {
-    const selector = document.getElementById('currencySelector');
-    if(!selector) return;
-    const currency = selector.value;
-    const rate = (currency === "SLL") ? 22.5 : 1;
-    const symbol = (currency === "SLL") ? "Le " : "$";
-
-    const data = {
-        aInit: 1.00 * rate,
-        aCurr: 1.45 * rate,
-        bInit: 2.50 * rate,
-        bCurr: 3.10 * rate,
-        dashCap: 154200.00 * rate,
-        dashYld: 12480.00 * rate
-    };
-
-    document.getElementById('seriesAInit').innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesACurr').innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBInit').innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBCurr').innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-    document.getElementById('dashCapital').innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('dashYield').innerText = (currency === "SLL" ? "+Le " : "+$") + data.dashYld.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-}
-
-const logs = [
-    "[LEDGER SUCCESS] Target verification hashes generated cleanly.",
-    "[SECURE] 256-Bit synchronization links operating cleanly.",
-    "[PORTFOLIO] Balance matrices adjusting safely within tracking guidelines.",
-    "[METRIC] Processing node scores updated on current UI matrix frame."
-];
-
-function appendLiveLogs() {
-    const logBox = document.getElementById("systemLog");
-    if(!logBox) return;
-    const randomLog = logs[Math.floor(Math.random() * logs.length)];
-    logBox.innerHTML = `[SYSTEM INFO] ${new Date().toLocaleTimeString()} - ${randomLog}<br>` + logBox.innerHTML;
-}
-setInterval(appendLiveLogs, 6000);
-
-function sendMessage(){
-    let input = document.getElementById("userInput");
-    let chat = document.getElementById("ai-chat");
-    if(!input || !chat) return;
-
-    let userText = input.value.trim();
-    if(userText === "") return;
-
-    chat.innerHTML += `<div class="user">${userText}</div>`;
-    chat.scrollTop = chat.scrollHeight;
-
-    let message = userText.toLowerCase();
-    let reply = "Transmission received. Data arrays are parsed to management advisers for prompt feedback pipelines.";
-
-    if(message.includes("loan")){
-        reply = "Lending tracks comprise Term Structures, Lines of Credit, SBA Guarantees, Revenue Fluctuation Matrix Arrays, and custom options.";
-    }
-    else if(message.includes("trading") || message.includes("crypto") || message.includes("forex")){
-        reply = "LizKemi Capital deploys dedicated, isolated multi-leverage accounts configured alongside continuous platform sync options.";
-    }
-    else if(message.includes("hello") || message.includes("hi")){
-        reply = "Interface connection verified. Welcome to the LizKemi Operations Console. Detail your asset query to initiate telemetry checks.";
+        document.getElementById('capitalVal').innerText = '$' + capital.toLocaleString();
+        document.getElementById('durationVal').innerText = years + (years === 1 ? ' Year' : ' Years');
+        
+        const assumedRate = 0.10;
+        const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));
+        
+        document.getElementById('matureValuationDisplay').innerText = '$' + projectedYield.toLocaleString();
+        drawGrowthChart(capital, assumedRate, years);
     }
 
-    setTimeout(() => {
-        chat.innerHTML += `<div class="bot">${reply}</div>`;
-        chat.scrollTop = chat.scrollHeight;
-    }, 400);
-
-    input.value = "";
-}
-
-function startImpactAnimation() {
-    const counters = document.querySelectorAll('.val-highlight[id^="count-"]');
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / 60;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 25);
-            } else {
-                counter.innerText = target + '+';
-            }
-        };
-        updateCount();
-    });
-}
-
-/* --- Matrix Code Rain Background System --- */
-const canvas = document.getElementById('canvas');
-const ctx = canvas ? canvas.getContext('2d') : null;
-
-let width, height;
-const fontSize = 14;
-let columns;
-let drops = [];
-
-function setSize() {
-    if(!canvas) return;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-    
-    columns = Math.floor(width / fontSize);
-    drops = [];
-    for (let i = 0; i < columns; i++) {
-        drops[i] = 1;
-    }
-}
-
-window.addEventListener('resize', setSize);
-setSize();
-
-const chars = "0100101010";
-
-function drawMatrix() {
-    if(!ctx || !canvas) return;
-    ctx.fillStyle = "rgba(2, 2, 10, 0.05)";
-    ctx.fillRect(0, 0, width, height);
-
-    ctx.fillStyle = "#00f2fe";
-    ctx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
-            drops[i] = 0;
+    function drawGrowthChart(principal, rate, periods) {
+        const chartCanvas = document.getElementById('growthChart');
+        if (!chartCanvas) return;
+        const gctx = chartCanvas.getContext('2d');
+        
+        chartCanvas.width = chartCanvas.clientWidth;
+        chartCanvas.height = 120;
+        
+        const w = chartCanvas.width;
+        const h = chartCanvas.height;
+        gctx.clearRect(0, 0, w, h);
+        
+        let points = [];
+        for (let i = 0; i <= periods; i++) {
+            points.push(principal * Math.pow((1 + rate), i));
         }
-        drops[i]++;
+        
+        const maxVal = points[points.length - 1];
+        
+        gctx.beginPath();
+        gctx.strokeStyle = '#00f2fe';
+        gctx.lineWidth = 2;
+        
+        for (let i = 0; i < points.length; i++) {
+            const xPos = (i / periods) * (w - 40) + 20;
+            const yPos = h - ((points[i] / maxVal) * (h - 24) + 12);
+            if (i === 0) gctx.moveTo(xPos, yPos);
+            else gctx.lineTo(xPos, yPos);
+            
+            gctx.fillStyle = '#00ff88';
+            gctx.fillRect(xPos - 2, yPos - 2, 4, 4);
+        }
+        gctx.stroke();
     }
-}
-if(canvas) setInterval(drawMatrix, 50);
 
-/* --- Initialization Sequence --- */
-document.addEventListener("DOMContentLoaded", () => {
-    const statusText = document.getElementById("status-update");
-    const bootSequences = [
-        { text: "Initializing Secure Matrix Frame...", delay: 400 },
-        { text: "Mapping Encryption Layer [SSL 256-Bit]...", delay: 900 },
-        { text: "Synchronizing Operations Console Tiers...", delay: 1400 },
-        { text: "Handshake Confirmed. Access Granted.", delay: 1900 }
+    function convertEquityMatrix() {
+        const selector = document.getElementById('currencySelector');
+        if(!selector) return;
+        const currency = selector.value;
+        const rate = (currency === "SLL") ? 22.5 : 1;
+        const symbol = (currency === "SLL") ? "Le " : "$";
+
+        const data = {
+            aInit: 1.00 * rate,
+            aCurr: 1.45 * rate,
+            bInit: 2.50 * rate,
+            bCurr: 3.10 * rate,
+            dashCap: 154200.00 * rate,
+            dashYld: 12480.00 * rate
+        };
+
+        document.getElementById('seriesAInit').innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('seriesACurr').innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('seriesBInit').innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('seriesBCurr').innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+        document.getElementById('dashCapital').innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('dashYield').innerText = (currency === "SLL" ? "+Le " : "+$") + data.dashYld.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    const logs = [
+        "[LEDGER SUCCESS] Target verification hashes generated cleanly.",
+        "[SECURE] 256-Bit synchronization links operating cleanly.",
+        "[PORTFOLIO] Balance matrices adjusting safely within tracking guidelines.",
+        "[METRIC] Processing node scores updated on current UI matrix frame."
     ];
 
-    bootSequences.forEach((seq) => {
-        setTimeout(() => { if(statusText) statusText.textContent = seq.text; }, seq.delay);
+    function appendLiveLogs() {
+        const logBox = document.getElementById("systemLog");
+        if(!logBox) return;
+        const randomLog = logs[Math.floor(Math.random() * logs.length)];
+        logBox.innerHTML = `[SYSTEM INFO] ${new Date().toLocaleTimeString()} - ${randomLog}<br>` + logBox.innerHTML;
+    }
+    setInterval(appendLiveLogs, 6000);
+
+    function sendMessage(){
+        let input = document.getElementById("userInput");
+        let chat = document.getElementById("ai-chat");
+        if(!input || !chat) return;
+
+        let userText = input.value.trim();
+        if(userText === "") return;
+
+        chat.innerHTML += `<div class="user">${userText}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+
+        let message = userText.toLowerCase();
+        let reply = "Transmission received. Data arrays are parsed to management advisers for prompt feedback pipelines.";
+
+        if(message.includes("loan")){
+            reply = "Lending tracks comprise Term Structures, Lines of Credit, SBA Guarantees, Revenue Fluctuation Matrix Arrays, and custom options.";
+        }
+        else if(message.includes("trading") || message.includes("crypto") || message.includes("forex")){
+            reply = "LizKemi Capital deploys dedicated, isolated multi-leverage accounts configured alongside continuous platform sync options.";
+        }
+        else if(message.includes("hello") || message.includes("hi")){
+            reply = "Interface connection verified. Welcome to the LizKemi Operations Console. Detail your asset query to initiate telemetry checks.";
+        }
+
+        setTimeout(() => {
+            chat.innerHTML += `<div class="bot">${reply}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+        }, 400);
+
+        input.value = "";
+    }
+
+    function startImpactAnimation() {
+        const counters = document.querySelectorAll('.val-highlight[id^="count-"]');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 60;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 25);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            };
+            updateCount();
+        });
+    }
+
+    /* --- Matrix Code Rain Background System --- */
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+
+    let width, height;
+    const fontSize = 14;
+    let columns;
+    let drops = [];
+
+    function setSize() {
+        if(!canvas) return;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        
+        columns = Math.floor(width / fontSize);
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+    }
+
+    window.addEventListener('resize', setSize);
+    setSize();
+
+    const chars = "0100101010";
+
+    function drawMatrix() {
+        if(!ctx || !canvas) return;
+        ctx.fillStyle = "rgba(2, 2, 10, 0.05)";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = "#00f2fe";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    if(canvas) setInterval(drawMatrix, 50);
+
+    /* --- Initialization Sequence --- */
+    document.addEventListener("DOMContentLoaded", () => {
+        const statusText = document.getElementById("status-update");
+        const bootSequences = [
+            { text: "Initializing Secure Matrix Frame...", delay: 400 },
+            { text: "Mapping Encryption Layer [SSL 256-Bit]...", delay: 900 },
+            { text: "Synchronizing Operations Console Tiers...", delay: 1400 },
+            { text: "Handshake Confirmed. Access Granted.", delay: 1900 }
+        ];
+
+        bootSequences.forEach((seq) => {
+            setTimeout(() => { if(statusText) statusText.textContent = seq.text; }, seq.delay);
+        });
+
+        setTimeout(() => {
+            const splash = document.getElementById("splash-screen");
+            if(splash) {
+                splash.style.opacity = '0';
+                setTimeout(() => splash.style.display = "none", 600);
+            }
+            runCalculationEngine();
+            runInvestmentEngine();
+            convertEquityMatrix();
+        }, 2400);
+
+        const userInput = document.getElementById("userInput");
+        if(userInput) {
+            userInput.addEventListener("keydown", function(e){
+                if(e.key === "Enter") sendMessage();
+            });
+        }
+
+        const impactMonitor = document.getElementById('impact-monitor');
+        if(impactMonitor) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    startImpactAnimation();
+                    observer.disconnect();
+                }
+            });
+            observer.observe(impactMonitor);
+        }
     });
 
-    setTimeout(() => {
-        const splash = document.getElementById("splash-screen");
-        if(splash) {
-            splash.style.opacity = '0';
-            setTimeout(() => splash.style.display = "none", 600);
-        }
-        runCalculationEngine();
-        runInvestmentEngine();
-        convertEquityMatrix();
-    }, 2400);
+    function sendLoanEmail(event) {
+        event.preventDefault();
 
-    const userInput = document.getElementById("userInput");
-    if(userInput) {
-        userInput.addEventListener("keydown", function(e){
-            if(e.key === "Enter") sendMessage();
-        });
+        const templateParams = {
+            from_name: document.getElementById('loanName').value,
+            loan_amount: document.getElementById('loanAmountInput').value,
+            message: document.getElementById('loanPurpose').value
+        };
+
+        const serviceID = "service_kxv0jlp";
+        const templateID = "template_bd4r2ay";
+
+        emailjs.send(serviceID, templateID, templateParams)
+            .then((response) => {
+                alert('Loan request successfully transmitted to corporate clearing desk!');
+                document.getElementById('loanForm').reset();
+            }, (error) => {
+                alert('Transmission failed. Check network parameters or system logs.');
+                console.error('FAILED...', error);
+            });
     }
-
-    const impactMonitor = document.getElementById('impact-monitor');
-    if(impactMonitor) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                startImpactAnimation();
-                observer.disconnect();
-            }
-        });
-        observer.observe(impactMonitor);
-    }
-});
-
-function sendLoanEmail(event) {
-    event.preventDefault();
-
-    const templateParams = {
-        from_name: document.getElementById('loanName').value,
-        loan_amount: document.getElementById('loanAmountInput').value,
-        message: document.getElementById('loanPurpose').value
-    };
-
-    const serviceID = "service_kxv0jlp";
-    const templateID = "template_bd4r2ay";
-
-    emailjs.send(serviceID, templateID, templateParams)
-        .then((response) => {
-            alert('Loan request successfully transmitted to corporate clearing desk!');
-            document.getElementById('loanForm').reset();
-        }, (error) => {
-            alert('Transmission failed. Check network parameters or system logs.');
-            console.error('FAILED...', error);
-        });
-}
 </script>
+
     <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
