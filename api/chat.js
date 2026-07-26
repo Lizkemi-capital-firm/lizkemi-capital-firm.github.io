@@ -1,11 +1,9 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+// Automatically uses process.env.OPENAI_API_KEY from Vercel
+const openai = new OpenAI();
 
 export default async function handler(req, res) {
-    // Enable CORS headers so your frontend domain can talk to this endpoint
     res.setHeader("Access-Control-Allow-Credentials", true);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
