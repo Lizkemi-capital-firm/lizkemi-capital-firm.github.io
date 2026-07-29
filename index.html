@@ -915,6 +915,76 @@
         .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         #ai-widget { width: 100%; right: -105%; }
     }
+    .pdf-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 15, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.pdf-terminal-container {
+  background: #0b0f19;
+  border: 1px solid #00ffff;
+  width: 90%;
+  max-width: 700px;
+  padding: 20px;
+  font-family: monospace;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  color: #00ffff;
+}
+
+.pdf-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #00ffff;
+  padding-bottom: 8px;
+  font-size: 14px;
+}
+
+.terminal-close-btn, .terminal-btn {
+  background: #00ffff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.terminal-close-btn {
+  background: transparent;
+  color: #00ffff;
+  border: 1px solid #00ffff;
+}
+
+.terminal-close-btn:hover {
+  background: #00ffff;
+  color: #000;
+}
+
+.pdf-footer-action {
+  margin-top: 15px;
+  border-top: 1px dashed #00ffff;
+  padding-top: 15px;
+}
+
+.terminal-input {
+  width: 100%;
+  background: #000;
+  border: 1px solid #00ffff;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: monospace;
+}
+
 </style>
 
 <!-- EmailJS SDK -->
@@ -1225,6 +1295,27 @@
             </p>
             <button class="action-btn" onclick="alert('Class roster registration request sent.')">View Upcoming Syllabus</button>
         </div>
+        <!-- PDF Overlay Viewer Modal -->
+<div id="pdfViewerModal" class="pdf-modal-overlay" style="display: none;">
+  <div class="pdf-terminal-container">
+    <div class="pdf-modal-header">
+      <span>SYS_DOC_VIEWER // LIZKEMI_SYLLABUS.PDF</span>
+      <button id="closePdfModal" class="terminal-close-btn">[ CLOSE X ]</button>
+    </div>
+    
+    <div class="pdf-content-area">
+      <!-- Embeds the PDF viewer directly on page -->
+      <iframe id="pdfFrame" src="" width="100% "height="400px" style="border: 1px solid #00ffff;"></iframe>
+    </div>
+
+    <div class="pdf-footer-action">
+      <p>Want a hard copy sent directly to your secured terminal?</p>
+      <input type="email" id="syllabusUserEmail" placeholder="ENTER OPERATOR EMAIL..." class="terminal-input">
+      <button id="saveLeadBtn" class="terminal-btn">LOG & DOWNLOAD DOSSIER</button>
+    </div>
+  </div>
+</div>
+
     </section>
 
     <!-- Expert Guidance Section -->
@@ -1875,6 +1966,25 @@ Strict 3-day grace constraints applied.`;
                 console.error('FAILED...', error);
             });
     }
+    saveLeadBtn.addEventListener('click', () => {
+  const emailVal = document.getElementById('syllabusUserEmail').value;
+  
+  if (!emailVal || !emailVal.includes('@')) {
+    alert("CRITICAL: Enter a valid terminal email address.");
+    return;
+  }
+
+  // Show your exact alert style matching your screenshot
+  alert("Class roster registration request sent.");
+  pdfModal.style.display = 'none';
+
+  // Automatically trigger the file download
+  const downloadLink = document.createElement('a');
+  downloadLink.href = syllabusPdfUrl;
+  downloadLink.download = 'LizKemi_Financial_Literacy_Syllabus.pdf';
+  downloadLink.click();
+});
+
 </script>
 
     <script>
