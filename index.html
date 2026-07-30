@@ -1268,8 +1268,68 @@
             </form>
         </div>
     </section>
+    <!-- LIZKEMI TRADING CONSORTIUM & ACADEMY -->
+<section id="trading-consortium" style="margin-top: 40px; padding: 25px; background: rgba(6, 11, 24, 0.85); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 6px; font-family: monospace;">
+    <h2 style="color: #00f2fe; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">LizKemi Trading Consortium</h2>
+    <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 20px;">
+        Institutional market education, expert-guided risk management, and live asset allocation for global operators.
+    </p>
 
-    <!-- Future Banking Section -->
+    <!-- SUB-TABS NAVIGATION -->
+    <div style="display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap;">
+        <button class="action-btn cons-tab active" id="btn-cons-academy" onclick="switchConsortiumTab('academy')" style="flex: 1; font-size: 0.75rem; padding: 8px;">1. TRADING ACADEMY</button>
+        <button class="action-btn cons-tab" id="btn-cons-trading" onclick="switchConsortiumTab('trading')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">2. EXPERT TRADING & RISK</button>
+        <button class="action-btn cons-tab" id="btn-cons-insights" onclick="switchConsortiumTab('insights')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">3. STOCK INSIGHTS DESK</button>
+    </div>
+
+    <!-- TAB 1: TRADING ACADEMY FORM & SYLLABUS -->
+    <div id="tab-content-academy" class="cons-content-panel">
+        <div style="background: #02020a; border: 1px solid rgba(255,255,255,0.05); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+            <strong style="color: #00ff88;">• Curriculum & Training Tracks:</strong><br>
+            - Master stock and forex mechanics from scratch.<br>
+            - Choose between <span style="color:#00f2fe;">Group Masterclasses</span> or <span style="color:#00f2fe;">VIP 1-on-1 Expert Coaching</span>.<br>
+            - Complete registration to instantly receive your structured syllabus topics.
+        </div>
+        <input type="text" id="academyOperatorName" placeholder="Operator Full Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+        
+        <select id="academyTrackSelect" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+            <option value="Group Academy Track">Group Trading Masterclass</option>
+            <option value="VIP 1-on-1 Coaching Track">VIP 1-on-1 Expert Coaching</option>
+        </select>
+
+        <input type="email" id="academyEmail" placeholder="Secure Email Ingress for Syllabus Delivery" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+        
+        <button class="action-btn" style="width: 100%;" type="button" onclick="submitAcademyRegistration()">REGISTER & GET SYLLABUS</button>
+    </div>
+
+    <!-- TAB 2: EXPERT TRADING & 20% RISK MANAGEMENT -->
+    <div id="tab-content-trading" class="cons-content-panel" style="display: none;">
+        <div style="background: #02020a; border: 1px solid rgba(255,255,255,0.05); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+            <strong style="color: #00ff88;">• Managed Execution & Capital Setup:</strong><br>
+            - Skip the academy if you are ready to trade directly with our experts.<br>
+            - We setup your initial account framework and take the market risk journey with you.<br>
+            - <span style="color: #00f2fe;">Consortium Term:</span> 20% profit/risk partnership split on managed trades.
+        </div>
+        <input type="text" id="directTraderName" placeholder="Investor / Account Holder Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+        
+        <input type="text" id="directAccountCapital" placeholder="Target Account Allocation Tier (e.g., $50 / $100+)" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+        
+        <button class="action-btn" style="width: 100%;" type="button" onclick="submitDirectTradingSetup()">INITIALIZE MANAGED ACCOUNT</button>
+    </div>
+
+    <!-- TAB 3: STOCK INSIGHTS INQUIRY DESK -->
+    <div id="tab-content-insights" class="cons-content-panel" style="display: none;">
+        <div style="background: #02020a; border: 1px solid rgba(255,255,255,0.05); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+            <strong style="color: #00ff88;">• Stock & Asset Analysis Portal:</strong><br>
+            - Request direct professional insights, market trends, or stock trading guidance from the LizKemi advisory desk.
+        </div>
+        <textarea id="stockInquiryText" placeholder="Enter specific stock ticker or market insight inquiry here..." style="width: 100%; height: 80px; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;"></textarea>
+        
+        <button class="action-btn" style="width: 100%;" type="button" onclick="submitStockInquiry()">REQUEST STOCK INSIGHTS</button>
+    </div>
+</section>
+
+ <!-- Future Banking Section -->
     <section id="banking">
         <h2>6. Future Core Banking Infrastructure</h2>
         <div class="content-block">
@@ -1509,6 +1569,20 @@
         <button class="action-btn" onclick="closeTransmissionModal()">CLOSE WINDOW</button>
     </div>
 </div>
+    <!-- CONSORTIUM SUCCESS POPUP MODAL -->
+<div id="consortiumModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
+    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
+        <h3 id="consModalTitle" style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Consortium Notification</h3>
+        <p id="consModalSubtitle" style="color: #00ff88; font-size: 0.85rem; margin-bottom: 15px;">● Request processed successfully.</p>
+        <div style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+            <strong style="color: #ffffff;">Execution Summary:</strong><br>
+            - Details: <span id="consModalDetail" style="color: #00f2fe;">--</span><br>
+            - Status: Synced with LizKemi Capital trading gateway queue.
+        </div>
+        <button class="action-btn" onclick="closeConsortiumModal()">CLOSE WINDOW</button>
+    </div>
+</div>
+
 
    <!-- CUSTOM CONSULTATION MODAL -->
 <div id="consultationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
@@ -2046,6 +2120,80 @@ function switchTrack(trackType) {
     logContainer.prepend(newLog);
 }
 
+// Tab Switching Handler for Consortium
+function switchConsortiumTab(tabName) {
+    // Reset tab buttons style
+    document.querySelectorAll('.cons-tab').forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.color = '#00f2fe';
+    });
+    
+    // Hide all panels
+    document.querySelectorAll('.cons-content-panel').forEach(panel => {
+        panel.style.display = 'none';
+    });
+    
+    // Activate selected tab & panel
+    const activeBtn = document.getElementById(`btn-cons-${tabName}`);
+    const activePanel = document.getElementById(`tab-content-${tabName}`);
+    
+    if(activeBtn) {
+        activeBtn.style.background = '#00f2fe';
+        activeBtn.style.color = '#02020a';
+    }
+    if(activePanel) {
+        activePanel.style.display = 'block';
+    }
+}
+
+// Handler 1: Academy Registration & Syllabus Request
+function submitAcademyRegistration() {
+    const name = document.getElementById('academyOperatorName').value.trim() || "Consortium Student";
+    const track = document.getElementById('academyTrackSelect').value;
+    const email = document.getElementById('academyEmail').value.trim() || "Pending Ingress";
+    
+    showConsortiumPopup("Academy Syllabus Dispatched", `Registered: ${name} (${track}). Syllabus topics routed to ${email}.`);
+    logTerminal(`[CONSORTIUM ACADEMY] Enrolled ${name} into [${track}]. Syllabus queued.`);
+}
+
+// Handler 2: Direct Expert Trading & Risk Account Setup
+function submitDirectTradingSetup() {
+    const name = document.getElementById('directTraderName').value.trim() || "Direct Investor";
+    const tier = document.getElementById('directAccountCapital').value.trim() || "Standard Capital Tier";
+    
+    showConsortiumPopup("Managed Account Initialized", `Account setup requested for ${name} [Tier: ${tier}]. Risk management split (20%) applied.`);
+    logTerminal(`[CONSORTIUM TRADING] Managed account profile created for ${name}. 20% risk-sharing parameters active.`);
+}
+
+// Handler 3: Stock Insights Inquiry
+function submitStockInquiry() {
+    const inquiry = document.getElementById('stockInquiryText').value.trim() || "General stock market guidance inquiry.";
+    
+    showConsortiumPopup("Stock Insights Buffered", `Inquiry logged: "${inquiry}". Advisory desk review underway.`);
+    logTerminal(`[STOCK DESK] New analysis query received: "${inquiry.substring(0, 30)}..."`);
+}
+
+// General Modal & Console Logger Helper
+function showConsortiumPopup(title, detailText) {
+    document.getElementById('consModalTitle').innerText = title;
+    document.getElementById('consModalDetail').innerText = detailText;
+    document.getElementById('consortiumModal').style.display = 'flex';
+}
+
+function closeConsortiumModal() {
+    document.getElementById('consortiumModal').style.display = 'none';
+}
+
+function logTerminal(message) {
+    const timestamp = new Date().toLocaleTimeString();
+    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
+    const newLog = document.createElement('div');
+    newLog.style.color = "#00ff88";
+    newLog.style.fontSize = "0.8rem";
+    newLog.style.marginTop = "5px";
+    newLog.innerHTML = `[${timestamp}] ${message}`;
+    logContainer.prepend(newLog);
+}
 
 </script>
 
