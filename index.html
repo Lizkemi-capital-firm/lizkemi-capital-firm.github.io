@@ -1269,6 +1269,7 @@
         </div>
     </section>
     <!-- LIZKEMI TRADING CONSORTIUM & SECURE GATEWAY ENGINE -->
+<sec<!-- LIZKEMI TRADING CONSORTIUM & SECURE GATEWAY ENGINE -->
 <section id="trading-consortium" style="margin-top: 40px; padding: 25px; background: rgba(6, 11, 24, 0.85); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 6px; font-family: monospace;">
     <h2 style="color: #00f2fe; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">LizKemi Trading Consortium & Clearance Gateway</h2>
     <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 20px;">
@@ -1285,19 +1286,17 @@
     <!-- TAB 1: TRADING ACADEMY -->
     <div id="tab-content-academy" class="cons-content-panel">
         <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Click below to open and complete your registration on Google Forms.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> After submitting the form, return here and click "Confirm Registration" to unlock your syllabus vault.
+            <strong style="color: #00ff88;">• Step 1:</strong> Complete your official registration on Google Forms.<br>
+            <strong style="color: #00ff88;">• Step 2:</strong> Once registered, your secure token unlocks the syllabus vault below.
         </div>
         
         <div style="display: flex; gap: 10px; flex-direction: column;">
-            <a href="https://forms.gle/ynrjJKaVQyVTAqjf9" target="_blank" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. OPEN GOOGLE FORM REGISTRATION
+            <!-- Button to open Form 1 -->
+            <a href="https://forms.gle/ynrjJKaVQyVTAqjf9" target="_blank" onclick="unlockAccess('academy')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                1. REGISTER FOR ACADEMY (GOOGLE FORM)
             </a>
             
-            <button class="action-btn" onclick="openConfirmationPrompt('academy')" style="padding: 12px; background: #060b18; border: 1px solid rgba(0, 242, 254, 0.4); color: #00f2fe;">
-                2. I HAVE COMPLETED REGISTRATION (UNLOCK SYLLABUS)
-            </button>
-            
+            <!-- Button to view syllabus (Gated until registration click) -->
             <button id="btn-view-academy" class="action-btn" onclick="openSyllabusModal('academy')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
                 🔒 VIEW ACADEMY SYLLABUS & TOPICS (Locked)
             </button>
@@ -1307,18 +1306,14 @@
     <!-- TAB 2: MANAGED TRADING -->
     <div id="tab-content-trading" class="cons-content-panel" style="display: none;">
         <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Open and complete the Managed Account Form.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> Confirm your registration below to unlock account pipeline terms.
+            <strong style="color: #00ff88;">• Step 1:</strong> Submit your managed account criteria via Google Form.<br>
+            <strong style="color: #00ff88;">• Step 2:</strong> Access your account parameters and risk-sharing confirmation view.
         </div>
         
         <div style="display: flex; gap: 10px; flex-direction: column;">
-            <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. OPEN MANAGED ACCOUNT FORM
+            <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" onclick="unlockAccess('trading')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                1. INITIALIZE MANAGED ACCOUNT FORM
             </a>
-            
-            <button class="action-btn" onclick="openConfirmationPrompt('trading')" style="padding: 12px; background: #060b18; border: 1px solid rgba(0, 242, 254, 0.4); color: #00f2fe;">
-                2. I HAVE COMPLETED REGISTRATION (UNLOCK TERMS)
-            </button>
             
             <button id="btn-view-trading" class="action-btn" onclick="openSyllabusModal('trading')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
                 🔒 VIEW ACCOUNT PIPELINE & RISK TERMS (Locked)
@@ -1329,18 +1324,14 @@
     <!-- TAB 3: STOCK INSIGHTS -->
     <div id="tab-content-insights" class="cons-content-panel" style="display: none;">
         <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Open and submit your query via the Stock Insights Form.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> Confirm completion below to access your advisory dashboard.
+            <strong style="color: #00ff88;">• Step 1:</strong> Submit your ticker query via the Stock Insights Form.<br>
+            <strong style="color: #00ff88;">• Step 2:</strong> Unlock the advisory desk queue and status dashboard.
         </div>
         
         <div style="display: flex; gap: 10px; flex-direction: column;">
-            <a href="https://forms.gle/pP2Ve1QYwfnyLZWe8" target="_blank" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. OPEN STOCK INQUIRY FORM
+            <a href="https://forms.gle/pP2Ve1QYwfnyLZWe8" target="_blank" onclick="unlockAccess('insights')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                1. SUBMIT STOCK INQUIRY FORM
             </a>
-            
-            <button class="action-btn" onclick="openConfirmationPrompt('insights')" style="padding: 12px; background: #060b18; border: 1px solid rgba(0, 242, 254, 0.4); color: #00f2fe;">
-                2. I HAVE COMPLETED REGISTRATION (UNLOCK STATUS)
-            </button>
             
             <button id="btn-view-insights" class="action-btn" onclick="openSyllabusModal('insights')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
                 🔒 VIEW ADVISORY QUEUE STATUS (Locked)
@@ -1614,6 +1605,7 @@
         <button class="action-btn" onclick="closeSyllabusModal()" style="width: 100%;">CLOSE VAULT</button>
     </div>
 </div>
+
 
 <!-- SUCCESS CONFIRMATION POPUP MODAL -->
 <div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
@@ -2319,6 +2311,16 @@ function switchConsortiumTab(tabName) {
         panel.style.display = 'none';
     });
     
+    const // Tab Switching Controller
+function switchConsortiumTab(tabName) {
+    document.querySelectorAll('.cons-tab').forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.color = '#00f2fe';
+    });
+    document.querySelectorAll('.cons-content-panel').forEach(panel => {
+        panel.style.display = 'none';
+    });
+    
     const activeBtn = document.getElementById(`btn-cons-${tabName}`);
     const activePanel = document.getElementById(`tab-content-${tabName}`);
     
@@ -2331,19 +2333,8 @@ function switchConsortiumTab(tabName) {
     }
 }
 
-// Triggered when user clicks "I Have Completed Registration"
-function openConfirmationPrompt(sectionKey) {
-    localStorage.setItem(`lizkemi_verified_${sectionKey}`, 'true');
-    applyUnlockState(sectionKey);
-    document.getElementById('confirmModal').style.display = 'flex';
-}
-
-function closeConfirmModal() {
-    document.getElementById('confirmModal').style.display = 'none';
-}
-
-// Applies the green unlocked styles to the view button
-function applyUnlockState(sectionKey) {
+// Gatekeeper Function: Unlocks the view button when the registration form link is clicked
+function unlockAccess(sectionKey) {
     const viewButton = document.getElementById(`btn-view-${sectionKey}`);
     if(viewButton) {
         viewButton.disabled = false;
@@ -2352,71 +2343,69 @@ function applyUnlockState(sectionKey) {
         viewButton.style.color = '#02020a';
         viewButton.style.borderColor = '#00f2fe';
         viewButton.innerHTML = `🔓 VIEW ${sectionKey.toUpperCase()} SYLLABUS & MATERIALS`;
+        
+        // Save clearance state so it stays unlocked during the session
+        sessionStorage.setItem(`lizkemi_unlocked_${sectionKey}`, 'true');
     }
+    
+    // Log terminal action
+    const timestamp = new Date().toLocaleTimeString();
+    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
+    const newLog = document.createElement('div');
+    newLog.style.color = "#00ff88";
+    newLog.style.fontSize = "0.8rem";
+    newLog.style.marginTop = "5px";
+    newLog.innerHTML = `[GATEWAY SYNC] ${timestamp} - Registration action detected for [${sectionKey.toUpperCase()}]. Access token unlocked.`;
+    logContainer.prepend(newLog);
 }
 
-// Check verification status when page loads
+// Check session storage on page load to keep buttons unlocked if user returns from Google Form
 window.addEventListener('DOMContentLoaded', () => {
     ['academy', 'trading', 'insights'].forEach(key => {
-        if(localStorage.getItem(`lizkemi_verified_${key}`) === 'true') {
-            applyUnlockState(key);
+        if(sessionStorage.getItem(`lizkemi_unlocked_${key}`) === 'true') {
+            unlockAccess(key);
         }
     });
 });
 
-// Opens the built-in Vault Modal with pre-written professional content (No PDF needed!)
+// Open Syllabus / Document Vault Modal with respective details
 function openSyllabusModal(sectionKey) {
     const titleEl = document.getElementById('syllabusModalTitle');
     const bodyEl = document.getElementById('syllabusModalBody');
-    const downloadBtn = document.getElementById('syllabusDownloadBtn');
-    
-    // Hide download button since there is no external file
-    if(downloadBtn) downloadBtn.style.display = 'none';
     
     if(sectionKey === 'academy') {
-        titleEl.innerText = "Trading Academy Master Curriculum";
+        titleEl.innerText = "Trading Academy Curriculum Vault";
         bodyEl.innerHTML = `
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">MODULE 1: FOUNDATION & MARKET MECHANICS</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Introduction to global stock and forex markets, understanding brokers, spreads, leverage, and reading institutional price charts.</p>
-            
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">MODULE 2: TECHNICAL ANALYSIS & STRUCTURE</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Support & resistance zones, trend identification, liquidity grabs, market structure breaks, and high-probability entry patterns.</p>
-            
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">MODULE 3: RISK MANAGEMENT & PSYCHOLOGY</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Lot sizing formulas, risk-to-reward ratios, managing drawdowns, emotional control, and building a professional trading plan.</p>
-            
-            <div style="color: #00ff88; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
-                ✓ Group classes and VIP 1-on-1 coaching schedules have been dispatched to your email.
-            </div>
+            <strong style="color: #fff;">Module 1: Market Mechanics & Structure</strong><br>
+            - Understanding price action, liquidity pools, and institutional order blocks.<br><br>
+            <strong style="color: #fff;">Module 2: Technical & Indicator Analysis</strong><br>
+            - Mastering trend identification, RSI divergence, and multi-timeframe alignment.<br><br>
+            <strong style="color: #fff;">Module 3: Risk Management Framework</strong><br>
+            - Lot sizing calculations, risk-to-reward ratios, and emotional discipline.
         `;
     } else if(sectionKey === 'trading') {
         titleEl.innerText = "Managed Trading Pipeline & Risk Terms";
         bodyEl.innerHTML = `
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">CONSORTIUM PARTNERSHIP PROTOCOL</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Our expert traders take the market journey alongside you. Accounts are managed with strict institutional risk controls to protect capital allocation.</p>
-            
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">THE 20% RISK SPLIT AGREEMENT</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">The consortium takes a 20% partnership split strictly on net profitable execution loops. Full transparency metrics and trade logs are updated via our operational channels.</p>
+            <strong style="color: #fff;">Consortium Partnership Protocol:</strong><br>
+            - Active risk-sharing model implemented with expert traders.<br>
+            - 20% consortium split applied strictly on net profitable execution loops.<br>
+            - Real-time performance tracking and transparency dashboard.
         `;
     } else if(sectionKey === 'insights') {
         titleEl.innerText = "Stock Insights Advisory Queue Status";
         bodyEl.innerHTML = `
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">ADVISORY DESK ROUTING</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Your specific ticker symbol or market query has been successfully logged into the LizKemi advisory queue.</p>
-            
-            <div style="color: #00f2fe; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem;">PROCESSING TIMELINE</div>
-            <p style="margin-bottom: 15px; color: #9ca3af;">Fundamental breakdowns, trend analysis, and outlook reports are compiled by senior analysts and sent directly to your contact channel.</p>
+            <strong style="color: #fff;">Advisory Desk Routing:</strong><br>
+            - Your ticker submission has been registered into the analysis pipeline.<br>
+            - Fundamental breakdown and target outlook metrics are currently being compiled by senior analysts.
         `;
     }
     
-    document.getElementById('syllabusModal').style.display = 'flex';
+    document.getElementById('syllabusModalModal' || 'syllabusModal').style.display = 'flex';
 }
 
 function closeSyllabusModal() {
     document.getElementById('syllabusModal').style.display = 'none';
 }
-
-
 </script>
 
 </body>
