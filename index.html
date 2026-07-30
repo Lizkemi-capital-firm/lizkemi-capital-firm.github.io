@@ -1521,6 +1521,28 @@
             - Pipeline: Standard Queue Array (24-48 Hours)<br>
             - Status: Routed securely to corporate compliance loops.
         </div>
+        <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+    <button class="action-btn track-tab active" id="btn-standard" onclick="switchTrack('standard')" style="flex: 1; font-size: 0.75rem; padding: 8px;">STANDARD TRACK</button>
+    <button class="action-btn track-tab" id="btn-premium" onclick="switchTrack('premium')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">PREMIUM PORTFOLIO</button>
+    <button class="action-btn track-tab" id="btn-custom" onclick="switchTrack('custom')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">CUSTOM ELITE</button>
+</div>
+
+<!-- Dynamic Track Metric Display Card -->
+<div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); padding: 20px; border-radius: 4px; font-family: monospace; margin-bottom: 15px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+        <span style="color: #9ca3af;">Consultation Track Max:</span>
+        <span id="trackDensity" style="color: #00ff88; text-align: right;">3 Direct Dispatches Allowed</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+        <span style="color: #9ca3af;">Pipeline:</span>
+        <span id="trackPipeline" style="color: #00ff88;">Standard Queue Array</span>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <span style="color: #9ca3af;">Processing Lag:</span>
+        <span id="trackLag" style="color: #00ff88;">24-48 Hours</span>
+    </div>
+</div>
+
         <button class="action-btn" onclick="closeConsultationModal()">CLOSE WINDOW</button>
     </div>
 </div>
@@ -1977,6 +1999,51 @@ function closeConsultationModal() {
     if(modal) {
         modal.style.display = 'none';
     }
+}
+function switchTrack(trackType) {
+    // Reset button highlights
+    document.querySelectorAll('.track-tab').forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.color = '#00f2fe';
+    });
+    
+    // Select elements
+    const densityEl = document.getElementById('trackDensity');
+    const pipelineEl = document.getElementById('trackPipeline');
+    const lagEl = document.getElementById('trackLag');
+    
+    const activeBtn = document.getElementById(`btn-${trackType}`);
+    if(activeBtn) {
+        activeBtn.style.background = '#00f2fe';
+        activeBtn.style.color = '#02020a';
+    }
+    
+    // Update metrics based on selected track
+    if (trackType === 'standard') {
+        densityEl.innerText = "3 Direct Dispatches Allowed";
+        pipelineEl.innerText = "Standard Queue Array";
+        lagEl.innerText = "24-48 Hours";
+    } else if (trackType === 'premium') {
+        densityEl.innerText = "Synchronous Video Uplink";
+        pipelineEl.innerText = "Accelerated Matrix Route";
+        lagEl.innerText = "< 6 Hours";
+    } else if (trackType === 'custom') {
+        densityEl.innerText = "Presidential Board Integration Access";
+        pipelineEl.innerText = "Immediate Dedicated Execution Override";
+        lagEl.innerText = "Real-Time Direct";
+    }
+    
+    // Inject live terminal log
+    const timestamp = new Date().toLocaleTimeString();
+    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
+    
+    const newLog = document.createElement('div');
+    newLog.style.color = "#00f2fe";
+    newLog.style.fontSize = "0.8rem";
+    newLog.style.marginTop = "5px";
+    newLog.innerHTML = `[SYSTEM CONFIG] ${timestamp} - Switched active clearance loop to [${trackType.toUpperCase()} TRACK]. Metrics updated.`;
+    
+    logContainer.prepend(newLog);
 }
 
 
