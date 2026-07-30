@@ -1216,7 +1216,7 @@
         </div>
     </section>
 
-    <!-- Practical Classes Section -->
+        <!-- Practical Classes Section -->
     <section id="classes">
         <h2>4. Technical Execution Development</h2>
         <div class="content-block">
@@ -1224,9 +1224,7 @@
             <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">
                 We connect market mechanics with tactical execution through intensive, hands-on masterclasses customized for regional operators and student networks. Join our practical classes to execute live trades alongside expert instructors.
             </p>
-            <button class="action-btn" onclick="alert('​The Instant Masterclass Syllabus Preview (Modal Content)
-​Module Breakdown: Week 1 (Market Mechanics & Asset Pricing), Week 2 (Tactical Execution & Risk Management), Week 3 (Regional Portfolio Building).
-​Target Audience: Tailored specifically for regional operators and student networks.')">View Upcoming Syllabus</button>
+            <button class="action-btn" onclick="openSyllabusModal()">View Upcoming Syllabus</button>
         </div>
     </section>
 
@@ -1488,6 +1486,21 @@
         <button onclick="sendMessage()">TRANSMIT</button>
     </div>
 </div>
+    <!-- CUSTOM SYLLABUS MODAL POPUP -->
+<div id="syllabusModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
+    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
+        <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Instant Masterclass Syllabus</h3>
+        <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 15px;">Target Audience: Tailored specifically for regional operators and student networks.</p>
+        <div style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #ffffff; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+            <strong style="color: #00ff88;">• Module Breakdown:</strong><br>
+            - Week 1: Market Mechanics & Asset Pricing Foundations<br>
+            - Week 2: Tactical Execution & Risk Management Protocols<br>
+            - Week 3: Regional Portfolio Building & Live Trading Setup
+        </div>
+        <button class="action-btn" onclick="closeSyllabusModal()">CLOSE MANIFEST</button>
+    </div>
+</div>
+
 
 <!-- Main JavaScript Execution Core -->
 <script>
@@ -1811,6 +1824,21 @@ Strict 3-day grace constraints applied.`;
             observer.observe(impactMonitor);
         }
     });
+    function openSyllabusModal() {
+    const modal = document.getElementById('syllabusModal');
+    if(modal) {
+        modal.style.display = 'flex';
+        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
+    }
+}
+
+function closeSyllabusModal() {
+    const modal = document.getElementById('syllabusModal');
+    if(modal) {
+        modal.style.display = 'none';
+    }
+}
+
 </script>
 
 </body>
