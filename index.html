@@ -1348,8 +1348,9 @@
                     <span>Next Algorithmic Audit Settlement:</span>
                     <span style="color:#ffffff;">July 01, 2026</span>
                 </div>
-                <button class="action-btn" style="width: 100%; margin-top: 15px;" onclick="alert('Accessing localized secure node... Redirecting to full ledger database.')">Launch Full Governance Portal</button>
-            </div>
+                <button class="action-btn" style="width: 100%; margin-top: 15px;" onclick="openGovernanceModal()">Launch Full Governance Portal</button>
+                </div>
+
 
         </div>
     </section>
@@ -1486,6 +1487,21 @@
         <button onclick="sendMessage()">TRANSMIT</button>
     </div>
 </div>
+    <!-- CUSTOM GOVERNANCE PORTAL MODAL -->
+<div id="governanceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
+    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
+        <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Secure Governance Portal</h3>
+        <p style="color: #00ff88; font-size: 0.85rem; margin-bottom: 15px;">● Localized secure node accessed successfully.</p>
+        <div style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+            <strong style="color: #ffffff;">System Telemetry Link:</strong><br>
+            - Encryption State: 256-Bit Active<br>
+            - Target Database: Sovereign Ledger Cluster v4<br>
+            - Status: Ready for institutional allocation routing and administrative auditing.
+        </div>
+        <button class="action-btn" onclick="closeGovernanceModal()">CLOSE PORTAL</button>
+    </div>
+</div>
+
     <!-- CUSTOM SYLLABUS MODAL POPUP -->
 <div id="syllabusModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
@@ -1838,6 +1854,21 @@ function closeSyllabusModal() {
         modal.style.display = 'none';
     }
 }
+    function openGovernanceModal() {
+    const modal = document.getElementById('governanceModal');
+    if(modal) {
+        modal.style.display = 'flex';
+        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
+    }
+}
+
+function closeGovernanceModal() {
+    const modal = document.getElementById('governanceModal');
+    if(modal) {
+        modal.style.display = 'none';
+    }
+}
+
 
 </script>
 
