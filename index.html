@@ -1418,14 +1418,16 @@
                 </div>
             </div>
 
-            <div class="form-group-inline">
-                <input type="checkbox" id="nigeria">
-                <label for="nigeria">Verify Term Loan Framework Compliance Rules</label>
-            </div>
+            <div class="content-block">
+    <h3>Consultation Channel Deployment</h3>
+    <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">Configure target terminal metrics below to route priority inquiries to corporate clearance loops.</p>
+    
+    <!-- Added ID for textarea input tracking -->
+    <textarea id="consultationInput" placeholder="Detail your project targets or custom terms here..." style="width: 100%; height: 90px; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;"></textarea>
+    
+    <button class="action-btn" style="width: 100%; margin-top: 5px;" type="button" onclick="handleConsultationSubmit()">Submit Priority Consulting Request</button>
+</div>
 
-            <textarea class="custom-textarea" placeholder="Detail your project targets or custom terms here..."></textarea>
-            <button type="button" class="action-btn" onclick="alert('Priority request submitted successfully.')">Submit Priority Consulting Request</button>
-        </div>
     </section>
 
     <!-- Contact Section -->
@@ -1505,6 +1507,21 @@
             - Status: Buffered to secure corporate queue and synced with Freetown terminal.
         </div>
         <button class="action-btn" onclick="closeTransmissionModal()">CLOSE WINDOW</button>
+    </div>
+</div>
+
+   <!-- CUSTOM CONSULTATION MODAL -->
+<div id="consultationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
+    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
+        <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Priority Request Status</h3>
+        <p style="color: #00ff88; font-size: 0.85rem; margin-bottom: 15px;">● Priority request submitted successfully.</p>
+        <div style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+            <strong style="color: #ffffff;">Consultation Clearance Log:</strong><br>
+            - Details: <span id="modalConsultationText" style="color: #00f2fe;">--</span><br>
+            - Pipeline: Standard Queue Array (24-48 Hours)<br>
+            - Status: Routed securely to corporate compliance loops.
+        </div>
+        <button class="action-btn" onclick="closeConsultationModal()">CLOSE WINDOW</button>
     </div>
 </div>
 
@@ -1929,6 +1946,38 @@ function closeTransmissionModal() {
     }
 }
 
+function handleConsultationSubmit() {
+    const textInput = document.getElementById('consultationInput').value.trim();
+    const details = textInput !== "" ? textInput : "Standard Priority Inquiry (No custom text provided)";
+    
+    // Display text inside the modal
+    document.getElementById('modalConsultationText').innerText = details;
+    
+    // Open the custom modal
+    const modal = document.getElementById('consultationModal');
+    if(modal) {
+        modal.style.display = 'flex';
+    }
+    
+    // Inject live status log into your terminal console window
+    const timestamp = new Date().toLocaleTimeString();
+    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
+    
+    const newLog = document.createElement('div');
+    newLog.style.color = "#00ff88";
+    newLog.style.fontSize = "0.8rem";
+    newLog.style.marginTop = "5px";
+    newLog.innerHTML = `[CONSULTATION SUBMIT] ${timestamp} - Priority clearance packet logged. Queue array updated.`;
+    
+    logContainer.prepend(newLog);
+}
+
+function closeConsultationModal() {
+    const modal = document.getElementById('consultationModal');
+    if(modal) {
+        modal.style.display = 'none';
+    }
+}
 
 
 </script>
