@@ -1216,7 +1216,7 @@
         </div>
     </section>
 
-        <!-- Practical Classes Section -->
+    <!-- Practical Classes Section -->
     <section id="classes">
         <h2>4. Technical Execution Development</h2>
         <div class="content-block">
@@ -1268,77 +1268,75 @@
             </form>
         </div>
     </section>
+
     <!-- LIZKEMI TRADING CONSORTIUM & SECURE GATEWAY ENGINE -->
-<sec<!-- LIZKEMI TRADING CONSORTIUM & SECURE GATEWAY ENGINE -->
-<section id="trading-consortium" style="margin-top: 40px; padding: 25px; background: rgba(6, 11, 24, 0.85); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 6px; font-family: monospace;">
-    <h2 style="color: #00f2fe; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">LizKemi Trading Consortium & Clearance Gateway</h2>
-    <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 20px;">
-        Register via official Google Forms to unlock exclusive institutional syllabi, managed risk accounts, and advisory desks.
-    </p>
+    <section id="trading-consortium" style="margin-top: 40px; padding: 25px; background: rgba(6, 11, 24, 0.85); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 6px; font-family: monospace;">
+        <h2 style="color: #00f2fe; text-transform: uppercase; font-size: 1.2rem; margin-bottom: 5px;">LizKemi Trading Consortium & Clearance Gateway</h2>
+        <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 20px;">
+            Register via official Google Forms to unlock exclusive institutional syllabi, managed risk accounts, and advisory desks.
+        </p>
 
-    <!-- SUB-TABS NAVIGATION -->
-    <div style="display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap;">
-        <button class="action-btn cons-tab active" id="btn-cons-academy" onclick="switchConsortiumTab('academy')" style="flex: 1; font-size: 0.75rem; padding: 8px;">1. TRADING ACADEMY</button>
-        <button class="action-btn cons-tab" id="btn-cons-trading" onclick="switchConsortiumTab('trading')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">2. MANAGED TRADING</button>
-        <button class="action-btn cons-tab" id="btn-cons-insights" onclick="switchConsortiumTab('insights')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">3. STOCK INSIGHTS</button>
-    </div>
-
-    <!-- TAB 1: TRADING ACADEMY -->
-    <div id="tab-content-academy" class="cons-content-panel">
-        <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Complete your official registration on Google Forms.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> Once registered, your secure token unlocks the syllabus vault below.
+        <!-- SUB-TABS NAVIGATION -->
+        <div style="display: flex; gap: 5px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="action-btn cons-tab active" id="btn-cons-academy" onclick="switchConsortiumTab('academy')" style="flex: 1; font-size: 0.75rem; padding: 8px;">1. TRADING ACADEMY</button>
+            <button class="action-btn cons-tab" id="btn-cons-trading" onclick="switchConsortiumTab('trading')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">2. MANAGED TRADING</button>
+            <button class="action-btn cons-tab" id="btn-cons-insights" onclick="switchConsortiumTab('insights')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">3. STOCK INSIGHTS</button>
         </div>
-        
-        <div style="display: flex; gap: 10px; flex-direction: column;">
-            <!-- Button to open Form 1 -->
-            <a href="https://forms.gle/ynrjJKaVQyVTAqjf9" target="_blank" onclick="unlockAccess('academy')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. REGISTER FOR ACADEMY (GOOGLE FORM)
-            </a>
+
+        <!-- TAB 1: TRADING ACADEMY -->
+        <div id="tab-content-academy" class="cons-content-panel">
+            <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+                <strong style="color: #00ff88;">• Step 1:</strong> Complete your official registration on Google Forms.<br>
+                <strong style="color: #00ff88;">• Step 2:</strong> Once registered, your secure token unlocks the syllabus vault below.
+            </div>
             
-            <!-- Button to view syllabus (Gated until registration click) -->
-            <button id="btn-view-academy" class="action-btn" onclick="openSyllabusModal('academy')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
-                🔒 VIEW ACADEMY SYLLABUS & TOPICS (Locked)
-            </button>
+            <div style="display: flex; gap: 10px; flex-direction: column;">
+                <a href="https://forms.gle/ynrjJKaVQyVTAqjf9" target="_blank" onclick="unlockAccess('academy')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                    1. REGISTER FOR ACADEMY (GOOGLE FORM)
+                </a>
+                
+                <button id="btn-view-academy" class="action-btn" onclick="openSyllabusModal('academy')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
+                    🔒 VIEW ACADEMY SYLLABUS & TOPICS (Locked)
+                </button>
+            </div>
         </div>
-    </div>
 
-    <!-- TAB 2: MANAGED TRADING -->
-    <div id="tab-content-trading" class="cons-content-panel" style="display: none;">
-        <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Submit your managed account criteria via Google Form.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> Access your account parameters and risk-sharing confirmation view.
-        </div>
-        
-        <div style="display: flex; gap: 10px; flex-direction: column;">
-            <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" onclick="unlockAccess('trading')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. INITIALIZE MANAGED ACCOUNT FORM
-            </a>
+        <!-- TAB 2: MANAGED TRADING -->
+        <div id="tab-content-trading" class="cons-content-panel" style="display: none;">
+            <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+                <strong style="color: #00ff88;">• Step 1:</strong> Submit your managed account criteria via Google Form.<br>
+                <strong style="color: #00ff88;">• Step 2:</strong> Access your account parameters and risk-sharing confirmation view.
+            </div>
             
-            <button id="btn-view-trading" class="action-btn" onclick="openSyllabusModal('trading')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
-                🔒 VIEW ACCOUNT PIPELINE & RISK TERMS (Locked)
-            </button>
+            <div style="display: flex; gap: 10px; flex-direction: column;">
+                <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" onclick="unlockAccess('trading')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                    1. INITIALIZE MANAGED ACCOUNT FORM
+                </a>
+                
+                <button id="btn-view-trading" class="action-btn" onclick="openSyllabusModal('trading')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
+                    🔒 VIEW ACCOUNT PIPELINE & RISK TERMS (Locked)
+                </button>
+            </div>
         </div>
-    </div>
 
-    <!-- TAB 3: STOCK INSIGHTS -->
-    <div id="tab-content-insights" class="cons-content-panel" style="display: none;">
-        <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-            <strong style="color: #00ff88;">• Step 1:</strong> Submit your ticker query via the Stock Insights Form.<br>
-            <strong style="color: #00ff88;">• Step 2:</strong> Unlock the advisory desk queue and status dashboard.
-        </div>
-        
-        <div style="display: flex; gap: 10px; flex-direction: column;">
-            <a href="https://forms.gle/pP2Ve1QYwfnyLZWe8" target="_blank" onclick="unlockAccess('insights')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                1. SUBMIT STOCK INQUIRY FORM
-            </a>
+        <!-- TAB 3: STOCK INSIGHTS -->
+        <div id="tab-content-insights" class="cons-content-panel" style="display: none;">
+            <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
+                <strong style="color: #00ff88;">• Step 1:</strong> Submit your ticker query via the Stock Insights Form.<br>
+                <strong style="color: #00ff88;">• Step 2:</strong> Unlock the advisory desk queue and status dashboard.
+            </div>
             
-            <button id="btn-view-insights" class="action-btn" onclick="openSyllabusModal('insights')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
-                🔒 VIEW ADVISORY QUEUE STATUS (Locked)
-            </button>
+            <div style="display: flex; gap: 10px; flex-direction: column;">
+                <a href="https://forms.gle/pP2Ve1QYwfnyLZWe8" target="_blank" onclick="unlockAccess('insights')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                    1. SUBMIT STOCK INQUIRY FORM
+                </a>
+                
+                <button id="btn-view-insights" class="action-btn" onclick="openSyllabusModal('insights')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
+                    🔒 VIEW ADVISORY QUEUE STATUS (Locked)
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Future Banking Section -->
     <section id="banking">
@@ -1420,8 +1418,8 @@
                     <span style="color:#ffffff;">July 01, 2026</span>
                 </div>
                 <button class="action-btn" style="width: 100%; margin-top: 15px;" onclick="openGovernanceModal()">Launch Full Governance Portal</button>
-                </div>
-          </div>
+            </div>
+        </div>
     </section>
 
     <section id="investment-structure">
@@ -1487,16 +1485,12 @@
                 </div>
             </div>
 
-            <div class="content-block">
-    <h3>Consultation Channel Deployment</h3>
-    <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">Configure target terminal metrics below to route priority inquiries to corporate clearance loops.</p>
-    
-    <!-- Added ID for textarea input tracking -->
-    <textarea id="consultationInput" placeholder="Detail your project targets or custom terms here..." style="width: 100%; height: 90px; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;"></textarea>
-    
-    <button class="action-btn" style="width: 100%; margin-top: 5px;" type="button" onclick="handleConsultationSubmit()">Submit Priority Consulting Request</button>
-</div>
-
+            <div class="content-block" style="margin-top: 20px;">
+                <h3>Submit Priority Request</h3>
+                <textarea id="consultationInput" placeholder="Detail your project targets or custom terms here..." style="width: 100%; height: 90px; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;"></textarea>
+                <button class="action-btn" style="width: 100%; margin-top: 5px;" type="button" onclick="handleConsultationSubmit()">Submit Priority Consulting Request</button>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
@@ -1510,17 +1504,16 @@
                 <p style="font-size:0.9rem; font-family:monospace;"><strong style="color:#ffffff;">Region Parameter:</strong> Sierra Leone Base Terminal</p>
             </div>
             <div class="content-block">
-    <h3>Transmission Node Injection</h3>
-    <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">Region Parameter: Sierra Leone Base Terminal</p>
-    
-    <!-- Added IDs: operatorName & operatorMail -->
-    <input type="text" id="operatorName" placeholder="Operator Identity Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
-    
-    <input type="text" id="operatorMail" placeholder="Target Secure Mail Ingress" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
-    
-    <button class="action-btn" style="margin-top:5px; width:100%;" type="button" onclick="handleTransmission()">Send Outbound Transmission</button>
-</div>
-
+                <h3>Transmission Node Injection</h3>
+                <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">Region Parameter: Sierra Leone Base Terminal</p>
+                
+                <input type="text" id="operatorName" placeholder="Operator Identity Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+                
+                <input type="text" id="operatorMail" placeholder="Target Secure Mail Ingress" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; font-family: monospace;">
+                
+                <button class="action-btn" style="margin-top:5px; width:100%;" type="button" onclick="handleTransmission()">Send Outbound Transmission</button>
+            </div>
+        </div>
     </section>
 
     <div class="system-log-box" id="systemLog">
@@ -1560,10 +1553,10 @@
     </div>
     <div id="ai-input-area">
         <input id="userInput" type="text" placeholder="Transmit system query or engine instruction code...">
-        <button class="action-btn" style="margin-top:5px; width:100%;" onclick="openTransmissionModal()">Send Outbound Transmission</button>
-        </div>
-
+        <button onclick="sendMessage()">Transmit</button>
+    </div>
 </div>
+
 <!-- CUSTOM TRANSMISSION MODAL -->
 <div id="transmissionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
@@ -1578,7 +1571,8 @@
         <button class="action-btn" onclick="closeTransmissionModal()">CLOSE WINDOW</button>
     </div>
 </div>
-    <!-- CONSORTIUM SUCCESS POPUP MODAL -->
+
+<!-- CONSORTIUM SUCCESS POPUP MODAL -->
 <div id="consortiumModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
         <h3 id="consModalTitle" style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Consortium Notification</h3>
@@ -1606,18 +1600,7 @@
     </div>
 </div>
 
-
-<!-- SUCCESS CONFIRMATION POPUP MODAL -->
-<div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
-    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 450px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); text-align: center;">
-        <h3 style="color: #00f2fe; margin-bottom: 10px; text-transform: uppercase;">Access Unlocked!</h3>
-        <p style="color: #00ff88; font-size: 0.85rem; margin-bottom: 20px;">Your registration verification has been saved. You can now access your syllabus and materials anytime.</p>
-        <button class="action-btn" onclick="closeConfirmModal()" style="width: 100%;">PROCEED TO MATERIALS</button>
-    </div>
-</div>
-
-
-   <!-- CUSTOM CONSULTATION MODAL -->
+<!-- CUSTOM CONSULTATION MODAL -->
 <div id="consultationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
         <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Priority Request Status</h3>
@@ -1628,33 +1611,11 @@
             - Pipeline: Standard Queue Array (24-48 Hours)<br>
             - Status: Routed securely to corporate compliance loops.
         </div>
-        <div style="display: flex; gap: 5px; margin-bottom: 15px;">
-    <button class="action-btn track-tab active" id="btn-standard" onclick="switchTrack('standard')" style="flex: 1; font-size: 0.75rem; padding: 8px;">STANDARD TRACK</button>
-    <button class="action-btn track-tab" id="btn-premium" onclick="switchTrack('premium')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">PREMIUM PORTFOLIO</button>
-    <button class="action-btn track-tab" id="btn-custom" onclick="switchTrack('custom')" style="flex: 1; font-size: 0.75rem; padding: 8px; background: transparent; color: #00f2fe;">CUSTOM ELITE</button>
-</div>
-
-<!-- Dynamic Track Metric Display Card -->
-<div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.3); padding: 20px; border-radius: 4px; font-family: monospace; margin-bottom: 15px;">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-        <span style="color: #9ca3af;">Consultation Track Max:</span>
-        <span id="trackDensity" style="color: #00ff88; text-align: right;">3 Direct Dispatches Allowed</span>
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-        <span style="color: #9ca3af;">Pipeline:</span>
-        <span id="trackPipeline" style="color: #00ff88;">Standard Queue Array</span>
-    </div>
-    <div style="display: flex; justify-content: space-between;">
-        <span style="color: #9ca3af;">Processing Lag:</span>
-        <span id="trackLag" style="color: #00ff88;">24-48 Hours</span>
-    </div>
-</div>
-
         <button class="action-btn" onclick="closeConsultationModal()">CLOSE WINDOW</button>
     </div>
 </div>
 
-    <!-- CUSTOM GOVERNANCE PORTAL MODAL -->
+<!-- CUSTOM GOVERNANCE PORTAL MODAL -->
 <div id="governanceModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
         <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Secure Governance Portal</h3>
@@ -1668,22 +1629,6 @@
         <button class="action-btn" onclick="closeGovernanceModal()">CLOSE PORTAL</button>
     </div>
 </div>
-
-    <!-- CUSTOM SYLLABUS MODAL POPUP -->
-<div id="syllabusModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
-    <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
-        <h3 style="color: #00f2fe; margin-bottom: 15px; text-transform: uppercase;">Instant Masterclass Syllabus</h3>
-        <p style="color: #9ca3af; font-size: 0.85rem; margin-bottom: 15px;">Target Audience: Tailored specifically for regional operators and student networks.</p>
-        <div style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #ffffff; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
-            <strong style="color: #00ff88;">• Module Breakdown:</strong><br>
-            - Week 1: Market Mechanics & Asset Pricing Foundations<br>
-            - Week 2: Tactical Execution & Risk Management Protocols<br>
-            - Week 3: Regional Portfolio Building & Live Trading Setup
-        </div>
-        <button class="action-btn" onclick="closeSyllabusModal()">CLOSE MANIFEST</button>
-    </div>
-</div>
-
 
 <!-- Main JavaScript Execution Core -->
 <script>
@@ -2007,408 +1952,191 @@ Strict 3-day grace constraints applied.`;
             observer.observe(impactMonitor);
         }
     });
-    function openSyllabusModal() {
-    const modal = document.getElementById('syllabusModal');
-    if(modal) {
-        modal.style.display = 'flex';
-        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
-    }
-}
 
-function closeSyllabusModal() {
-    const modal = document.getElementById('syllabusModal');
-    if(modal) {
-        modal.style.display = 'none';
+    function openSyllabusModal(sectionKey) {
+        const modal = document.getElementById('syllabusModal');
+        const titleEl = document.getElementById('syllabusModalTitle');
+        const bodyEl = document.getElementById('syllabusModalBody');
+        
+        if(sectionKey === 'academy') {
+            titleEl.innerText = "Trading Academy Curriculum Vault";
+            bodyEl.innerHTML = `
+                <strong style="color: #fff;">Module 1: Market Mechanics & Structure</strong><br>
+                - Understanding price action, liquidity pools, and institutional order blocks.<br><br>
+                <strong style="color: #fff;">Module 2: Technical & Indicator Analysis</strong><br>
+                - Mastering trend identification, RSI divergence, and multi-timeframe alignment.<br><br>
+                <strong style="color: #fff;">Module 3: Risk Management Framework</strong><br>
+                - Lot sizing calculations, risk-to-reward ratios, and emotional discipline.
+            `;
+        } else if(sectionKey === 'trading') {
+            titleEl.innerText = "Managed Trading Pipeline & Risk Terms";
+            bodyEl.innerHTML = `
+                <strong style="color: #fff;">Pipeline Overview:</strong><br>
+                - Direct allocation parameters and risk-sharing confirmation protocols.<br><br>
+                <strong style="color: #fff;">Risk Parameters:</strong><br>
+                - Capital preservation rules, automated stop-loss thresholds, and liquidity safeguards.
+            `;
+        } else if(sectionKey === 'insights') {
+            titleEl.innerText = "Stock Insights Advisory Queue Status";
+            bodyEl.innerHTML = `
+                <strong style="color: #fff;">Advisory Desk Status:</strong><br>
+                - Inquiries are actively reviewed by our technical analysis team.<br><br>
+                <strong style="color: #fff;">Queue SLA:</strong><br>
+                - Standard response window: 12-24 hours via secure communication channels.
+            `;
+        } else {
+            titleEl.innerText = "Instant Masterclass Syllabus";
+            bodyEl.innerHTML = `
+                <strong style="color: #00ff88;">• Module Breakdown:</strong><br>
+                - Week 1: Market Mechanics & Asset Pricing Foundations<br>
+                - Week 2: Tactical Execution & Risk Management Protocols<br>
+                - Week 3: Regional Portfolio Building & Live Trading Setup
+            `;
+        }
+
+        if(modal) {
+            modal.style.display = 'flex';
+            modal.style.animation = 'fadeEffect 0.3s ease-in-out';
+        }
     }
-}
+
+    function closeSyllabusModal() {
+        const modal = document.getElementById('syllabusModal');
+        if(modal) {
+            modal.style.display = 'none';
+        }
+    }
+
     function openGovernanceModal() {
-    const modal = document.getElementById('governanceModal');
-    if(modal) {
-        modal.style.display = 'flex';
-        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
-    }
-}
-
-function closeGovernanceModal() {
-    const modal = document.getElementById('governanceModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
-}
-function handleTransmission() {
-    const nameInput = document.getElementById('operatorName').value.trim();
-    const mailInput = document.getElementById('operatorMail').value.trim();
-    
-    // Fallback if fields are empty
-    const operatorName = nameInput !== "" ? nameInput : "Anonymous Operator";
-    const operatorMail = mailInput !== "" ? mailInput : "Secure Ingress Default";
-    
-    // Update modal text fields
-    document.getElementById('modalOperator').innerText = operatorName;
-    document.getElementById('modalMail').innerText = operatorMail;
-    
-    // Open the custom modal
-    const modal = document.getElementById('transmissionModal');
-    if(modal) {
-        modal.style.display = 'flex';
-    }
-    
-    // Find your bottom terminal log box and inject a live status entry
-    // (Make sure your terminal log container has an ID like id="terminalLogs", or we target your log structure)
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00ff88";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[TRANSMISSION SUCCESS] ${timestamp} - Packet routed from [${operatorName}] via ingress [${operatorMail}]. Queue synchronized.`;
-    
-    // Prepend or append to your terminal window output
-    logContainer.prepend(newLog);
-}
-
-function closeTransmissionModal() {
-    const modal = document.getElementById('transmissionModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
-}
-
-function handleConsultationSubmit() {
-    const textInput = document.getElementById('consultationInput').value.trim();
-    const details = textInput !== "" ? textInput : "Standard Priority Inquiry (No custom text provided)";
-    
-    // Display text inside the modal
-    document.getElementById('modalConsultationText').innerText = details;
-    
-    // Open the custom modal
-    const modal = document.getElementById('consultationModal');
-    if(modal) {
-        modal.style.display = 'flex';
-    }
-    
-    // Inject live status log into your terminal console window
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00ff88";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[CONSULTATION SUBMIT] ${timestamp} - Priority clearance packet logged. Queue array updated.`;
-    
-    logContainer.prepend(newLog);
-}
-
-function closeConsultationModal() {
-    const modal = document.getElementById('consultationModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
-}
-function switchTrack(trackType) {
-    // Reset button highlights
-    document.querySelectorAll('.track-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    
-    // Select elements
-    const densityEl = document.getElementById('trackDensity');
-    const pipelineEl = document.getElementById('trackPipeline');
-    const lagEl = document.getElementById('trackLag');
-    
-    const activeBtn = document.getElementById(`btn-${trackType}`);
-    if(activeBtn) {
-        activeBtn.style.background = '#00f2fe';
-        activeBtn.style.color = '#02020a';
-    }
-    
-    // Update metrics based on selected track
-    if (trackType === 'standard') {
-        densityEl.innerText = "3 Direct Dispatches Allowed";
-        pipelineEl.innerText = "Standard Queue Array";
-        lagEl.innerText = "24-48 Hours";
-    } else if (trackType === 'premium') {
-        densityEl.innerText = "Synchronous Video Uplink";
-        pipelineEl.innerText = "Accelerated Matrix Route";
-        lagEl.innerText = "< 6 Hours";
-    } else if (trackType === 'custom') {
-        densityEl.innerText = "Presidential Board Integration Access";
-        pipelineEl.innerText = "Immediate Dedicated Execution Override";
-        lagEl.innerText = "Real-Time Direct";
-    }
-    
-    // Inject live terminal log
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00f2fe";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[SYSTEM CONFIG] ${timestamp} - Switched active clearance loop to [${trackType.toUpperCase()} TRACK]. Metrics updated.`;
-    
-    logContainer.prepend(newLog);
-}
-
-// Tab Switching Handler for Consortium
-function switchConsortiumTab(tabName) {
-    // Reset tab buttons style
-    document.querySelectorAll('.cons-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    
-    // Hide all panels
-    document.querySelectorAll('.cons-content-panel').forEach(panel => {
-        panel.style.display = 'none';
-    });
-    
-    // Activate selected tab & panel
-    const activeBtn = document.getElementById(`btn-cons-${tabName}`);
-    const activePanel = document.getElementById(`tab-content-${tabName}`);
-    
-    if(activeBtn) {
-        activeBtn.style.background = '#00f2fe';
-        activeBtn.style.color = '#02020a';
-    }
-    if(activePanel) {
-        activePanel.style.display = 'block';
-    }
-}
-
-// Handler 1: Academy Registration & Syllabus Request
-function submitAcademyRegistration() {
-    const name = document.getElementById('academyOperatorName').value.trim() || "Consortium Student";
-    const track = document.getElementById('academyTrackSelect').value;
-    const email = document.getElementById('academyEmail').value.trim() || "Pending Ingress";
-    
-    showConsortiumPopup("Academy Syllabus Dispatched", `Registered: ${name} (${track}). Syllabus topics routed to ${email}.`);
-    logTerminal(`[CONSORTIUM ACADEMY] Enrolled ${name} into [${track}]. Syllabus queued.`);
-}
-
-// Handler 2: Direct Expert Trading & Risk Account Setup
-function submitDirectTradingSetup() {
-    const name = document.getElementById('directTraderName').value.trim() || "Direct Investor";
-    const tier = document.getElementById('directAccountCapital').value.trim() || "Standard Capital Tier";
-    
-    showConsortiumPopup("Managed Account Initialized", `Account setup requested for ${name} [Tier: ${tier}]. Risk management split (20%) applied.`);
-    logTerminal(`[CONSORTIUM TRADING] Managed account profile created for ${name}. 20% risk-sharing parameters active.`);
-}
-
-// Handler 3: Stock Insights Inquiry
-function submitStockInquiry() {
-    const inquiry = document.getElementById('stockInquiryText').value.trim() || "General stock market guidance inquiry.";
-    
-    showConsortiumPopup("Stock Insights Buffered", `Inquiry logged: "${inquiry}". Advisory desk review underway.`);
-    logTerminal(`[STOCK DESK] New analysis query received: "${inquiry.substring(0, 30)}..."`);
-}
-
-// General Modal & Console Logger Helper
-function showConsortiumPopup(title, detailText) {
-    document.getElementById('consModalTitle').innerText = title;
-    document.getElementById('consModalDetail').innerText = detailText;
-    document.getElementById('consortiumModal').style.display = 'flex';
-}
-
-function closeConsortiumModal() {
-    document.getElementById('consortiumModal').style.display = 'none';
-}
-
-function logTerminal(message) {
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00ff88";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[${timestamp}] ${message}`;
-    logContainer.prepend(newLog);
-}
-// Tab Switching Controller
-function switchConsortiumTab(tabName) {
-    document.querySelectorAll('.cons-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    document.querySelectorAll('.cons-content-panel').forEach(panel => {
-        panel.style.display = 'none';
-    });
-    
-    const activeBtn = document.getElementById(`btn-cons-${tabName}`);
-    const activePanel = document.getElementById(`tab-content-${tabName}`);
-    
-    if(activeBtn) {
-        activeBtn.style.background = '#00f2fe';
-        activeBtn.style.color = '#02020a';
-    }
-    if(activePanel) {
-        activePanel.style.display = 'block';
-    }
-}
-
-// Gatekeeper Function: Unlocks the view button when the registration form link is clicked
-function unlockAccess(sectionKey) {
-    const viewButton = document.getElementById(`btn-view-${sectionKey}`);
-    if(viewButton) {
-        viewButton.disabled = false;
-        viewButton.style.cursor = 'pointer';
-        viewButton.style.background = '#00f2fe';
-        viewButton.style.color = '#02020a';
-        viewButton.style.borderColor = '#00f2fe';
-        viewButton.innerHTML = `🔓 VIEW ${sectionKey.toUpperCase()} SYLLABUS & MATERIALS`;
-        
-        // Save clearance state so it stays unlocked during the session
-        sessionStorage.setItem(`lizkemi_unlocked_${sectionKey}`, 'true');
-    }
-    
-    // Log terminal action
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00ff88";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[GATEWAY SYNC] ${timestamp} - Registration action detected for [${sectionKey.toUpperCase()}]. Access token unlocked.`;
-    logContainer.prepend(newLog);
-}
-
-// Check session storage on page load to keep buttons unlocked if user returns from Google Form
-window.addEventListener('DOMContentLoaded', () => {
-    ['academy', 'trading', 'insights'].forEach(key => {
-        if(sessionStorage.getItem(`lizkemi_unlocked_${key}`) === 'true') {
-            unlockAccess(key);
+        const modal = document.getElementById('governanceModal');
+        if(modal) {
+            modal.style.display = 'flex';
+            modal.style.animation = 'fadeEffect 0.3s ease-in-out';
         }
-    });
-});
-
-// Open Syllabus / Document Vault Modal with respective details
-function openSyllabusModal(sectionKey) {
-    const titleEl = document.getElementById('syllabusModalTitle');
-    const bodyEl = document.getElementById('syllabusModalBody');
-    
-    if(sectionKey === 'academy') {
-        titleEl.innerText = "Trading Academy Curriculum Vault";
-        bodyEl.innerHTML = `
-            <strong style="color: #fff;">Module 1: Market Mechanics & Structure</strong><br>
-            - Understanding price action, liquidity pools, and institutional order blocks.<br><br>
-            <strong style="color: #fff;">Module 2: Technical & Indicator Analysis</strong><br>
-            - Mastering trend identification, RSI divergence, and multi-timeframe alignment.<br><br>
-            <strong style="color: #fff;">Module 3: Risk Management Framework</strong><br>
-            - Lot sizing calculations, risk-to-reward ratios, and emotional discipline.
-        `;
-    } else if(sectionKey === 'trading') {
-        titleEl.innerText = "Managed Trading Pipeline & Risk Terms";
-        bodyEl.innerHTML = `// Tab Switching Controller
-function switchConsortiumTab(tabName) {
-    document.querySelectorAll('.cons-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    document.querySelectorAll('.cons-content-panel').forEach(panel => {
-        panel.style.display = 'none';
-    });
-    
-    const // Tab Switching Controller
-function switchConsortiumTab(tabName) {
-    document.querySelectorAll('.cons-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    document.querySelectorAll('.cons-content-panel').forEach(panel => {
-        panel.style.display = 'none';
-    });
-    
-    const activeBtn = document.getElementById(`btn-cons-${tabName}`);
-    const activePanel = document.getElementById(`tab-content-${tabName}`);
-    
-    if(activeBtn) {
-        activeBtn.style.background = '#00f2fe';
-        activeBtn.style.color = '#02020a';
     }
-    if(activePanel) {
-        activePanel.style.display = 'block';
-    }
-}
 
-// Gatekeeper Function: Unlocks the view button when the registration form link is clicked
-function unlockAccess(sectionKey) {
-    const viewButton = document.getElementById(`btn-view-${sectionKey}`);
-    if(viewButton) {
-        viewButton.disabled = false;
-        viewButton.style.cursor = 'pointer';
-        viewButton.style.background = '#00f2fe';
-        viewButton.style.color = '#02020a';
-        viewButton.style.borderColor = '#00f2fe';
-        viewButton.innerHTML = `🔓 VIEW ${sectionKey.toUpperCase()} SYLLABUS & MATERIALS`;
-        
-        // Save clearance state so it stays unlocked during the session
-        sessionStorage.setItem(`lizkemi_unlocked_${sectionKey}`, 'true');
-    }
-    
-    // Log terminal action
-    const timestamp = new Date().toLocaleTimeString();
-    const logContainer = document.querySelector('.terminal-logs-box') || document.querySelector('pre') || document.body;
-    const newLog = document.createElement('div');
-    newLog.style.color = "#00ff88";
-    newLog.style.fontSize = "0.8rem";
-    newLog.style.marginTop = "5px";
-    newLog.innerHTML = `[GATEWAY SYNC] ${timestamp} - Registration action detected for [${sectionKey.toUpperCase()}]. Access token unlocked.`;
-    logContainer.prepend(newLog);
-}
-
-// Check session storage on page load to keep buttons unlocked if user returns from Google Form
-window.addEventListener('DOMContentLoaded', () => {
-    ['academy', 'trading', 'insights'].forEach(key => {
-        if(sessionStorage.getItem(`lizkemi_unlocked_${key}`) === 'true') {
-            unlockAccess(key);
+    function closeGovernanceModal() {
+        const modal = document.getElementById('governanceModal');
+        if(modal) {
+            modal.style.display = 'none';
         }
-    });
-});
-
-// Open Syllabus / Document Vault Modal with respective details
-function openSyllabusModal(sectionKey) {
-    const titleEl = document.getElementById('syllabusModalTitle');
-    const bodyEl = document.getElementById('syllabusModalBody');
-    
-    if(sectionKey === 'academy') {
-        titleEl.innerText = "Trading Academy Curriculum Vault";
-        bodyEl.innerHTML = `
-            <strong style="color: #fff;">Module 1: Market Mechanics & Structure</strong><br>
-            - Understanding price action, liquidity pools, and institutional order blocks.<br><br>
-            <strong style="color: #fff;">Module 2: Technical & Indicator Analysis</strong><br>
-            - Mastering trend identification, RSI divergence, and multi-timeframe alignment.<br><br>
-            <strong style="color: #fff;">Module 3: Risk Management Framework</strong><br>
-            - Lot sizing calculations, risk-to-reward ratios, and emotional discipline.
-        `;
-    } else if(sectionKey === 'trading') {
-        titleEl.innerText = "Managed Trading Pipeline & Risk Terms";
-        bodyEl.innerHTML = `
-            <strong style="color: #fff;">Consortium Partnership Protocol:</strong><br>
-            - Active risk-sharing model implemented with expert traders.<br>
-            - 20% consortium split applied strictly on net profitable execution loops.<br>
-            - Real-time performance tracking and transparency dashboard.
-        `;
-    } else if(sectionKey === 'insights') {
-        titleEl.innerText = "Stock Insights Advisory Queue Status";
-        bodyEl.innerHTML = `
-            <strong style="color: #fff;">Advisory Desk Routing:</strong><br>
-            - Your ticker submission has been registered into the analysis pipeline.<br>
-            - Fundamental breakdown and target outlook metrics are currently being compiled by senior analysts.
-        `;
     }
-    
-    document.getElementById('syllabusModalModal' || 'syllabusModal').style.display = 'flex';
-}
 
-function closeSyllabusModal() {
-    document.getElementById('syllabusModal').style.display = 'none';
-}
+    function handleTransmission() {
+        const nameInput = document.getElementById('operatorName').value.trim();
+        const mailInput = document.getElementById('operatorMail').value.trim();
+        
+        const operatorName = nameInput !== "" ? nameInput : "Anonymous Operator";
+        const operatorMail = mailInput !== "" ? mailInput : "Secure Ingress Default";
+        
+        document.getElementById('modalOperator').innerText = operatorName;
+        document.getElementById('modalMail').innerText = operatorMail;
+        
+        const modal = document.getElementById('transmissionModal');
+        if(modal) {
+            modal.style.display = 'flex';
+        }
+        
+        const timestamp = new Date().toLocaleTimeString();
+        const logContainer = document.querySelector('.system-log-box') || document.body;
+        
+        const newLog = document.createElement('div');
+        newLog.style.color = "#00ff88";
+        newLog.style.fontSize = "0.8rem";
+        newLog.style.marginTop = "5px";
+        newLog.innerHTML = `[TRANSMISSION SUCCESS] ${timestamp} - Packet routed from [${operatorName}] via ingress [${operatorMail}]. Queue synchronized.`;
+        
+        logContainer.prepend(newLog);
+    }
+
+    function closeTransmissionModal() {
+        const modal = document.getElementById('transmissionModal');
+        if(modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    function handleConsultationSubmit() {
+        const textInput = document.getElementById('consultationInput').value.trim();
+        const details = textInput !== "" ? textInput : "Standard Priority Inquiry (No custom text provided)";
+        
+        document.getElementById('modalConsultationText').innerText = details;
+        
+        const modal = document.getElementById('consultationModal');
+        if(modal) {
+            modal.style.display = 'flex';
+        }
+        
+        const timestamp = new Date().toLocaleTimeString();
+        const logContainer = document.querySelector('.system-log-box') || document.body;
+        
+        const newLog = document.createElement('div');
+        newLog.style.color = "#00ff88";
+        newLog.style.fontSize = "0.8rem";
+        newLog.style.marginTop = "5px";
+        newLog.innerHTML = `[CONSULTATION SUBMIT] ${timestamp} - Priority clearance packet logged. Queue array updated.`;
+        
+        logContainer.prepend(newLog);
+    }
+
+    function closeConsultationModal() {
+        const modal = document.getElementById('consultationModal');
+        if(modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    function switchConsortiumTab(tabName) {
+        document.querySelectorAll('.cons-tab').forEach(btn => {
+            btn.style.background = 'transparent';
+            btn.style.color = '#00f2fe';
+        });
+        document.querySelectorAll('.cons-content-panel').forEach(panel => {
+            panel.style.display = 'none';
+        });
+        
+        const activeBtn = document.getElementById(`btn-cons-${tabName}`);
+        const activePanel = document.getElementById(`tab-content-${tabName}`);
+        
+        if(activeBtn) {
+            activeBtn.style.background = '#00f2fe';
+            activeBtn.style.color = '#02020a';
+        }
+        if(activePanel) {
+            activePanel.style.display = 'block';
+        }
+    }
+
+    function unlockAccess(sectionKey) {
+        const viewButton = document.getElementById(`btn-view-${sectionKey}`);
+        if(viewButton) {
+            viewButton.disabled = false;
+            viewButton.style.cursor = 'pointer';
+            viewButton.style.background = '#00f2fe';
+            viewButton.style.color = '#02020a';
+            viewButton.style.borderColor = '#00f2fe';
+            viewButton.innerHTML = `🔓 VIEW ${sectionKey.toUpperCase()} SYLLABUS & MATERIALS`;
+            
+            sessionStorage.setItem(`lizkemi_unlocked_${sectionKey}`, 'true');
+        }
+        
+        const timestamp = new Date().toLocaleTimeString();
+        const logContainer = document.querySelector('.system-log-box') || document.body;
+        const newLog = document.createElement('div');
+        newLog.style.color = "#00ff88";
+        newLog.style.fontSize = "0.8rem";
+        newLog.style.marginTop = "5px";
+        newLog.innerHTML = `[GATEWAY SYNC] ${timestamp} - Registration action detected for [${sectionKey.toUpperCase()}]. Access token unlocked.`;
+        logContainer.prepend(newLog);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        ['academy', 'trading', 'insights'].forEach(key => {
+            if(sessionStorage.getItem(`lizkemi_unlocked_${key}`) === 'true') {
+                unlockAccess(key);
+            }
+        });
+    });
 </script>
-
 </body>
 </html>
-
-
