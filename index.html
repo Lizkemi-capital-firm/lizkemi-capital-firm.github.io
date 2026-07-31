@@ -1789,55 +1789,58 @@ Strict 3-day grace constraints applied.`;
     setInterval(appendLiveLogs, 6000);
 
     function sendMessage() {
-    let input = document.getElementById("userInput");
-    let chat = document.getElementById("ai-chat");
-    if(!input || !chat) return;
+        function sendMessage(){
+        let input = document.getElementById("userInput");
+        let chat = document.getElementById("ai-chat");
+        if(!input || !chat) return;
 
-    let userText = input.value.trim();
-    if(userText === "") return;
+        let userText = input.value.trim();
+        if(userText === "") return;
 
-    // Append User Message
-    chat.innerHTML += `<div class="user">${userText}</div>`;
-    chat.scrollTop = chat.scrollHeight;
-
-    let query = userText.toLowerCase();
-    let reply = "Transmission received. Data arrays are parsed to management advisers for prompt feedback pipelines.";
-
-    // --- COMPREHENSIVE KNOWLEDGE BASE LOGIC ---
-    
-    if(query.includes("loan") || query.includes("borrow") || query.includes("credit") || query.includes("funding")) {
-        reply = "LizKemi Capital Firm Ltd offers 12 structured loan products including Term Liquidity Injections, SBA Credit Guarantees, Revolving Operating Allocations, Asset-Backed Mechanics, Revenue-Based Matrix, Micro-Venture Loans, Macro Frameworks, High-Leverage Liquid Accounts, Invoice Factoring, Property Acquisition, Merchant Cash Advances (MCA), and Structural Project Finance. All loans carry a 20% fixed structural interest yield with a 30-day maturity term and a 3-calendar-day grace limit. Apply via our official Google Forms link in the Loan section.";
-    } 
-    else if(query.includes("invest") || query.includes("wealth") || query.includes("compound") || query.includes("shares") || query.includes("equity")) {
-        reply = "Our Predictive Compound Asset Vector offers strategic startup investments with compound growth projections (configured at a 10% baseline assumption). Institutional equity distribution indices feature Series A Sovereign Common and Series B Preferred Lock shares, tracking live index valuations across USD and Sierra Leonean Leones (SLE).";
-    }
-    else if(query.includes("class") || query.includes("academy") || query.includes("school") || query.includes("learn") || query.includes("teacher")) {
-        reply = "We offer Technical Execution Development & Financial Literacy classes through our Trading Academy. Members gain access to live trading groups, practical masterclasses with expert instructors, syllabus modules (Market Mechanics, Technical Analysis, Risk Management), and direct home-trader support hotlines. Register via the Consortium section.";
-    }
-    else if(query.includes("contact") || query.includes("phone") || query.includes("address") || query.includes("location") || query.includes("gen")) {
-        reply = "Corporate Headquarters: 10 Gen Street, Mainline, Freetown, Sierra Leone. Phone: 079518827. Region Parameter: Sierra Leone Base Terminal.";
-    }
-    else if(query.includes("jui") || query.includes("impact") || query.includes("community")) {
-        reply = "LizKemi Capital Firm is deeply committed to regional community impact, actively tracking active Jui projects, empowered individuals, and continuous operational days to foster multi-generation community enablement.";
-    }
-    else if(query.includes("leader") || query.includes("founder") || query.includes("president") || query.includes("lewis")) {
-        reply = "The firm operates under Presidential Clearance (Mr. Lewis), directing systemic parameters toward multi-generation community enablement, transparency, and data alignment.";
-    }
-    else if(query.includes("consult") || query.includes("advice") || query.includes("track")) {
-        reply = "Consultation channels are categorized into Standard Track (24-48h queue), Premium Portfolio (Priority Video Uplink), and Custom Elite (Direct Presidential Board Access). You can submit priority consultation requests directly through the Consultation section.";
-    }
-    else if(query.includes("hello") || query.includes("hi") || query.includes("hey")) {
-        reply = "Interface connection verified. Welcome to the LizKemi Operations Console. How may our team guide your financial matrix targets today?";
-    }
-
-    // Simulate AI response delay
-    setTimeout(() => {
-        chat.innerHTML += `<div class="bot">${reply}</div>`;
+        chat.innerHTML += `<div class="user">${userText}</div>`;
         chat.scrollTop = chat.scrollHeight;
-    }, 400);
 
-    input.value = "";
-}
+        let query = userText.toLowerCase();
+        let reply = "System online. You are connected to the official LizKemi Capital Firm help desk. Whether you are walking in off the street or checking us out online, we keep everything open, direct, and easy to understand. What can we help you look up today?";
+
+        // --- POLISHED DAILY-CONVERSATIONAL HIGH-TRUST KNOWLEDGE BASE ---
+        
+        if(query.includes("loan") || query.includes("borrow") || query.includes("credit") || query.includes("funding") || query.includes("pay back") || query.includes("interest") || query.includes("words")) {
+            reply = "People walk in every single day asking straight questions about getting financial help: Can I get a loan without losing my mind to paperwork? Is the interest rate going to choke my business? Let us break it down in plain, everyday language so you know exactly what you are getting into. At LizKemi Capital Firm, located at 10 Gen Street in Mainline, Freetown, we set up 12 clear, practical funding choices—whether you need quick cash to restock your shop, help sorting out personal bills, support for land or property deals, or bigger capital to expand your company. We do not play games with hidden fees or sneaky penalty traps. We stick to a straightforward, predictable 20% fixed interest setup with a clear 30-day repayment timeline and a friendly 3-day grace period to give you breathing room. Everything is handled right through our official Google Form links, meaning you do not have to sit in traffic or wait months for a traditional bank to turn you down. You bring your goal, we review your details, and if it fits, the capital is positioned right where you need it to get things moving without stress.";
+        } 
+        else if(query.includes("invest") || query.includes("wealth") || query.includes("compound") || query.includes("shares") || query.includes("equity") || query.includes("lose") || query.includes("trust") || query.includes("safe")) {
+            reply = "Smart folks walking through our doors always ask the burning question: If I put my hard-earned money here, how do I know it is safe and won't just vanish? Look, keeping your money sitting idle under your pillow or losing value in a regular bank account while prices go up every day is a guaranteed loss. But handing your cash over blindly to strangers is just plain careless—you need real, touchable proof and solid structures. That is why we built our Predictive Compound Asset Vector, giving you a steady, reliable 10% compound growth baseline. On top of that, we offer real ownership through our Series A Sovereign Common shares and Series B Preferred Lock shares, letting you track your value live in both US Dollars and Sierra Leonean Leones. This isn't some quick-get-rich gamble or empty street talk; this is careful, honest asset planning backed by strict record keeping and guided by Mr. Lewis right here in Freetown. Come grab your rightful stake and let your money work hard for you instead of sitting idle.";
+        }
+        else if(query.includes("class") || query.includes("academy") || query.includes("school") || query.includes("learn") || query.includes("teacher") || query.includes("beginner") || query.includes("know nothing")) {
+            reply = "Beginners and young traders often come to us saying: I don't know the first thing about trading, charts, or financial markets; can a regular person like me actually learn this, or is it only for big-shot experts? Let us set the record straight right now: Nobody is born knowing how to read market charts. Success doesn't care about your background; it rewards discipline and proper guidance. Through our LizKemi Trading Academy, we strip away all the confusing technical grammar and teach you right from scratch. We cover the core basics—how markets move, how to read charts properly, and how to manage your risks so you don't blow your account. You aren't just left alone with boring textbooks; you get added directly to live practice groups where experienced traders show you how things work step-by-step. If you are tired of guessing and want to learn a real skill that can change your financial story, drop into our Consortium and get signed up today.";
+        }
+        else if(query.includes("contact") || query.includes("phone") || query.includes("address") || query.includes("location") || query.includes("gen") || query.includes("office") || query.includes("where")) {
+            reply = "Skeptics and cautious folks always ask the best question: Do you people even have a real office where we can see you face-to-face, or are you just ghosts hiding behind a computer screen? We love that question because we have nothing to hide. You can walk right up to our physical office at 10 Gen Street, Mainline, Freetown, Sierra Leone, during working hours, or you can pick up your phone right now and call our direct line at 079518827 to speak with a real person sitting at our front desk. Our doors are wide open, our team is right there on the ground, and we are more than happy to sit down with you, verify our registration papers, answer your questions eye-to-eye, and show you that we are 100% real and operating in broad daylight.";
+        }
+        else if(query.includes("jui") || query.includes("impact") || query.includes("community") || query.includes("local people") || query.includes("society")) {
+            reply = "Ordinary folks from the neighborhoods often ask us straight: What are you guys actually doing for regular people on the street? Are you just another rich office taking money out of town, or do you actually care about our grassroots communities? True leadership isn't just about spreadsheets and boardrooms; it is about showing up where people live. Just look at our active community development work in Jui New London and Wantik, where we are actively pushing youth empowerment programs and helping lift families up. We are building a lasting home-grown infrastructure for real, generational wealth right here at home. When you work with LizKemi Capital Firm, you aren't just dealing with a business—you are partnering with a movement that genuinely cares about seeing ordinary people win every single day.";
+        }
+        else if(query.includes("leader") || query.includes("founder") || query.includes("president") || query.includes("lewis") || query.includes("owner") || query.includes("who is behind")) {
+            reply = "People looking for accountability always want to know: Who is actually driving this ship? Can we trust the person in charge? Under the clear vision, dedication, and guidance of Mr. Lewis, LizKemi Capital Firm operates with absolute honesty, strict discipline, and a deep promise to keep our word to every single client. Every rule we set, every loan choice we offer, and every partnership we make is built to ensure you come out ahead. When you have a leader who stands by his commitments and works tirelessly to drive real economic progress, you know your money and your future are in steady, capable hands.";
+        }
+        else if(query.includes("consult") || query.includes("advice") || query.includes("track") || query.includes("speak") || query.includes("help me")) {
+            reply = "People with complicated personal or business situations often ask: How do I get someone to sit down and look at my unique problem instead of giving me a generic answer? We know that no two financial problems are ever the same. That is why we set up three simple ways to get direct help: our Standard Track if you need solid guidance within a day or two, our Premium Portfolio if you want priority video attention and faster reviews, and our Custom Elite track if you need direct boardroom planning sessions with top leadership. Just send in your brief through our official Consultation page, and let us help you turn your puzzle into a clear, working solution.";
+        }
+        else if(query.includes("scam") || query.includes("fake") || query.includes("real") || query.includes("legit") || query.includes("guarantee")) {
+            reply = "Let address the elephant in the room because people in the streets will always talk, rumors will fly, and everyone is naturally scared of losing their hard-earned cash: Is this thing a scam, or is it real? Here is your straight, undeniable proof: We operate out of a real, physical building at 10 Gen Street, Mainline, Freetown. You can call our actual working phone number at 079518827 right now. Our loan terms and investment yields are clear, open, and audited, and our community projects in Jui are out there for anyone to see with their own eyes. We don't hide behind fake profiles or temporary numbers; we stand entirely on our good name, legal compliance, and honest results. Take your time, check our facts, look at our office, and judge us by what we actually do. The truth speaks for itself.";
+        }
+        else if(query.includes("hello") || query.includes("hi") || query.includes("hey")) {
+            reply = "Hello there! Welcome to the official LizKemi Capital Firm help desk. Whether you are trying to figure out a loan for your business, looking for a safe place to grow your savings, wanting to learn how to trade from scratch, or just trying to verify who we are before taking your next big step—you are talking to a system built to give you honest answers, clear facts, and real help. What is on your mind today, and how can we assist you?";
+        }
+
+        setTimeout(() => {
+            chat.innerHTML += `<div class="bot">${reply}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+        }, 400);
+
+        input.value = "";
+    }
+
 
 
     function startImpactAnimation() {
