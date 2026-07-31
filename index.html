@@ -1610,6 +1610,72 @@
 
 <!-- Main JavaScript Execution Core -->
 <script>
+    // Riz x Digital Trading Academy & LizKemi Capital Firm - Final Architecture Data
+const platformSections = {
+  sectionOneTradingAcademy: {
+    sectionIndex: 1,
+    title: "TRADING ACADEMY",
+    description: "Complete professional digital trading curriculum, binary options execution methodology, and digital certification framework.",
+    digitalFeature: {
+      featureName: "Digital Student Certification & Progress Tracker",
+      description: "Automated digital ledger tracking module completion, quiz metrics, and issuing verified academy credentials upon course completion."
+    },
+    modules: [
+      {
+        day: "Day #1",
+        topic: "Core Candlestick Fundamentals",
+        content: [
+          "Four Types of Candles in the Market: Hammer Candle, Strong Candle, Spinning Top Candle, and Doji Candle.",
+          "Important Levels: The opening and closing of any candle represent a core market level.",
+          "Strong Candles & Marubozu: The 50% level of a strong or Marubozu candle serves as a critical structural level.",
+          "Market Trends: Categorized into Uptrend (HH, HL) and Downtrend (LH, LL) structures."
+        ]
+      },
+      {
+        day: "Day #2",
+        topic: "Price Action Levels & Gaps",
+        content: [
+          "Common Levels: Horizontal and trendline levels requiring maximum touch points without body breaks.",
+          "Gap Levels & Overlap Levels: Formed by candles of the same color; serve as high-probability reversal or continuation zones."
+        ]
+      },
+      {
+        day: "Day #3",
+        topic: "Advanced Patterns & Price Action",
+        content: [
+          "Engulfing Patterns: Bullish and Bearish continuation structures where the second body exceeds the previous range.",
+          "Piercing Line & Dark Cloud Cover: Major reversal and fake-breakout patterns utilizing 50% midpoint metrics.",
+          "Inside Bar & Outside Bar: Volatility compression zones requiring momentum confirmation."
+        ]
+      },
+      {
+        day: "Day #4",
+        topic: "Single Candlestick Re-test Levels",
+        content: [
+          "Bullish & Bearish Hammer Levels: Single and double candlestick confirmation setups for 1-minute to 5-minute execution.",
+          "Spinning Top Structures: Focused on close-price dominance in sideways markets."
+        ]
+      },
+      {
+        day: "Day #5",
+        topic: "Multiple Candlestick & Target Formations",
+        content: [
+          "Morning Star & Evening Star: Three-candle reversal formations utilizing midpoint strong levels.",
+          "Market Waves: Mechanics governing impulsive waves, corrective pullbacks, and full-fill targets."
+        ]
+      },
+      {
+        day: "Day #6",
+        topic: "Chart Patterns & Reversal Structures",
+        content: [
+          "M & W Patterns: Double top and double bottom neckline breakdowns.",
+          "Head and Shoulders: Reversal formations with neckline support confirmation."
+        ]
+      }
+    ]
+  }
+};
+
     let selectedTrackPipeline = "Standard";
 
     function toggleAISidebar() {
@@ -1788,7 +1854,6 @@ Strict 3-day grace constraints applied.`;
     }
     setInterval(appendLiveLogs, 6000);
 
-    function sendMessage() {
         function sendMessage(){
         let input = document.getElementById("userInput");
         let chat = document.getElementById("ai-chat");
@@ -1840,7 +1905,6 @@ Strict 3-day grace constraints applied.`;
 
         input.value = "";
     }
-
 
 
     function startImpactAnimation() {
@@ -1953,55 +2017,49 @@ Strict 3-day grace constraints applied.`;
             observer.observe(impactMonitor);
         }
     });
-
+    // --- UPDATED CONSORTIUM CONTENT DISPATCH VAULT ---
     function openSyllabusModal(sectionKey) {
-        const modal = document.getElementById('syllabusModal');
-        const titleEl = document.getElementById('syllabusModalTitle');
-        const bodyEl = document.getElementById('syllabusModalBody');
+    const modal = document.getElementById('syllabusModal');
+    const titleEl = document.getElementById('syllabusModalTitle');
+    const bodyEl = document.getElementById('syllabusModalBody');
+    
+    if(sectionKey === 'academy' || sectionKey === 'riz-academy') {
+        titleEl.innerText = `${platformSections.sectionOneTradingAcademy.title} — Curriculum Vault`;
         
-        if(sectionKey === 'academy') {
-            titleEl.innerText = "Trading Academy Curriculum Vault";
-            bodyEl.innerHTML = `
-                <strong style="color: #fff;">Module 1: Market Mechanics & Structure</strong><br>
-                - Understanding price action, liquidity pools, and institutional order blocks.<br><br>
-                <strong style="color: #fff;">Module 2: Technical & Indicator Analysis</strong><br>
-                - Mastering trend identification, RSI divergence, and multi-timeframe alignment.<br><br>
-                <strong style="color: #fff;">Module 3: Risk Management Framework</strong><br>
-                - Lot sizing calculations, risk-to-reward ratios, and emotional discipline.
-            `;
-        } else if(sectionKey === 'trading') {
-            titleEl.innerText = "Managed Trading Pipeline & Risk Terms";
-            bodyEl.innerHTML = `
-                <strong style="color: #fff;">Pipeline Overview:</strong><br>
-                - Direct allocation parameters and risk-sharing confirmation protocols.<br><br>
-                <strong style="color: #fff;">Risk Parameters:</strong><br>
-                - Capital preservation rules, automated stop-loss thresholds, and liquidity safeguards.
-            `;
-        } else if(sectionKey === 'insights') {
-            titleEl.innerText = "Stock Insights Advisory Queue Status";
-            bodyEl.innerHTML = `
-                <strong style="color: #fff;">Advisory Desk Status:</strong><br>
-                - Inquiries are actively reviewed by our technical analysis team.<br><br>
-                <strong style="color: #fff;">Queue SLA:</strong><br>
-                - Standard response window: 12-24 hours via secure communication channels.
-            `;
-        } else {
-            titleEl.innerText = "Instant Masterclass Syllabus";
-            bodyEl.innerHTML = `
-                <strong style="color: #00ff88;">• Module Breakdown:</strong><br>
-                - Week 1: Market Mechanics & Asset Pricing Foundations<br>
-                - Week 2: Tactical Execution & Risk Management Protocols<br>
-                - Week 3: Regional Portfolio Building & Live Trading Setup
-            `;
-        }
+        let modulesHTML = `
+            <p style="color: #00f2fe; margin-bottom: 10px;"><strong>${platformSections.sectionOneTradingAcademy.description}</strong></p>
+            <div style="background: rgba(0,242,254,0.05); padding: 10px; border-left: 2px solid #00f2fe; margin-bottom: 15px; font-size: 0.75rem;">
+                <strong style="color: #00ff88;">Digital Feature:</strong> ${platformSections.sectionOneTradingAcademy.digitalFeature.featureName}<br>
+                <span style="color: #9ca3af;">${platformSections.sectionOneTradingAcademy.digitalFeature.description}</span>
+            </div>
+        `;
 
-        if(modal) {
-            modal.style.display = 'flex';
-            modal.style.animation = 'fadeEffect 0.3s ease-in-out';
-        }
+        platformSections.sectionOneTradingAcademy.modules.forEach(mod => {
+            modulesHTML += `
+                <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                    <strong style="color: #00ff88; font-size: 0.85rem;">${mod.day}: ${mod.topic}</strong>
+                    <ul style="color: #9ca3af; margin-top: 5px; padding-left: 15px; font-size: 0.8rem;">
+            `;
+            mod.content.forEach(bullet => {
+                modulesHTML += `<li style="margin-bottom: 4px;">${bullet}</li>`;
+            });
+            modulesHTML += `</ul></div>`;
+        });
+
+        bodyEl.innerHTML = modulesHTML;
+    } else {
+        // Fallback for other sections
+        titleEl.innerText = "Consortium Document Vault";
+        bodyEl.innerHTML = `<p style="color: #9ca3af;">Access parameters locked or loading standard queue profiles.</p>`;
     }
 
-    function closeSyllabusModal() {
+    if(modal) {
+        modal.style.display = 'flex';
+        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
+    }
+}
+
+ function closeSyllabusModal() {
         const modal = document.getElementById('syllabusModal');
         if(modal) {
             modal.style.display = 'none';
