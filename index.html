@@ -1824,13 +1824,15 @@ function sendMessage(){
         reply = "Hello there! Welcome to the official LizKemi Capital Firm help desk. Whether you are trying to figure out a loan for your business, looking for a safe place to grow your savings, wanting to learn how to trade from scratch, or just trying to verify who we are before taking your next big step—you are talking to a system built to give you honest answers, clear facts, and real help. What is on your mind today, and how can we assist you?";
     }
 
-    setTimeout(() => {
+        setTimeout(() => {
         chat.innerHTML += `<div class="bot">${reply}</div>`;
         chat.scrollTop = chat.scrollHeight;
+        
+        // Trigger voice audio playback for the client
+        speakText(reply);
     }, 400);
-
-    input.value = "";
-}
+   input.value = "";
+   }
 
 function startImpactAnimation() {
     const counters = document.querySelectorAll('.val-highlight[id^="count-"]');
@@ -2118,6 +2120,52 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+    function speakText(text) {
+    if ('speechSynthesis' in window) {
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1.0; // Speed of speech
+        utterance.pitch = 1.0; // Tone pitch
+        
+        // Optional: Select a clean English voice if available
+        let voices = window.speechSynthesis.getVoices();
+        let selectedVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB'));
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+        }
+
+        window.speechSynthesis.speak(utterance);
+    }
+}
+let voiceEnabled = true;
+
+function toggleVoiceOutput() {
+    voiceEnabled = !voiceEnabled;
+    const btn = document.getElementById('voiceToggleBtn');
+    if (voiceEnabled) {
+        btn.innerText = "VOICE: ON";
+        btn.style.background = "transparent";
+        btn.style.color = "#00f2fe";
+    } else {
+        btn.innerText = "VOICE: OFF";
+        btn.style.background = "#ff4444";
+        btn.style.color = "#02020a";
+        window.speechSynthesis.cancel();
+    }
+}
+
+// Update your speakText function to check this flag:
+function speakText(text) {
+    if (!voiceEnabled) return;
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
 </script>
 </body>
 </html>
