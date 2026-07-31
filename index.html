@@ -1788,37 +1788,57 @@ Strict 3-day grace constraints applied.`;
     }
     setInterval(appendLiveLogs, 6000);
 
-    function sendMessage(){
-        let input = document.getElementById("userInput");
-        let chat = document.getElementById("ai-chat");
-        if(!input || !chat) return;
+    function sendMessage() {
+    let input = document.getElementById("userInput");
+    let chat = document.getElementById("ai-chat");
+    if(!input || !chat) return;
 
-        let userText = input.value.trim();
-        if(userText === "") return;
+    let userText = input.value.trim();
+    if(userText === "") return;
 
-        chat.innerHTML += `<div class="user">${userText}</div>`;
-        chat.scrollTop = chat.scrollHeight;
+    // Append User Message
+    chat.innerHTML += `<div class="user">${userText}</div>`;
+    chat.scrollTop = chat.scrollHeight;
 
-        let message = userText.toLowerCase();
-        let reply = "Transmission received. Data arrays are parsed to management advisers for prompt feedback pipelines.";
+    let query = userText.toLowerCase();
+    let reply = "Transmission received. Data arrays are parsed to management advisers for prompt feedback pipelines.";
 
-        if(message.includes("loan")){
-            reply = "Lending tracks comprise Term Structures, Lines of Credit, SBA Guarantees, Revenue Fluctuation Matrix Arrays, and custom options.";
-        }
-        else if(message.includes("trading") || message.includes("crypto") || message.includes("forex")){
-            reply = "LizKemi Capital deploys dedicated, isolated multi-leverage accounts configured alongside continuous platform sync options.";
-        }
-        else if(message.includes("hello") || message.includes("hi")){
-            reply = "Interface connection verified. Welcome to the LizKemi Operations Console. Detail your asset query to initiate telemetry checks.";
-        }
-
-        setTimeout(() => {
-            chat.innerHTML += `<div class="bot">${reply}</div>`;
-            chat.scrollTop = chat.scrollHeight;
-        }, 400);
-
-        input.value = "";
+    // --- COMPREHENSIVE KNOWLEDGE BASE LOGIC ---
+    
+    if(query.includes("loan") || query.includes("borrow") || query.includes("credit") || query.includes("funding")) {
+        reply = "LizKemi Capital Firm Ltd offers 12 structured loan products including Term Liquidity Injections, SBA Credit Guarantees, Revolving Operating Allocations, Asset-Backed Mechanics, Revenue-Based Matrix, Micro-Venture Loans, Macro Frameworks, High-Leverage Liquid Accounts, Invoice Factoring, Property Acquisition, Merchant Cash Advances (MCA), and Structural Project Finance. All loans carry a 20% fixed structural interest yield with a 30-day maturity term and a 3-calendar-day grace limit. Apply via our official Google Forms link in the Loan section.";
+    } 
+    else if(query.includes("invest") || query.includes("wealth") || query.includes("compound") || query.includes("shares") || query.includes("equity")) {
+        reply = "Our Predictive Compound Asset Vector offers strategic startup investments with compound growth projections (configured at a 10% baseline assumption). Institutional equity distribution indices feature Series A Sovereign Common and Series B Preferred Lock shares, tracking live index valuations across USD and Sierra Leonean Leones (SLE).";
     }
+    else if(query.includes("class") || query.includes("academy") || query.includes("school") || query.includes("learn") || query.includes("teacher")) {
+        reply = "We offer Technical Execution Development & Financial Literacy classes through our Trading Academy. Members gain access to live trading groups, practical masterclasses with expert instructors, syllabus modules (Market Mechanics, Technical Analysis, Risk Management), and direct home-trader support hotlines. Register via the Consortium section.";
+    }
+    else if(query.includes("contact") || query.includes("phone") || query.includes("address") || query.includes("location") || query.includes("gen")) {
+        reply = "Corporate Headquarters: 10 Gen Street, Mainline, Freetown, Sierra Leone. Phone: 079518827. Region Parameter: Sierra Leone Base Terminal.";
+    }
+    else if(query.includes("jui") || query.includes("impact") || query.includes("community")) {
+        reply = "LizKemi Capital Firm is deeply committed to regional community impact, actively tracking active Jui projects, empowered individuals, and continuous operational days to foster multi-generation community enablement.";
+    }
+    else if(query.includes("leader") || query.includes("founder") || query.includes("president") || query.includes("lewis")) {
+        reply = "The firm operates under Presidential Clearance (Mr. Lewis), directing systemic parameters toward multi-generation community enablement, transparency, and data alignment.";
+    }
+    else if(query.includes("consult") || query.includes("advice") || query.includes("track")) {
+        reply = "Consultation channels are categorized into Standard Track (24-48h queue), Premium Portfolio (Priority Video Uplink), and Custom Elite (Direct Presidential Board Access). You can submit priority consultation requests directly through the Consultation section.";
+    }
+    else if(query.includes("hello") || query.includes("hi") || query.includes("hey")) {
+        reply = "Interface connection verified. Welcome to the LizKemi Operations Console. How may our team guide your financial matrix targets today?";
+    }
+
+    // Simulate AI response delay
+    setTimeout(() => {
+        chat.innerHTML += `<div class="bot">${reply}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+    }, 400);
+
+    input.value = "";
+}
+
 
     function startImpactAnimation() {
         const counters = document.querySelectorAll('.val-highlight[id^="count-"]');
