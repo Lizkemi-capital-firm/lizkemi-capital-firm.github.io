@@ -856,6 +856,104 @@
         .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         #ai-widget { width: 100%; right: -105%; }
     }
+    .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #ffffff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    font-family: inherit;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-body {
+    padding: 24px;
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    background: #151515;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #2a2a2a;
+}
+
+.modal-btn {
+    background: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-btn:hover {
+    background: #0051d5;
+}
+
 </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X9CF5SQQVD"></script>
@@ -870,6 +968,20 @@
 
 </head>
 <body>
+<div id="welcome-modal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3>Welcome to Lizkemi Capital Firm</h3>
+            <button class="modal-close" onclick="closeWelcomeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Secure portal successfully loaded. Explore our advanced virtual operations.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn" onclick="closeWelcomeModal()">Proceed</button>
+        </div>
+    </div>
+</div>
 
     <!-- SYSTEM START OVERLAY -->
     <div id="splash-screen">
@@ -2217,6 +2329,20 @@ function speakText(text) {
         window.speechSynthesis.speak(utterance);
     }
 }
+    function showAdvancedWelcome() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.add('active');
+    }
+}
+
+function closeWelcomeModal() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
 
 </script>
 </body>
