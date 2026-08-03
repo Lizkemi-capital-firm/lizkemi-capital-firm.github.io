@@ -223,6 +223,9 @@ window.addEventListener('DOMContentLoaded', () => {
     runInvestmentEngine();
     convertEquityMatrix();
 
+    // Trigger the advanced welcome modal popup on load
+    showAdvancedWelcome();
+
     const userInputElem = document.getElementById("userInput");
     if(userInputElem) {
         userInputElem.addEventListener("keydown", function(e){  
@@ -309,6 +312,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
+
 /* --- Firebase Firestore Loan Application Submission --- */
 window.submitLoanApplication = async function(event) {
     event.preventDefault();
@@ -329,3 +333,17 @@ window.submitLoanApplication = async function(event) {
     }
 };
 
+/* --- Advanced Welcome Modal Control Functions --- */
+function showAdvancedWelcome() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.add('active');
+    }
+}
+
+function closeWelcomeModal() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
