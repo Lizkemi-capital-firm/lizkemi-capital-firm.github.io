@@ -2342,6 +2342,74 @@ function closeWelcomeModal() {
         modal.classList.remove('active');
     }
 }
+// Global Alert System for Lizkemi Capital Firm
+function showLizkemiAlert(actionType) {
+    try {
+        let message = "lizkemicapitalfirm on process...";
+        
+        if (actionType === 'coming-soon') {
+            message = "lizkemicapitalfirm: Coming Soon!";
+        } else if (actionType === 'processing') {
+            message = "lizkemicapitalfirm on process, please wait.";
+        }
+        
+        // Create or select custom modal/alert banner
+        let alertBox = document.getElementById('lizkemi-notification-banner');
+        if (!alertBox) {
+            alertBox = document.createElement('div');
+            alertBox.id = 'lizkemi-notification-banner';
+            alertBox.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #0f172a;
+                color: #38bdf8;
+                padding: 14px 24px;
+                border: 1px solid #38bdf8;
+                border-radius: 8px;
+                font-family: monospace;
+                z-index: 9999;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+                transition: opacity 0.3s ease;
+            `;
+            document.body.appendChild(alertBox);
+        }
+        
+        alertBox.innerText = message;
+        alertBox.style.opacity = '1';
+        
+        // Auto-hide after 4 seconds
+        setTimeout(() => {
+            alertBox.style.opacity = '0';
+        }, 4000);
+
+    } catch (error) {
+        console.error("Error triggering lizkemicapitalfirm alert:", error);
+    }
+}
+
+// Safe Event Listeners Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        // Attach triggers to buttons or interactive elements safely
+        const interactiveElements = document.querySelectorAll('.trigger-action, button, .btn');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', (e) => {
+                // Check if element points to a placeholder or unbuilt feature
+                const targetAttr = element.getAttribute('href');
+                if (!targetAttr || targetAttr === '#' || targetAttr === '') {
+                    e.preventDefault();
+                    showLizkemiAlert('coming-soon');
+                } else {
+                    showLizkemiAlert('processing');
+                }
+            });
+        });
+    } catch (err) {
+        console.warn("DOM elements initialization warning:", err);
+    }
+});
 
 
 </script>
