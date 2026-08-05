@@ -1403,39 +1403,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
                 <!-- Lizkemi Trading Academy - Interactive Instruction Panel & Workflow Integration -->
 <div class="trading-academy-section">
-    <!-- Updated Button Label: Replacing "View Syllabus" with the instruction trigger -->
-    <button id="academyTriggerBtn" class="cta-button" onclick="toggleInstructionPanel()">
+    <!-- Action Button matching site style -->
+    <button id="academyTriggerBtn" class="cta-button" onclick="toggleInstructionPanel()" style="background: rgba(0, 20, 30, 0.8); color: #00ffff; border: 1px solid #00ffff; padding: 12px 20px; font-family: monospace; cursor: pointer; border-radius: 4px; font-weight: bold;">
         Enroll & Access Academy Instructions
     </button>
 
-    <!-- Hidden Instruction Panel (Appears on click without altering backend forms/systems) -->
-    <div id="instructionPanel" class="instruction-panel" style="display: none; margin-top: 15px; padding: 20px; border: 1px solid #ccc; background: #f9f9f9; border-radius: 8px;">
-        <h3>Lizkemi Trading Academy Access Guide</h3>
-        <ol>
-            <li><strong>Payment Verification:</strong> Make your payment to the designated Orange Money line to secure your slot.</li>
-            <li><strong>Date Configuration:</strong> Access our active tracker via the Looker Studio Portal to log your session date: 
-                <br><a href="https://datastudio.google.com/reporting/b431e629-378e-4820-b044-d95694cb0f0a" target="_blank" rel="noopener noreferrer">Open Looker Studio Tracker</a>
+    <!-- Hidden Instruction Panel styled with dark matrix background & readable text -->
+    <div id="instructionPanel" class="instruction-panel" style="display: none; margin-top: 15px; padding: 20px; border: 1px solid #00ffff; background: rgba(5, 10, 20, 0.95); color: #ffffff; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);">
+        
+        <h3 style="color: #00ffff; font-family: monospace; margin-top: 0; border-bottom: 1px solid rgba(0,255,255,0.3); padding-bottom: 8px;">
+            LIZKEMI TRADING ACADEMY ACCESS GUIDE
+        </h3>
+        
+        <ol style="line-height: 1.6; font-family: monospace; color: #e0e0e0;">
+            <li style="margin-bottom: 12px;">
+                <strong>Payment Verification:</strong> Make your payment to the designated Orange Money line to secure your slot.
             </li>
-            <li><strong>Classroom Access:</strong> Once validated, enter your virtual classroom directly using your course link: 
-                <br><a href="https://classroom.google.com/c/ODcxNzExOTc5ODEz?cjc=dflus6ad" target="_blank" rel="noopener noreferrer">Join Google Classroom (Code: dflus6ad)</a>
+            <li style="margin-bottom: 12px;">
+                <strong>Date Configuration:</strong> Access our active tracker via the Looker Studio Portal to log your session date: 
+                <br>
+                <a href="https://datastudio.google.com/reporting/b431e629-378e-4820-b044-d95694cb0f0a" target="_blank" rel="noopener noreferrer" style="color: #00ffff; text-decoration: underline;">
+                    Open Looker Studio Tracker
+                </a> 
+            </li>
+            <li style="margin-bottom: 8px;">
+                <strong>Classroom Access:</strong> Once validated, enter your virtual classroom directly using your course link: 
+                <br>
+                <a href="https://classroom.google.com/c/ODcxNzExOTc5ODEz?cjc=dflus6ad" target="_blank" rel="noopener noreferrer" style="color: #00ffff; text-decoration: underline;">
+                    Join Google Classroom (Code: dflus6ad)
+                </a> 
             </li>
         </ol>
     </div>
 </div>
 
 <script>
-    // Toggle function preserving all underlying systems and registration forms untouched
-    function toggleInstructionPanel() {
-        const panel = document.getElementById('instructionPanel');
-        if (panel.style.display === 'none' || panel.style.display === '') {
-            panel.style.display = 'block';
-        } else {
-            panel.style.display = 'none';
-        }
+// Toggle function preserving all underlying systems and registration forms untouched
+function toggleInstructionPanel() {
+    const panel = document.getElementById('instructionPanel');
+    if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+    } else {
+        panel.style.display = 'none';
     }
+}
 </script>
-
-            </div>
+  </div>
         </div>
 
         <!-- TAB 2: MANAGED TRADING -->
