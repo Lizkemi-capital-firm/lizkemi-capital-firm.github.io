@@ -1401,10 +1401,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="https://forms.gle/ynrjJKaVQyVTAqjf9" target="_blank" onclick="unlockAccess('academy')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
                     1. REGISTER FOR ACADEMY (GOOGLE FORM)
                 </a>
-                
-                <button id="btn-view-academy" class="action-btn" onclick="openSyllabusModal('academy')" style="padding: 12px; background: #02020a; border: 1px solid rgba(0, 242, 254, 0.4); color: #555; cursor: not-allowed;" disabled>
-                    🔒 VIEW ACADEMY SYLLABUS & TOPICS (Locked)
-                </button>
+                <!-- Lizkemi Trading Academy - Interactive Instruction Panel & Workflow Integration -->
+<div class="trading-academy-section">
+    <!-- Updated Button Label: Replacing "View Syllabus" with the instruction trigger -->
+    <button id="academyTriggerBtn" class="cta-button" onclick="toggleInstructionPanel()">
+        Enroll & Access Academy Instructions
+    </button>
+
+    <!-- Hidden Instruction Panel (Appears on click without altering backend forms/systems) -->
+    <div id="instructionPanel" class="instruction-panel" style="display: none; margin-top: 15px; padding: 20px; border: 1px solid #ccc; background: #f9f9f9; border-radius: 8px;">
+        <h3>Lizkemi Trading Academy Access Guide</h3>
+        <ol>
+            <li><strong>Payment Verification:</strong> Make your payment to the designated Orange Money line to secure your slot.</li>
+            <li><strong>Date Configuration:</strong> Access our active tracker via the Looker Studio Portal to log your session date: 
+                <br><a href="https://datastudio.google.com/reporting/b431e629-378e-4820-b044-d95694cb0f0a" target="_blank" rel="noopener noreferrer">Open Looker Studio Tracker</a>
+            </li>
+            <li><strong>Classroom Access:</strong> Once validated, enter your virtual classroom directly using your course link: 
+                <br><a href="https://classroom.google.com/c/ODcxNzExOTc5ODEz?cjc=dflus6ad" target="_blank" rel="noopener noreferrer">Join Google Classroom (Code: dflus6ad)</a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    // Toggle function preserving all underlying systems and registration forms untouched
+    function toggleInstructionPanel() {
+        const panel = document.getElementById('instructionPanel');
+        if (panel.style.display === 'none' || panel.style.display === '') {
+            panel.style.display = 'block';
+        } else {
+            panel.style.display = 'none';
+        }
+    }
+</script>
+
             </div>
         </div>
 
