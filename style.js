@@ -361,16 +361,33 @@ animate();
 /* --- Face-API Model Loader & Video Camera Initialization --- */
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights')
-]).then(startVideo);
+  faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights')
+]).then(startVideo).catch(err => console.error("Model loading error:", err));
 
 function startVideo() {
   const video = document.getElementById('video');
   if (!video) return;
+
   navigator.mediaDevices.getUserMedia({ video: {} })
-  .then(stream => { 
-    video.srcObject = stream; 
-    video.play(); 
-  })
-  .catch(err => console.error("Camera access error:", err));
+    .then(stream => { 
+      video.srcObject = stream; 
+      video.play(); 
+    })
+    .catch(err => console.error("Camera access error:", err));
+
+  video.addEventListener('play', () => {
+    const canvas = faceapi.createCanvasFromMedia(video);
+    document.body.append(canvas);
+    const displaySize = { width: video.width || 640, height: video.height || 480 };
+    faceapi.matchDimensions(canvas, displaySize);
+
+    setInterval(async () => {
+      const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+      const resizedDetections = faceapi.resizeResults(detections, displaySize);
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+      faceapi.draw.drawDetections(canvas, resizedDetections);
+      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+    }, 100);
+  });
 }
