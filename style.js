@@ -1,27 +1,8 @@
-// --- Type Definitions & Interfaces ---
-type CurrencyType = "USD" | "SLL";
-
-interface EquityMatrixData {
-    aInit: number;
-    aCurr: number;
-    bInit: number;
-    bCurr: number;
-    dashCap: number;
-    dashYld: number;
-}
-
-interface CurrencyRateConfig {
-    [key: string]: {
-        rate: number;
-        symbol: string;
-    };
-}
-
 /* --- State Management --- */
-let selectedTrackPipeline: string = "Standard";
+let selectedTrackPipeline = "Standard";
 
 /* --- Over-Spreading AI Sidebar Mechanical Controls --- */
-function toggleAISidebar(): void {
+function toggleAISidebar() {
     const aiWidget = document.getElementById('ai-widget');
     const bodyElement = document.body;
     const triggerTab = document.getElementById('ai-sidebar-trigger');
@@ -39,16 +20,16 @@ function toggleAISidebar(): void {
 }
 
 /* --- Pipeline Track Switcher --- */
-function updatePipeline(element: HTMLElement, trackValue: string): void {
+function updatePipeline(element, trackValue) {
     const parent = element.parentElement;
     if (!parent) return;
 
-    const totalButtons = parent.querySelectorAll<HTMLElement>('.tab-btn');
+    const totalButtons = parent.querySelectorAll('.tab-btn');
     totalButtons.forEach(btn => btn.classList.remove('active'));
     element.classList.add('active');
     selectedTrackPipeline = trackValue;
 
-    const allCards = document.querySelectorAll<HTMLElement>('.pipeline-card');  
+    const allCards = document.querySelectorAll('.pipeline-card');  
     allCards.forEach(card => card.style.display = 'none');  
 
     const targetCard = document.getElementById(`track-${trackValue}`);  
@@ -59,24 +40,24 @@ function updatePipeline(element: HTMLElement, trackValue: string): void {
 }
 
 /* --- 20% Loan Engine & Live Calendar Target Generation --- */
-function runCalculationEngine(): void {
-    const selectElem = document.getElementById('loanAmount') as HTMLSelectElement | null;
+function runCalculationEngine() {
+    const selectElem = document.getElementById('loanAmount');
     if (!selectElem) return;
 
-    const val: number = parseInt(selectElem.value, 10);
-    const interest: number = Math.round(val * 0.2);
-    const total: number = val + interest;
+    const val = parseInt(selectElem.value, 10);
+    const interest = Math.round(val * 0.2);
+    const total = val + interest;
 
     const interestDisplay = document.getElementById('interestDisplay');
     const totalDisplay = document.getElementById('totalDisplay');
     if (interestDisplay) interestDisplay.innerText = interest.toLocaleString();  
     if (totalDisplay) totalDisplay.innerText = total.toLocaleString();  
       
-    const baseDate: Date = new Date();  
-    const targetDate: Date = new Date();  
+    const baseDate = new Date();  
+    const targetDate = new Date();  
     targetDate.setDate(baseDate.getDate() + 30);  
       
-    const graceLimitDate: Date = new Date();  
+    const graceLimitDate = new Date();  
     graceLimitDate.setDate(targetDate.getDate() + 3);  
       
     const targetReturnDate = document.getElementById('targetReturnDate');
@@ -87,22 +68,22 @@ function runCalculationEngine(): void {
 }
 
 /* --- Document Export Engine --- */
-function downloadContractDocument(): void {
-    const loanAmountElem = document.getElementById('loanAmount') as HTMLSelectElement | null;
+function downloadContractDocument() {
+    const loanAmountElem = document.getElementById('loanAmount');
     const interestDisplay = document.getElementById('interestDisplay');
     const totalDisplay = document.getElementById('totalDisplay');
 
     if (!loanAmountElem || !interestDisplay || !totalDisplay) return;
 
-    const amountText: string = loanAmountElem.value;
-    const interestText: string = interestDisplay.innerText;
-    const totalText: string = totalDisplay.innerText;
+    const amountText = loanAmountElem.value;
+    const interestText = interestDisplay.innerText;
+    const totalText = totalDisplay.innerText;
 
-    const plainText: string = `LIZKEMI CAPITAL LTD - STRATEGIC AGREEMENT\n` +  
-                              `Selected Principal Matrix: ${amountText}\n` +  
-                              `Accrued 20% Interest Calculation: ${interestText}\n` +  
-                              `Total Repayment Obligation: ${totalText}\n\n` +  
-                              `Generated under live secure browser token. 3-Day Grace period bounds apply strictly.`;  
+    const plainText = `LIZKEMI CAPITAL LTD - STRATEGIC AGREEMENT\n` +  
+                      `Selected Principal Matrix: ${amountText}\n` +  
+                      `Accrued 20% Interest Calculation: ${interestText}\n` +  
+                      `Total Repayment Obligation: ${totalText}\n\n` +  
+                      `Generated under live secure browser token. 3-Day Grace period bounds apply strictly.`;  
                         
     const blob = new Blob([plainText], { type: "text/plain" });  
     const link = document.createElement("a");  
@@ -112,21 +93,21 @@ function downloadContractDocument(): void {
 }
 
 /* --- Capital Yield Forecast Simulator Matrix Formula & HTML5 Canvas Chart --- */
-function runInvestmentEngine(): void {
-    const capitalInput = document.getElementById('investmentCapital') as HTMLInputElement | null;
-    const durationInput = document.getElementById('investmentDuration') as HTMLInputElement | null;
+function runInvestmentEngine() {
+    const capitalInput = document.getElementById('investmentCapital');
+    const durationInput = document.getElementById('investmentDuration');
     if (!capitalInput || !durationInput) return;
 
-    const capital: number = parseInt(capitalInput.value, 10);  
-    const years: number = parseInt(durationInput.value, 10);  
+    const capital = parseInt(capitalInput.value, 10);  
+    const years = parseInt(durationInput.value, 10);  
       
     const capitalVal = document.getElementById('capitalVal');
     const durationVal = document.getElementById('durationVal');
     if (capitalVal) capitalVal.innerText = '$' + capital.toLocaleString();  
     if (durationVal) durationVal.innerText = years + (years === 1 ? ' Year' : ' Years');  
       
-    const assumedRate: number = 0.10;  
-    const projectedYield: number = Math.round(capital * Math.pow((1 + assumedRate), years));  
+    const assumedRate = 0.10;  
+    const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));  
       
     const matureValuationDisplay = document.getElementById('matureValuationDisplay');
     if (matureValuationDisplay) matureValuationDisplay.innerText = '$' + projectedYield.toLocaleString();  
@@ -134,33 +115,33 @@ function runInvestmentEngine(): void {
     drawGrowthChart(capital, assumedRate, years);
 }
 
-function drawGrowthChart(principal: number, rate: number, periods: number): void {
-    const chartCanvas = document.getElementById('growthChart') as HTMLCanvasElement | null;
+function drawGrowthChart(principal, rate, periods) {
+    const chartCanvas = document.getElementById('growthChart');
     if (!chartCanvas) return;
     const gctx = chartCanvas.getContext('2d');
     if (!gctx) return;
 
-    chartCanvas.width = chartCanvas.clientWidth;  
+    chartCanvas.width = chartCanvas.clientWidth || 300;  
     chartCanvas.height = 150;  
       
-    const w: number = chartCanvas.width;  
-    const h: number = chartCanvas.height;  
+    const w = chartCanvas.width;  
+    const h = chartCanvas.height;  
     gctx.clearRect(0, 0, w, h);  
       
-    let points: number[] = [];  
+    let points = [];  
     for (let i = 0; i <= periods; i++) {  
         points.push(principal * Math.pow((1 + rate), i));  
     }  
       
-    const maxVal: number = points[points.length - 1];  
+    const maxVal = points[points.length - 1];  
       
     gctx.beginPath();  
     gctx.strokeStyle = '#00f2fe';  
     gctx.lineWidth = 3;  
       
     for (let i = 0; i < points.length; i++) {  
-        const xPos: number = (i / periods) * (w - 40) + 20;  
-        const yPos: number = h - ((points[i] / maxVal) * (h - 30) + 10);  
+        const xPos = (i / periods) * (w - 40) + 20;  
+        const yPos = h - ((points[i] / maxVal) * (h - 30) + 10);  
         if (i === 0) gctx.moveTo(xPos, yPos);  
         else gctx.lineTo(xPos, yPos);  
           
@@ -171,15 +152,15 @@ function drawGrowthChart(principal: number, rate: number, periods: number): void
 }
 
 /* --- Currency Matrix Conversion Engine --- */
-function convertEquityMatrix(): void {
-    const currencySelector = document.getElementById('currencySelector') as HTMLSelectElement | null;
+function convertEquityMatrix() {
+    const currencySelector = document.getElementById('currencySelector');
     if (!currencySelector) return;
 
-    const currency: string = currencySelector.value;
-    const rate: number = (currency === "SLL") ? 22.5 : 1;  
-    const symbol: string = (currency === "SLL") ? "Le " : "$";  
+    const currency = currencySelector.value;
+    const rate = (currency === "SLL") ? 22.5 : 1;  
+    const symbol = (currency === "SLL") ? "Le " : "$";  
 
-    const data: EquityMatrixData = {  
+    const data = {  
         aInit: 1.00 * rate,  
         aCurr: 1.45 * rate,  
         bInit: 2.50 * rate,  
@@ -188,7 +169,7 @@ function convertEquityMatrix(): void {
         dashYld: 12480.00 * rate  
     };  
 
-    const setInnerText = (id: string, val: string) => {
+    const setInnerText = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.innerText = val;
     };
@@ -203,28 +184,28 @@ function convertEquityMatrix(): void {
 }
 
 /* --- Live Simulated System Activity Logs --- */
-const logs: string[] = [
+const logs = [
     "[LEDGER SUCCESS] Loan parameters validated successfully.",
     "[SECURE] 256-Bit transaction pipelines operating nominally.",
     "[INFO] Star map graphics synchronized with parallax layers.",
     "[METRIC] Cohort trade scorecards updated on current frame."
 ];
 
-function appendLiveLogs(): void {
+function appendLiveLogs() {
     const logBox = document.getElementById("systemLog");
     if (!logBox) return;
-    const randomLog: string = logs[Math.floor(Math.random() * logs.length)];
+    const randomLog = logs[Math.floor(Math.random() * logs.length)];
     logBox.innerHTML = `[SYSTEM INFO] ${new Date().toLocaleTimeString()} - ${randomLog}<br>` + logBox.innerHTML;
 }
 setInterval(appendLiveLogs, 7000);
 
 /* --- Real AI Agent Frontend Integration --- */
-async function sendMessage(): Promise<void> {
-    const input = document.getElementById("userInput") as HTMLInputElement | null;
+async function sendMessage() {
+    const input = document.getElementById("userInput");
     const chat = document.getElementById("ai-chat");
     if (!input || !chat) return;
 
-    const message: string = input.value.trim();
+    const message = input.value.trim();
     if (!message) return;
 
     chat.innerHTML += `<div class="user">${escapeHTML(message)}</div>`;
@@ -232,7 +213,7 @@ async function sendMessage(): Promise<void> {
     chat.scrollTop = chat.scrollHeight;
 
     try {
-        const response: Response = await fetch("/api/chat", {
+        const response = await fetch("/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -254,10 +235,25 @@ async function sendMessage(): Promise<void> {
     chat.scrollTop = chat.scrollHeight;
 }
 
-function escapeHTML(str: string): string {
+function escapeHTML(str) {
     return str.replace(/[&<>'"]/g, 
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
     );
+}
+
+/* --- Advanced Welcome Modal Control Functions --- */
+function showAdvancedWelcome() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.add('active');
+    }
+}
+
+function closeWelcomeModal() {
+    const modal = document.getElementById('welcome-modal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
 }
 
 // Window Loading Routines
@@ -269,7 +265,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const userInputElem = document.getElementById("userInput");
     if (userInputElem) {
-        userInputElem.addEventListener("keydown", (e: KeyboardEvent) => {  
+        userInputElem.addEventListener("keydown", (e) => {  
             if (e.key === "Enter") {  
                 sendMessage();  
             }  
@@ -278,11 +274,11 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --- Stellar Cosmic Particle Constellation Rendering System --- */
-const canvas = document.getElementById('canvas') as HTMLCanvasElement | null;
+const canvas = document.getElementById('canvas');
 const ctx = canvas ? canvas.getContext('2d') : null;
-let width: number, height: number, particles: Particle[] = [];
+let width, height, particles = [];
 
-function setSize(): void {
+function setSize() {
     if (!canvas) return;
     width = window.innerWidth;
     height = window.innerHeight;
@@ -292,16 +288,7 @@ function setSize(): void {
 }
 
 class Particle {
-    x: number;
-    y: number;
-    targetX: number;
-    targetY: number;
-    size: number;
-    speed: number;
-    alpha: number;
-    glow: number;
-
-    constructor(targetX: number, targetY: number) {
+    constructor(targetX, targetY) {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.targetX = targetX;
@@ -312,14 +299,14 @@ class Particle {
         this.glow = Math.random() * Math.PI * 2;
     }
 
-    update(): void {
+    update() {
         this.x += (this.targetX - this.x) * this.speed;
         this.y += (this.targetY - this.y) * this.speed;
         if (this.alpha < 1) this.alpha += 0.01;
         this.glow += 0.05;
     }
 
-    draw(): void {
+    draw() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -328,7 +315,7 @@ class Particle {
     }
 }
 
-function initParticles(): void {
+function initParticles() {
     if (!ctx) return;
     ctx.clearRect(0, 0, width, height);
     ctx.font = "bold 70px Arial";
@@ -340,13 +327,13 @@ function initParticles(): void {
       
     ctx.fillText("Liz KEMI Capital FIRM", width / 2, height / 2);  
 
-    const imageData: ImageData = ctx.getImageData(0, 0, width, height);  
-    const data: Uint8ClampedArray = imageData.data;  
+    const imageData = ctx.getImageData(0, 0, width, height);  
+    const data = imageData.data;  
     particles = [];  
 
     for (let y = 0; y < height; y += 5) {  
         for (let x = 0; x < width; x += 5) {  
-            const index: number = (y * width + x) * 4;  
+            const index = (y * width + x) * 4;  
             if (data[index + 3] > 128) {  
                 particles.push(new Particle(x, y));  
             }  
@@ -359,7 +346,7 @@ if (canvas) {
     setSize();
 }
 
-function animate(): void {
+function animate() {
     if (!ctx) return;
     ctx.fillStyle = "rgba(5, 5, 21, 0.15)";
     ctx.fillRect(0, 0, width, height);
@@ -371,17 +358,16 @@ function animate(): void {
 }
 animate();
 
-/* --- Advanced Welcome Modal Control Functions --- */
-function showAdvancedWelcome(): void {
-    const modal = document.getElementById('welcome-modal');
-    if (modal) {
-        modal.classList.add('active');
-    }
-}
+/* --- Face-API Model Loader & Video Camera Initialization --- */
+Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights')
+]).then(startVideo);
 
-function closeWelcomeModal(): void {
-    const modal = document.getElementById('welcome-modal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
+function startVideo() {
+  const video = document.getElementById('video');
+  if (!video) return;
+  navigator.mediaDevices.getUserMedia({ video: {} })
+    .then(stream => { video.srcObject = stream; })
+    .catch(err => console.error('Camera access error:', err));
 }
