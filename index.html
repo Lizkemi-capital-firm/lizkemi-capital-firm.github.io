@@ -989,7 +989,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script> 
 
 <body>
-    <script type="text/javascript">
+   <!-- Video element to display the camera stream -->
+<div class="camera-container">
+    <video id="webcam" autoplay playsinline width="640" height="480"></video>
+    <button id="start-camera-btn" onclick="startCamera()">Start Camera</button>
+</div>
+
+     <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
@@ -2425,6 +2431,29 @@ function closeWelcomeModal() {
         modal.classList.remove('active');
     }
 }
+  async function startCamera() {
+    const videoElement = document.getElementById('webcam');
+    
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Your browser does not support webcam access.");
+        return;
+    }
+
+    try {
+        // Request access to video stream
+        const stream = await navigator.mediaDevices.getUserMedia({ 
+            video: { width: 640, height: 480, facingMode: "user" }, 
+            audio: false 
+        });
+        
+        // Attach the stream to the video element
+        videoElement.srcObject = stream;
+    } catch (err) {
+        console.error("Error accessing webcam:", err);
+        alert("Could not access the camera. Please check browser permissions.");
+    }
+}
+   
 </script>
     <script>
 function toggleInstructionPanel() {
@@ -2435,6 +2464,7 @@ function toggleInstructionPanel() {
         panel.style.display = 'none';
     }
 }
+         
 </script>
 <script>
   if ('serviceWorker' in navigator) {
@@ -2447,6 +2477,8 @@ function toggleInstructionPanel() {
 
 <!-- Your Combined Site & Face Logic Script -->
 <script src="style.js"></script>
+
+
 </body>
 </html>
 
