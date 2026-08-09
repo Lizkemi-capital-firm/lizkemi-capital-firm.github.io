@@ -368,6 +368,9 @@ function startVideo() {
   const video = document.getElementById('video');
   if (!video) return;
   navigator.mediaDevices.getUserMedia({ video: {} })
-    .then(stream => { video.srcObject = stream; })
-    .catch(err => console.error('Camera access error:', err));
+  .then(stream => { 
+    video.srcObject = stream; 
+    video.play(); 
+  })
+  .catch(err => console.error("Camera access error:", err));
 }
