@@ -990,10 +990,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body>
    <!-- Video element to display the camera stream -->
-<div class="camera-container">
-    <video id="webcam" autoplay playsinline width="640" height="480"></video>
-    <button id="start-camera-btn" onclick="startCamera()">Start Camera</button>
+<!-- Enhanced Camera Container -->
+<div style="width: 90%; max-width: 500px; margin: 25px auto; padding: 15px; background: rgba(2, 2, 10, 0.85); border: 1px solid #00f2fe; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); text-align: center;">
+    <video id="webcam" autoplay playsinline style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(0, 242, 254, 0.4); background: #000;"></video>
+    <button id="start-camera-btn" onclick="startCamera()" style="margin-top: 12px; width: 100%; padding: 12px; background: transparent; color: #00f2fe; border: 1px solid #00f2fe; font-family: monospace; font-weight: bold; cursor: pointer; border-radius: 4px; transition: all 0.3s ease;">
+        📷 INITIALIZE CAMERA STREAM
+    </button>
 </div>
+
 
      <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -2431,29 +2435,28 @@ function closeWelcomeModal() {
         modal.classList.remove('active');
     }
 }
-  async function startCamera() {
+async function startCamera() {
     const videoElement = document.getElementById('webcam');
     
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Your browser does not support webcam access.");
+        alert("Camera interface is not supported by this browser.");
         return;
     }
 
     try {
-        // Request access to video stream
         const stream = await navigator.mediaDevices.getUserMedia({ 
-            video: { width: 640, height: 480, facingMode: "user" }, 
+            video: { width: 1280, height: 720, facingMode: "user" }, 
             audio: false 
         });
         
-        // Attach the stream to the video element
-        videoElement.srcObject = stream;
+        if (videoElement) {
+            videoElement.srcObject = stream;
+        }
     } catch (err) {
-        console.error("Error accessing webcam:", err);
-        alert("Could not access the camera. Please check browser permissions.");
+        console.error("Camera access error:", err);
+        alert("Failed to access camera. Check browser permissions.");
     }
 }
-   
 </script>
     <script>
 function toggleInstructionPanel() {
@@ -2464,7 +2467,6 @@ function toggleInstructionPanel() {
         panel.style.display = 'none';
     }
 }
-         
 </script>
 <script>
   if ('serviceWorker' in navigator) {
