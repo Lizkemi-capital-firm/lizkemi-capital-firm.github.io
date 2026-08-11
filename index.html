@@ -1708,7 +1708,22 @@ function toggleInstructionPanel() {
         <span>LIZKEMI CORE INTELLIGENCE INTERFACE</span>
         <button class="ai-close-x" onclick="toggleAISidebar()">CLOSE TERMINAL ✕</button>
     </div>
-    <div id="ai-chat">
+   <div class="container">
+    <h2>Lizkemi Operational Console</h2>
+    <p>Select your language and type text to speech-translate:</p>
+    
+    <select id="languageSelect">
+        <option value="en-US">English</option>
+        <option value="zh-CN">Chinese (Mandarin)</option>
+        <option value="fr-FR">French</option>
+        <option value="es-ES">Spanish</option>
+    </select>
+
+    <textarea id="textInput" placeholder="Type instructions here..."></textarea>
+    <br>
+    <button onclick="speakText()">Speak Text</button>
+</div>
+     <div id="ai-chat">
         <div class="bot">System online. Terminal links verified. Accessing localized collateral ledgers... How may our team guide your financial matrix targets today?</div>
     </div>
     <div id="ai-input-area">
