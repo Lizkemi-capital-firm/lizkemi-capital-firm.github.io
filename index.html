@@ -1708,26 +1708,16 @@ function toggleInstructionPanel() {
         <span>LIZKEMI CORE INTELLIGENCE INTERFACE</span>
         <button class="ai-close-x" onclick="toggleAISidebar()">CLOSE TERMINAL ✕</button>
     </div>
-    
     <div id="ai-chat">
         <div class="bot">System online. Terminal links verified. Accessing localized collateral ledgers... How may our team guide your financial matrix targets today?</div>
     </div>
-
-    <div class="console-container">
-        <h2>Lizkemi Operational Console</h2>
-        <div class="input-group">
-            <select id="languageSelect">
-                <option value="en-US">English</option>
-                <option value="zh-CN">Chinese (Mandarin)</option>
-                <option value="ja-JP">Japanese</option>
-                <option value="fr-FR">French</option>
-                <option value="es-ES">Spanish</option>
-            </select>
-            <input type="text" id="userInput" placeholder="Transmit system query..." onkeydown="handleKeyPress(event)">
-            <button id="voiceToggleBtn" class="action-btn" onclick="toggleVoiceOutput()">VOICE: ON</button>
-        </div>
+    <div id="ai-input-area">
+        <input id="userInput" type="text" placeholder="Transmit system query or engine instruction code...">
+        <button class="ai-close-x" onclick="toggleVoiceOutput()" id="voiceToggleBtn">VOICE: ON</button>
+        <button onclick="sendMessage()">Transmit</button>
     </div>
 </div>
+
 <!-- CUSTOM TRANSMISSION MODAL -->
 <div id="transmissionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 550px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
