@@ -1882,6 +1882,8 @@ function toggleAISidebar() {
     const bodyElement = document.body;
     const triggerTab = document.getElementById('ai-sidebar-trigger');
     
+    if(!aiWidget || !triggerTab) return;
+
     aiWidget.classList.toggle('open');
     bodyElement.classList.toggle('ai-open');
     
@@ -1909,7 +1911,7 @@ function updatePipeline(element, trackValue) {
 function runCalculationEngine() {
     const selectElem = document.getElementById('loanAmount');
     if(!selectElem) return;
-    const val = parseInt(selectElem.value);
+    const val = parseInt(selectElem.value, 10);
     const interest = Math.round(val * 0.2);
     const total = val + interest;
     
@@ -1965,16 +1967,20 @@ function runInvestmentEngine() {
     const durationInput = document.getElementById('investmentDuration');
     if(!capitalInput || !durationInput) return;
 
-    const capital = parseInt(capitalInput.value);
-    const years = parseInt(durationInput.value);
+    const capital = parseInt(capitalInput.value, 10);
+    const years = parseInt(durationInput.value, 10);
     
-    document.getElementById('capitalVal').innerText = '$' + capital.toLocaleString();
-    document.getElementById('durationVal').innerText = years + (years === 1 ? ' Year' : ' Years');
+    const capitalVal = document.getElementById('capitalVal');
+    const durationVal = document.getElementById('durationVal');
+    const matureVal = document.getElementById('matureValuationDisplay');
+
+    if(capitalVal) capitalVal.innerText = '$' + capital.toLocaleString();
+    if(durationVal) durationVal.innerText = years + (years === 1 ? ' Year' : ' Years');
     
     const assumedRate = 0.10;
     const projectedYield = Math.round(capital * Math.pow((1 + assumedRate), years));
     
-    document.getElementById('matureValuationDisplay').innerText = '$' + projectedYield.toLocaleString();
+    if(matureVal) matureVal.innerText = '$' + projectedYield.toLocaleString();
     drawGrowthChart(capital, assumedRate, years);
 }
 
@@ -1995,7 +2001,7 @@ function drawGrowthChart(principal, rate, periods) {
         points.push(principal * Math.pow((1 + rate), i));
     }
     
-    const maxVal = points[points.length - 1];
+    const maxVal = points[points.length - 1] || 1;
     
     gctx.beginPath();
     gctx.strokeStyle = '#00f2fe';
@@ -2029,13 +2035,20 @@ function convertEquityMatrix() {
         dashYld: 12480.00 * rate
     };
 
-    document.getElementById('seriesAInit').innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesACurr').innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBInit').innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('seriesBCurr').innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const sAInit = document.getElementById('seriesAInit');
+    const sACurr = document.getElementById('seriesACurr');
+    const sBInit = document.getElementById('seriesBInit');
+    const sBCurr = document.getElementById('seriesBCurr');
+    const dCap = document.getElementById('dashCapital');
+    const dYld = document.getElementById('dashYield');
 
-    document.getElementById('dashCapital').innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('dashYield').innerText = (currency === "SLL" ? "+Le " : "+$") + data.dashYld.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    if(sAInit) sAInit.innerText = symbol + data.aInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    if(sACurr) sACurr.innerText = symbol + data.aCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    if(sBInit) sBInit.innerText = symbol + data.bInit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    if(sBCurr) sBCurr.innerText = symbol + data.bCurr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    if(dCap) dCap.innerText = symbol + data.dashCap.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    if(dYld) dYld.innerText = (currency === "SLL" ? "+Le " : "+$") + data.dashYld.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
 const logs = [
@@ -2061,42 +2074,30 @@ function sendMessage(){
     let userText = input.value.trim();
     if(userText === "") return;
 
-    chat.innerHTML += `<div class="user">${userText}</div>`;
+    chat.innerHTML += `<div class="user">${escapeHtml(userText)}</div>`;
     chat.scrollTop = chat.scrollHeight;
 
     let query = userText.toLowerCase();
-    let reply = "System online. You are connected to the official LizKemi Capital Firm help desk. Whether you are walking in off the street or checking us out online, we keep everything open, direct, and easy to understand. What can we help you look up today?";
+    let reply = "System online. You are connected to the official LizKemi Capital Firm help desk...";
     
     if(query.includes("loan") || query.includes("borrow") || query.includes("credit") || query.includes("funding") || query.includes("pay back") || query.includes("interest") || query.includes("words")) {
-        reply = "People walk in every single day asking straight questions about getting financial help: Can I get a loan without losing my mind to paperwork? Is the interest rate going to choke my business? Let us break it down in plain, everyday language so you know exactly what you are getting into. At LizKemi Capital Firm, located at 10 Gen Street in Mainline, Freetown, we set up 12 clear, practical funding choices—whether you need quick cash to restock your shop, help sorting out personal bills, support for land or property deals, or bigger capital to expand your company. We do not play games with hidden fees or sneaky penalty traps. We stick to a straightforward, predictable 20% fixed interest setup with a clear 30-day repayment timeline and a friendly 3-day grace period to give you breathing room. Everything is handled right through our official Google Form links, meaning you do not have to sit in traffic or wait months for a traditional bank to turn you down. You bring your goal, we review your details, and if it fits, the capital is positioned right where you need it to get things moving without stress.";
+        reply = "People walk in every single day asking straight questions about getting financial help...";
     } 
-    else if(query.includes("invest") || query.includes("wealth") || query.includes("compound") || query.includes("shares") || query.includes("equity") || query.includes("lose") || query.includes("trust") || query.includes("safe")) {
-        reply = "Smart folks walking through our doors always ask the burning question: If I put my hard-earned money here, how do I know it is safe and won't just vanish? Look, keeping your money sitting idle under your pillow or losing value in a regular bank account while prices go up every day is a guaranteed loss. But handing your cash over blindly to strangers is just plain careless—you need real, touchable proof and solid structures. That is why we built our Predictive Compound Asset Vector, giving you a steady, reliable 10% compound growth baseline. On top of that, we offer real ownership through our Series A Sovereign Common shares and Series B Preferred Lock shares, letting you track your value live in both US Dollars and Sierra Leonean Leones. This isn't some quick-get-rich gamble or empty street talk; this is careful, honest asset planning backed by strict record keeping and guided by Mr. Lewis right here in Freetown. Come grab your rightful stake and let your money work hard for you instead of sitting idle.";
+    else if(query.includes("invest") || query.includes("wealth") || query.includes("compound") || query.includes("shares") || query.includes("equity")) {
+        reply = "Smart folks walking through our doors always ask the burning question...";
     }
-    else if(query.includes("class") || query.includes("academy") || query.includes("school") || query.includes("learn") || query.includes("teacher") || query.includes("beginner") || query.includes("know nothing")) {
-        reply = "Beginners and young traders often come to us saying: I don't know the first thing about trading, charts, or financial markets; can a regular person like me actually learn this, or is it only for big-shot experts? Let us set the record straight right now: Nobody is born knowing how to read market charts. Success doesn't care about your background; it rewards discipline and proper guidance. Through our LizKemi Trading Academy, we strip away all the confusing technical grammar and teach you right from scratch. We cover the core basics—how markets move, how to read charts properly, and how to manage your risks so you don't blow your account. You aren't just left alone with boring textbooks; you get added directly to live practice groups where experienced traders show you how things work step-by-step. If you are tired of guessing and want to learn a real skill that can change your financial story, drop into our Consortium and get signed up today.";
+    else if(query.includes("class") || query.includes("academy") || query.includes("school") || query.includes("learn")) {
+        reply = "Beginners and young traders often come to us saying: I don't know the first thing about trading...";
     }
-    else if(query.includes("contact") || query.includes("phone") || query.includes("address") || query.includes("location") || query.includes("gen") || query.includes("office") || query.includes("where")) {
-        reply = "Skeptics and cautious folks always ask the best question: Do you people even have a real office where we can see you face-to-face, or are you just ghosts hiding behind a computer screen? We love that question because we have nothing to hide. You can walk right up to our physical office at 10 Gen Street, Mainline, Freetown, Sierra Leone, during working hours, or you can pick up your phone right now and call our direct line at 079518827 to speak with a real person sitting at our front desk. Our doors are wide open, our team is right there on the ground, and we are more than happy to sit down with you, verify our registration papers, answer your questions eye-to-eye, and show you that we are 100% real and operating in broad daylight.";
-    }
-    else if(query.includes("jui") || query.includes("impact") || query.includes("community") || query.includes("local people") || query.includes("society")) {
-        reply = "Ordinary folks from the neighborhoods often ask us straight: What are you guys actually doing for regular people on the street? Are you just another rich office taking money out of town, or do you actually care about our grassroots communities? True leadership isn't just about spreadsheets and boardrooms; it is about showing up where people live. Just look at our active community development work in Jui New London and Wantik, where we are actively pushing youth empowerment programs and helping lift families up. We are building a lasting home-grown infrastructure for real, generational wealth right here at home. When you work with LizKemi Capital Firm, you aren't just dealing with a business—you are partnering with a movement that genuinely cares about seeing ordinary people win every single day.";
-    }
-    else if(query.includes("leader") || query.includes("founder") || query.includes("president") || query.includes("lewis") || query.includes("owner") || query.includes("who is behind")) {
-        reply = "People looking for accountability always want to know: Who is actually driving this ship? Can we trust the person in charge? Under the clear vision, dedication, and guidance of Mr. Lewis, LizKemi Capital Firm operates with absolute honesty, strict discipline, and a deep promise to keep our word to every single client. Every rule we set, every loan choice we offer, and every partnership we make is built to ensure you come out ahead. When you have a leader who stands by his commitments and works tirelessly to drive real economic progress, you know your money and your future are in steady, capable hands.";
-    }
-    else if(query.includes("consult") || query.includes("advice") || query.includes("track") || query.includes("speak") || query.includes("help me")) {
-        reply = "People with complicated personal or business situations often ask: How do I get someone to sit down and look at my unique problem instead of giving me a generic answer? We know that no two financial problems are ever the same. That is why we set up three simple ways to get direct help: our Standard Track if you need solid guidance within a day or two, our Premium Portfolio if you want priority video attention and faster reviews, and our Custom Elite track if you need direct boardroom planning sessions with top leadership. Just send in your brief through our official Consultation page, and let us help you turn your puzzle into a clear, working solution.";
-    }
-    else if(query.includes("scam") || query.includes("fake") || query.includes("real") || query.includes("legit") || query.includes("guarantee")) {
-        reply = "Let's address the elephant in the room because people in the streets will always talk, rumors will fly, and everyone is naturally scared of losing their hard-earned cash: Is this thing a scam, or is it real? Here is your straight, undeniable proof: We operate out of a real, physical building at 10 Gen Street, Mainline, Freetown. You can call our actual working phone number at 079518827 right now. Our loan terms and investment yields are clear, open, and audited, and our community projects in Jui are out there for anyone to see with their own eyes. We don't hide behind fake profiles or temporary numbers; we stand entirely on our good name, legal compliance, and honest results. Take your time, check our facts, look at our office, and judge us by what we actually do. The truth speaks for itself.";
+    else if(query.includes("contact") || query.includes("phone") || query.includes("address") || query.includes("location")) {
+        reply = "Skeptics and cautious folks always ask the best question: Do you people even have a real office...";
     }
     else if(query.includes("hello") || query.includes("hi") || query.includes("hey")) {
-        reply = "Hello there! Welcome to the official LizKemi Capital Firm help desk. Whether you are trying to figure out a loan for your business, looking for a safe place to grow your savings, wanting to learn how to trade from scratch, or just trying to verify who we are before taking your next big step—you are talking to a system built to give you honest answers, clear facts, and real help. What is on your mind today, and how can we assist you?";
+        reply = "Hello there! Welcome to the official LizKemi Capital Firm help desk.";
     }
 
     setTimeout(() => {
-        chat.innerHTML += `<div class="bot">${reply}</div>`;
+        chat.innerHTML += `<div class="bot">${escapeHtml(reply)}</div>`;
         chat.scrollTop = chat.scrollHeight;
         speakText(reply);
     }, 400);
@@ -2104,12 +2105,17 @@ function sendMessage(){
     input.value = "";
 }
 
+function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
 function startImpactAnimation() {
     const counters = document.querySelectorAll('.val-highlight[id^="count-"]');
     counters.forEach(counter => {
         const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
+            const target = parseInt(counter.getAttribute('data-target'), 10);
+            const count = parseInt(counter.innerText, 10) || 0;
             const increment = target / 60;
 
             if (count < target) {
@@ -2192,7 +2198,6 @@ document.addEventListener("DOMContentLoaded", () => {
         runCalculationEngine();
         runInvestmentEngine();
         convertEquityMatrix();
-        showAdvancedWelcome();
     }, 2400);
 
     const userInput = document.getElementById("userInput");
@@ -2219,6 +2224,8 @@ function openSyllabusModal(sectionKey) {
     const titleEl = document.getElementById('syllabusModalTitle');
     const bodyEl = document.getElementById('syllabusModalBody');
     
+    if(!modal || !titleEl || !bodyEl) return;
+
     if(sectionKey === 'academy' || sectionKey === 'riz-academy') {
         titleEl.innerText = `${platformSections.sectionOneTradingAcademy.title} — Curriculum Vault`;
         
@@ -2248,14 +2255,11 @@ function openSyllabusModal(sectionKey) {
         bodyEl.innerHTML = `<p style="color: #9ca3af;">Access parameters locked or loading standard queue profiles.</p>`;
     }
 
-    if(modal) {
-        modal.style.display = 'flex';
-        modal.style.animation = 'fadeEffect 0.3s ease-in-out';
-    }
+    modal.style.display = 'flex';
+    modal.style.animation = 'fadeEffect 0.3s ease-in-out';
 }
 
-
-     function closeSyllabusModal() {
+function closeSyllabusModal() {
     const modal = document.getElementById('syllabusModal');
     if(modal) {
         modal.style.display = 'none';
@@ -2278,19 +2282,19 @@ function closeGovernanceModal() {
 }
 
 function handleTransmission() {
-    const nameInput = document.getElementById('operatorName').value.trim();
-    const mailInput = document.getElementById('operatorMail').value.trim();
+    const nameInput = document.getElementById('operatorName');
+    const mailInput = document.getElementById('operatorMail');
     
-    const operatorName = nameInput !== "" ? nameInput : "Anonymous Operator";
-    const operatorMail = mailInput !== "" ? mailInput : "Secure Ingress Default";
+    const operatorName = nameInput && nameInput.value.trim() !== "" ? nameInput.value.trim() : "Anonymous Operator";
+    const operatorMail = mailInput && mailInput.value.trim() !== "" ? mailInput.value.trim() : "Secure Ingress Default";
     
-    document.getElementById('modalOperator').innerText = operatorName;
-    document.getElementById('modalMail').innerText = operatorMail;
+    const mOp = document.getElementById('modalOperator');
+    const mMail = document.getElementById('modalMail');
+    if(mOp) mOp.innerText = operatorName;
+    if(mMail) mMail.innerText = operatorMail;
     
     const modal = document.getElementById('transmissionModal');
-    if(modal) {
-        modal.style.display = 'flex';
-    }
+    if(modal) modal.style.display = 'flex';
     
     const timestamp = new Date().toLocaleTimeString();
     const logContainer = document.querySelector('.system-log-box') || document.body;
@@ -2306,21 +2310,18 @@ function handleTransmission() {
 
 function closeTransmissionModal() {
     const modal = document.getElementById('transmissionModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
+    if(modal) modal.style.display = 'none';
 }
 
 function handleConsultationSubmit() {
-    const textInput = document.getElementById('consultationInput').value.trim();
-    const details = textInput !== "" ? textInput : "Standard Priority Inquiry (No custom text provided)";
+    const textInput = document.getElementById('consultationInput');
+    const details = textInput && textInput.value.trim() !== "" ? textInput.value.trim() : "Standard Priority Inquiry (No custom text provided)";
     
-    document.getElementById('modalConsultationText').innerText = details;
+    const mText = document.getElementById('modalConsultationText');
+    if(mText) mText.innerText = details;
     
     const modal = document.getElementById('consultationModal');
-    if(modal) {
-        modal.style.display = 'flex';
-    }
+    if(modal) modal.style.display = 'flex';
     
     const timestamp = new Date().toLocaleTimeString();
     const logContainer = document.querySelector('.system-log-box') || document.body;
@@ -2336,30 +2337,7 @@ function handleConsultationSubmit() {
 
 function closeConsultationModal() {
     const modal = document.getElementById('consultationModal');
-    if(modal) {
-        modal.style.display = 'none';
-    }
-}
-
-function switchConsortiumTab(tabName) {
-    document.querySelectorAll('.cons-tab').forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = '#00f2fe';
-    });
-    document.querySelectorAll('.cons-content-panel').forEach(panel => {
-        panel.style.display = 'none';
-    });
-    
-    const activeBtn = document.getElementById(`btn-cons-${tabName}`);
-    const activePanel = document.getElementById(`tab-content-${tabName}`);
-    
-    if(activeBtn) {
-        activeBtn.style.background = '#00f2fe';
-        activeBtn.style.color = '#02020a';
-    }
-    if(activePanel) {
-        activePanel.style.display = 'block';
-    }
+    if(modal) modal.style.display = 'none';
 }
 
 function unlockAccess(sectionKey) {
@@ -2398,6 +2376,7 @@ let voiceEnabled = true;
 function toggleVoiceOutput() {
     voiceEnabled = !voiceEnabled;
     const btn = document.getElementById('voiceToggleBtn');
+    if(!btn) return;
     if (voiceEnabled) {
         btn.innerText = "VOICE: ON";
         btn.style.background = "transparent";
@@ -2419,129 +2398,17 @@ function speakText(text) {
     }
 }
 
-function showAdvancedWelcome() {
-    const modal = document.getElementById('welcome-modal');
-    if (modal) {
-        modal.classList.add('active');
+function toggleInstructionPanel() {
+    const panel = document.getElementById('instructionPanel');
+    if(!panel) return;
+    if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+    } else {
+        panel.style.display = 'none';
     }
 }
-
-function closeWelcomeModal() {
-    const modal = document.getElementById('welcome-modal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-async function startCamera() {
-    const videoElement = document.getElementById('webcam');
-    
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Camera interface is not supported by this browser.");
-        return;
-    }
-
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-            video: { width: 1280, height: 720, facingMode: "user" }, 
-            audio: false 
-        });
-        
-        if (videoElement) {
-            videoElement.srcObject = stream;
-        }
-    } catch (err) {
-        console.error("Camera access error:", err);
-        alert("Failed to access camera. Check browser permissions.");
-    }
-}
-     let isVerified = false;
-
-async function startBiometricVerification() {
-    const video = document.getElementById('webcam');
-    const canvas = document.getElementById('overlay');
-    const statusText = document.getElementById('biometric-status');
-    const scanBtn = document.getElementById('start-scan-btn');
-
-    scanBtn.style.display = 'none';
-    statusText.innerText = "[ LOADING FACE MODELS... ]";
-
-    const MODEL_URL = 'https://justadudewhohacks.github.io/face-api.js/models';
-    
-    try {
-        await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
-        statusText.innerText = "[ ACCESSING CAMERA... ]";
-        
-        const stream = await navigator.mediaDevices.getUserMedia({ video: {}, audio: false });
-        video.srcObject = stream;
-    } catch (err) {
-        statusText.innerText = "[ BIOMETRIC ERROR: CAMERA REFUSED ]";
-        return;
-    }
-
-    video.addEventListener('play', () => {
-        const displaySize = { width: video.clientWidth, height: video.clientHeight };
-        faceapi.matchDimensions(canvas, displaySize);
-        statusText.innerText = "[ SCANNING FACE... HOLD STILL ]";
-
-        const scanInterval = setInterval(async () => {
-            if (isVerified) return;
-
-            const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
-            const resizedDetections = faceapi.resizeResults(detections, displaySize);
-
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            faceapi.draw.drawDetections(canvas, resizedDetections);
-
-            // Once a face is detected, confirm identity and move to boot splash
-            if (detections.length > 0) {
-                isVerified = true;
-                clearInterval(scanInterval);
-                statusText.innerText = "✔ FACE RECOGNIZED. ACCESS GRANTED.";
-                statusText.style.color = "#00ff88";
-
-                // Stop video camera stream
-                const stream = video.srcObject;
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                }
-
-                // Proceed to Splash Screen after 1 second delay
-                setTimeout(() => {
-                    document.getElementById('face-scanner-stage').style.display = 'none';
-                    triggerSplashBoot();
-                }, 1000);
-            }
-        }, 200);
-    });
-}
-
-function triggerSplashBoot() {
-    const splashStage = document.getElementById('splash-boot-stage');
-    const progressBar = document.getElementById('boot-progress-bar');
-    const bootLog = document.getElementById('boot-log');
-    
-    splashStage.style.display = 'flex';
-
-    let progress = 0;
-    const logs = [
-        "> Authenticating user session...",
-        "> Loading security modules...",
-        "> Establishing secure telemetry connection...",
-        "> Decrypting portal user interface...",
-        "> System online."
-    ];
-
-    const bootInterval = setInterval(() => {
-        progress += 2;
-        progressBar.style.width = progress + '%';
-
-        if (progress === 20) bootLog.innerText = logs[0];
-        if (progress === 40) bootLog.innerText = logs[1];
-        if (progress === 60) bootLog.innerText = logs[2];
-let isVerified = false;
 </script>
-    <script>
+ <script>
 function toggleInstructionPanel() {
     const panel = document.getElementById('instructionPanel');
     if (panel.style.display === 'none' || panel.style.display === '') {
