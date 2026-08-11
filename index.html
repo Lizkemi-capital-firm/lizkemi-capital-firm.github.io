@@ -984,8 +984,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'G-X9CF5SQQVD');
+gtag('config', 'G-X9CF5SQQVD');
 </script> 
 <body>
    <script type="text/javascript">
@@ -2255,7 +2254,8 @@ function openSyllabusModal(sectionKey) {
     }
 }
 
-function closeSyllabusModal() {
+
+     function closeSyllabusModal() {
     const modal = document.getElementById('syllabusModal');
     if(modal) {
         modal.style.display = 'none';
@@ -2550,12 +2550,6 @@ function toggleInstructionPanel() {
         panel.style.display = 'none';
     }
 }
-</script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log('Service Worker Registered'));
-  }
 </script>
 </body>
 </html>
