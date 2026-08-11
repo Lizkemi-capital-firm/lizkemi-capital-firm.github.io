@@ -1708,29 +1708,24 @@ function toggleInstructionPanel() {
         <span>LIZKEMI CORE INTELLIGENCE INTERFACE</span>
         <button class="ai-close-x" onclick="toggleAISidebar()">CLOSE TERMINAL ✕</button>
     </div>
-    <div class="container">
-        <h2>Lizkemi Operational Console</h2>
-        <p>Select your language and type text to speech-translate:</p>
-        
-        <select id="languageSelect">
-            <option value="en-US">English</option>
-            <option value="zh-CN">Chinese (Mandarin)</option>
-            <option value="fr-FR">French</option>
-            <option value="es-ES">Spanish</option>
-        </select>
-
-        <textarea id="textInput" placeholder="Type instructions here..."></textarea>
-        <br>
-        <button onclick="speakText()">Speak Text</button>
-    </div>
-    <div id="ai-chat">
+<div id="ai-chat">
         <div class="bot">System online. Terminal links verified. Accessing localized collateral ledgers... How may our team guide your financial matrix targets today?</div>
     </div>
-    <div id="ai-input-area">
-        <input id="userInput" type="text" placeholder="Transmit system query or engine instruction code...">
-        <button class="ai-close-x" onclick="toggleVoiceOutput()" id="voiceToggleBtn">VOICE: ON</button>
-        <button onclick="sendMessage()">Transmit</button>
+    <div class="console-container">
+    <h2>Lizkemi Operational Console</h2>
+    <div class="input-group">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="zh">Chinese</option>
+            <option value="ja">Japanese</option>
+             <option value="zh-CN">Chinese (Mandarin)</option>
+            <option value="fr-FR">French</option>
+            <option value="es-ES">Spanish</option>
+         </select>
+        <input type="text" id="userInput" placeholder="Transmit system query...">
+        <button id="voiceToggleBtn" class="active" onclick="toggleVoiceOutput()">VOICE: ON</button>
     </div>
+</div>
 </div>
 
 <!-- CUSTOM TRANSMISSION MODAL -->
