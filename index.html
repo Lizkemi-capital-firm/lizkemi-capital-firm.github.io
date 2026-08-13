@@ -1438,16 +1438,55 @@ function toggleInstructionPanel() {
         </div>
 
         <!-- TAB 2: MANAGED TRADING -->
-        <div id="tab-content-trading" class="cons-content-panel" style="display: none;">
+        <div id="tab-content-academy" class="cons-content-panel">
             <div style="background: #02020a; border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; margin-bottom: 15px; font-size: 0.85rem; color: #9ca3af; line-height: 1.6;">
-                <strong style="color: #00ff88;">• Step 1:</strong> Submit your managed account criteria via Google Form.<br>
-                <strong style="color: #00ff88;">• Step 2:</strong> Access your account parameters and risk-sharing confirmation view.
+                <strong style="color: #00ff88;">• Step 1:</strong> Complete your official registration on Google Forms.<br>
+                <strong style="color: #00ff88;">• Step 2:</strong> Once registered, your secure token unlocks the syllabus vault below.
             </div>
             
             <div style="display: flex; gap: 10px; flex-direction: column;">
-                <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" onclick="unlockAccess('trading')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
-                  2. REGISTER FOR MANAGED TRADING (GOOGLE FORM)
+                <a href="https://forms.gle/QUEX6amp4zP2QFk67" target="_blank" onclick="unlockAccess('academy')" class="action-btn" style="text-align: center; text-decoration: none; padding: 12px; background: #00f2fe; color: #02020a; font-weight: bold;">
+                    1. REGISTER FOR MANAGED TRADING (GOOGLE FORM)
                 </a>
+                <!-- Lizkemi Trading Academy - Interactive Instruction Panel & Workflow Integration -->
+<div class="trading-academy-section">
+    <!-- Action Button matching site style -->
+    <button id="academyTriggerBtn" class="cta-button" onclick="toggleInstructionPanel()" style="background: rgba(0, 20, 30, 0.8); color: #00ffff; border: 1px solid #00ffff; padding: 12px 20px; font-family: monospace; cursor: pointer; border-radius: 4px; font-weight: bold;">
+        Enroll & Access MANAGED TRADING Instructions
+    </button>
+
+    <!-- Hidden Instruction Panel styled with dark matrix background & readable text -->
+    <div id="instructionPanel" class="instruction-panel" style="display: none; margin-top: 15px; padding: 20px; border: 1px solid #00ffff; background: rgba(5, 10, 20, 0.95); color: #ffffff; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);">
+        
+        <h3 style="color: #00ffff; font-family: monospace; margin-top: 0; border-bottom: 1px solid rgba(0,255,255,0.3); padding-bottom: 8px;">
+            LIZKEMI MANAGED TRADING ACCESS GUIDE
+        </h3>
+        
+        <ol style="line-height: 1.6; font-family: monospace; color: #e0e0e0;">
+            <li style="margin-bottom: 12px;">
+                <strong>Payment Verification:</strong> Make your payment to the designated Orange Money line to secure your slot.
+            </li>
+            <li style="margin-bottom: 8px;">
+                <strong>MANAGED TRADING Access:</strong> Once validated, your virtual MANAGED TRADING link Will be sent directly to your Email: 
+                <br>
+                 </li>
+        </ol>
+    </div>
+</div>
+
+<script>
+// Toggle function preserving all underlying systems and registration forms untouched
+function toggleInstructionPanel() {
+    const panel = document.getElementById('instructionPanel');
+    if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+    } else {
+        panel.style.display = 'none';
+    }
+}
+</script>
+  </div>
+        </div>
 
         <!-- TAB 3: STOCK INSIGHTS -->
         <div id="tab-content-insights" class="cons-content-panel" style="display: none;">
