@@ -964,6 +964,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .modal-btn:hover {
         background: #0051d5;
     }
+    /* Style the Google Translate container */
+#google_translate_element {
+    display: inline-block;
+}
+
+/* Customize the dropdown select box */
+#google_translate_element select {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            top: 0 !important;
+        }
+        /* Clean up the widget look */
+        #google_translate_element select {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .goog-te-banner-frame, .goog-logo-link {
+            display: none !important;
+        }
+        .goog-te-gadget {
+            font-size: 0px !important;
+        }
+        .goog-te-gadget span {
+            display: none !important;
+        }
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X9CF5SQQVD"></script>
@@ -978,9 +1020,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- Google Translate Widget Container -->
-<div id="google_translate_element"></div>
-
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'es,fr,de,zh-CN,ar,pt,ru,ja,hi,it', // Customize or remove to include all languages
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  
 <!-- Google Tag Manager (noscript) -->
@@ -1459,6 +1507,72 @@ window.location.href = "YOUR_CLASSROOM_LINK_HERE"; // <--- Insert your link here
             </p>
         </div>
     </section>
+    
+    
+    <section id="banking">
+        <h2>7. Assets exchange rate</h2>
+        <div class="content-block">
+            <h3>golbal empowerment</h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                 looking for emergency worry no more as our asset emergency service deals in personal asset conversion.
+            </p>
+        </div>
+    </section>
+    
+    
+    
+    <section id="banking">
+        <h2>8. medical attendant service</h2>
+        <div class="content-block">
+            <h3>medical emergency</h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                 we provide medical checkup and treatment to our client and employee, It extend to country citizens upon reaching out to our service, we believe your health is our health, As health is humanitarian priority.
+            </p>
+        </div>
+    </section>
+    
+    
+    <section id="banking">
+        <h2>9. legal aid assistant service</h2>
+        <div class="content-block">
+            <h3>golbal legal aid </h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                we deal in exclusive legal aid service to our client and employee, offering legal guardians, documentations assistant and professional support to protect your interest and navigate legal matters with confident.
+            </p>
+        </div>
+    </section>
+   
+    
+    <section id="banking">
+        <h2>10. Digital currency exchange 💱 service </h2>
+        <div class="content-block">
+            <h3> 💲💵 currency Transformation</h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                we aid in global development,that why we aid in digital currency exchange service ( crypto currency to dollar currency).
+            </p>
+        </div>
+    </section>
+    
+   
+    <section id="banking">
+        <h2>11. vault and delivery 🚚 service</h2>
+        <div class="content-block">
+            <h3> document preservation and delivery </h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                Lizkemi capital firm extend his services in golbal documents preservation and delivery service of the client documents, as we hold the most global vault security service.
+            </p>
+        </div>
+    </section>
+    
+    <section id="banking">
+        <h2>12. entertainment empowerment</h2>
+        <div class="content-block">
+            <h3> super stars development </h3>
+            <p style="font-size:0.9rem; color:#9ca3af;">
+                Lizkemi capital firm provide empowerment support to Young coming stars with the vision of becoming a movie stars , innovations scientist and music aid support.
+            </p>
+        </div>
+    </section>
 
     <!-- Leadership Section -->
     <section id="leadership">
@@ -1613,7 +1727,8 @@ window.location.href = "YOUR_CLASSROOM_LINK_HERE"; // <--- Insert your link here
                 <p style="margin-bottom: 8px; font-size:0.9rem; font-family:monospace;"><strong style="color:#ffffff;">Address:</strong> 10 Gen Street, Mainline</p>
                 <p style="margin-bottom: 8px; font-size:0.9rem; font-family:monospace;"><strong style="color:#ffffff;">Phone:</strong> 079518827</p>
                 <p style="font-size:0.9rem; font-family:monospace;"><strong style="color:#ffffff;">Region Parameter:</strong> Sierra Leone Base Terminal</p>
-            </div>
+                             <p style="font-size:0.9rem; font-family:monospace;"><strong style="color:#ffffff;">contact transmission line:</strong> lizkemicapitalfirm@gmail.com</p>   
+                   </div>
             <div class="content-block">
                 <h3>Transmission Node Injection</h3>
                 <p style="font-size:0.9rem; color:#9ca3af; margin-bottom: 15px;">Region Parameter: Sierra Leone Base Terminal</p>
@@ -2352,9 +2467,20 @@ function closeWelcomeModal() {
         }, 'google_translate_element');
     }
 </script>
+  <!-- 2. JavaScript Initialization -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: '',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
 
-<!-- Load the official Google Translate script asynchronously -->
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- 3. Google Translate Library Script -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
