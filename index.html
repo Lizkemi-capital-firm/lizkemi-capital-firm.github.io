@@ -978,15 +978,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      crossorigin="anonymous"></script>
 </head>
 <body>
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'es,fr,de,zh-CN,ar,pt,ru,ja,hi,it', // Customize or remove to include all languages
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
+<!-- Google Translate Widget Container -->
+<div id="google_translate_element"></div>
+
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  
 <!-- Google Tag Manager (noscript) -->
@@ -1694,7 +1688,7 @@ window.location.href = "YOUR_CLASSROOM_LINK_HERE"; // <--- Insert your link here
 <div id="syllabusModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(2, 2, 10, 0.85); backdrop-filter: blur(10px); z-index: 100000; justify-content: center; align-items: center;">
     <div style="background: rgba(6, 11, 24, 0.95); border: 1px solid rgba(0, 242, 254, 0.4); padding: 30px; border-radius: 6px; max-width: 600px; width: 90%; font-family: monospace; box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); position: relative;">
         <h3 id="syllabusModalTitle" style="color: #00f2fe; margin-bottom: 10px; text-transform: uppercase;">Consortium Document Vault</h3>
-        <p style="color: #00ff88; font-size: 0.8rem; margin-bottom: 15px;">● Clearance Verified: Form submission token confirmed active.</p>
+        <p style="color: #00ff88; font-size: 0.8rem; margin-bottom: 15px;">●  upon completing, after validation process the various links or details for this setction will be sent directly to your Email.</p>
         
         <div id="syllabusModalBody" style="background: #02020a; padding: 15px; border: 1px solid rgba(255,255,255,0.05); color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; max-height: 250px; overflow-y: auto;">
             <!-- Dynamic content injected here -->
@@ -1740,61 +1734,51 @@ const platformSections = {
   sectionOneTradingAcademy: {
     sectionIndex: 1,
     title: "TRADING ACADEMY",
-    description: "Complete professional digital trading curriculum, binary options execution methodology, and digital certification framework.",
     digitalFeature: {
-      featureName: "Digital Student Certification & Progress Tracker",
-      description: "Automated digital ledger tracking module completion, quiz metrics, and issuing verified academy credentials upon course completion."
+      featureName: " Once validated, enter your virtual classroom course link directly using your Email",
+      
     },
     modules: [
       {
-        day: "Day #1",
-        topic: "Core Candlestick Fundamentals",
+        day: "",
+        topic: "",
         content: [
-          "Four Types of Candles in the Market: Hammer Candle, Strong Candle, Spinning Top Candle, and Doji Candle.",
-          "Important Levels: The opening and closing of any candle represent a core market level.",
-          "Strong Candles & Marubozu: The 50% level of a strong or Marubozu candle serves as a critical structural level.",
-          "Market Trends: Categorized into Uptrend (HH, HL) and Downtrend (LH, LL) structures."
+          ""
         ]
       },
       {
-        day: "Day #2",
-        topic: "Price Action Levels & Gaps",
+        day: "",
+        topic: "",
         content: [
-          "Common Levels: Horizontal and trendline levels requiring maximum touch points without body breaks.",
-          "Gap Levels & Overlap Levels: Formed by candles of the same color; serve as high-probability reversal or continuation zones."
+          ""
         ]
       },
       {
-        day: "Day #3",
-        topic: "Advanced Patterns & Price Action",
+        day: "",
+        topic: "",
         content: [
-          "Engulfing Patterns: Bullish and Bearish continuation structures where the second body exceeds the previous range.",
-          "Piercing Line & Dark Cloud Cover: Major reversal and fake-breakout patterns utilizing 50% midpoint metrics.",
-          "Inside Bar & Outside Bar: Volatility compression zones requiring momentum confirmation."
+          ""
         ]
       },
       {
-        day: "Day #4",
-        topic: "Single Candlestick Re-test Levels",
+        day: "",
+        topic: " ",
         content: [
-          "Bullish & Bearish Hammer Levels: Single and double candlestick confirmation setups for 1-minute to 5-minute execution.",
-          "Spinning Top Structures: Focused on close-price dominance in sideways markets."
+          " "
         ]
       },
       {
-        day: "Day #5",
-        topic: "Multiple Candlestick & Target Formations",
+        day: "",
+        topic: "",
         content: [
-          "Morning Star & Evening Star: Three-candle reversal formations utilizing midpoint strong levels.",
-          "Market Waves: Mechanics governing impulsive waves, corrective pullbacks, and full-fill targets."
+          ""
         ]
       },
       {
-        day: "Day #6",
-        topic: "Chart Patterns & Reversal Structures",
+        day: "",
+        topic: "",
         content: [
-          "M & W Patterns: Double top and double bottom neckline breakdowns.",
-          "Head and Shoulders: Reversal formations with neckline support confirmation."
+          ""
         ]
       }
     ]
@@ -2358,5 +2342,19 @@ function closeWelcomeModal() {
     }
 }
 </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en', // Change 'en' to your website's default language code (e.g., 'es', 'fr', etc.)
+            includedLanguages: '', // Leaving this blank enables ALL global languages supported by Google
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+
+<!-- Load the official Google Translate script asynchronously -->
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
