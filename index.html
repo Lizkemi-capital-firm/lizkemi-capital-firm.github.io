@@ -2541,32 +2541,24 @@ function closeWelcomeModal() {
             });
 
             // Form Mailto Integration Logic
-            const contactForm = document.getElementById('lizkemicapitalfirmContactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const sector = document.getElementById('sector').value;
-                    const message = document.getElementById('message').value;
+            <form action="mailto:lizkemicapitalfirm@gmail.com" method="post" enctype="text/plain">
+  <label for="name">Full Name</label><br>
+  <input type="text" id="name" name="Full Name" required><br><br>
 
-                    const recipientEmail = "lizkemicapitalfirm@gmail.com.com";
-                    const subject = encodeURIComponent(`lizkemicapital firm Inquiry: ${sector} - from ${name}`);
-                    const body = encodeURIComponent(
-                        `Name: ${name}\n` +
-                        `Email: ${email}\n` +
-                        `Target Sector: ${sector}\n\n` +
-                        `Message/Scope:\n${message}`
-                    );
+  <label for="email">Professional Email</label><br>
+  <input type="email" id="email" name="Client Email" required><br><br>
 
-                    // Trigger the mailto link action
-                    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-                });
-            }
+  <label for="sector">Target Sector Focus</label><br>
+  <select id="sector" name="Target Sector">
+    <option value="Commercial Sector Project">Commercial Sector Project</option>
+    <option value="Research Contract">Research Contract</option>
+  </select><br><br>
 
-            console.log("Lizkemi capital firm Unified Centralized Portal initialized successfully.");
-        });
-    </script>
+  <label for="message">Project Scope / Message</label><br>
+  <textarea id="message" name="Project Scope" rows="5" required></textarea><br><br>
+
+  <button type="submit">Submit Inquiry</button>
+</form>
+ </script>
 </body>
 </html>
