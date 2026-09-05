@@ -1730,43 +1730,49 @@ window.location.href = "YOUR_CLASSROOM_LINK_HERE"; // <--- Insert your link here
             </div>
         </div>
     </section>
-     <section id="contact">
-            <div class="contact-container">
-                <h2>Contact Our Research Team</h2>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 2rem;">Connect with us for cross-sector research contracts, project implementation partnerships, and data catalog inquiries.</p>
-                
-                <form id="iceaContactForm" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Dr. Jane Smith" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Professional Email</label>
-                        <input type="email" id="email" placeholder="jane@organization.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="sector">Target Sector Focus</label>
-                        <select id="sector">
-                            <option value="Commercial Sector Project">Commercial Sector Project</option>
-                            <option value="Private Sector Initiative">Private Sector Initiative</option>
-                            <option value="Government / Public Policy">Government / Public Policy</option>
-                            <option value="NGO / Human Rights Evaluation">NGO / Human Rights Evaluation</option>
-                            <option value="Data Sales Inquiry">Data Sales Inquiry</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Scope / Message</label>
-                        <textarea id="message" placeholder="Describe your research requirements or project implementation goals..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%; text-align: center;">Submit Inquiry</button>
-                </form>
+<section id="contact">
+    <div class="contact-container">
+        <h2>Connect With Liz Kemi Capital Firm</h2>
+        <p>Reach out for micro-lending solutions, venture capital deployment, cross-sector research partnerships, or trading academy inquiries.</p>
 
-                <div class="contact-details">
-                    <p><strong>Phone:</strong> <a href="tel:079518827">079518827</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:lizkemicapitalfirm@gmail.com">lizkemicapitalfirm@gmail.com</a></p>
-                </div>
+        <!-- Form configured to launch default email app via mailto -->
+        <form action="mailto:lizkemicapitalfirm@gmail.com" method="post" enctype="text/plain" id="lizkemiContactForm" class="contact-form">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="Full Name" placeholder="Dr. Jane Smith" required>
             </div>
-        </section>
+
+            <div class="form-group">
+                <label for="email">Professional Email</label>
+                <input type="email" id="email" name="Client Email" placeholder="jane@organization.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sector">Service / Sector Focus</label>
+                <select id="sector" name="Target Sector" required>
+                    <option value="Micro Loans & Credit Facilities">Micro Loans & Credit Facilities</option>
+                    <option value="Capital Deployment & Investments">Capital Deployment & Investments</option>
+                    <option value="Cross-Sector Research Contracts">Cross-Sector Research Contracts</option>
+                    <option value="Trading Academy & Execution">Trading Academy & Execution</option>
+                    <option value="Digital Currency Exchange">Digital Currency Exchange</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Project Scope / Application Details</label>
+                <textarea id="message" id="message" name="Project Scope" rows="5" placeholder="Describe your financial requirements, project goals, or research scope..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Transmission</button>
+        </form>
+
+        <div class="contact-details">
+            <p><strong>Phone:</strong> <a href="tel:079518827">079518827</a></p>
+            <p><strong>Email:</strong> <a href="mailto:lizkemicapitalfirm@gmail.com">lizkemicapitalfirm@gmail.com</a></p>
+        </div>
+    </div>
+</section>
 
     <div class="system-log-box" id="systemLog">
         [SYSTEM INFO] Core platform engine initialized...<br>
