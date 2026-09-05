@@ -1730,6 +1730,43 @@ window.location.href = "YOUR_CLASSROOM_LINK_HERE"; // <--- Insert your link here
             </div>
         </div>
     </section>
+     <section id="contact">
+            <div class="contact-container">
+                <h2>Contact Our Research Team</h2>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 2rem;">Connect with us for cross-sector research contracts, project implementation partnerships, and data catalog inquiries.</p>
+                
+                <form id="iceaContactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Dr. Jane Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Professional Email</label>
+                        <input type="email" id="email" placeholder="jane@organization.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Target Sector Focus</label>
+                        <select id="sector">
+                            <option value="Commercial Sector Project">Commercial Sector Project</option>
+                            <option value="Private Sector Initiative">Private Sector Initiative</option>
+                            <option value="Government / Public Policy">Government / Public Policy</option>
+                            <option value="NGO / Human Rights Evaluation">NGO / Human Rights Evaluation</option>
+                            <option value="Data Sales Inquiry">Data Sales Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Scope / Message</label>
+                        <textarea id="message" placeholder="Describe your research requirements or project implementation goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; text-align: center;">Submit Inquiry</button>
+                </form>
+
+                <div class="contact-details">
+                    <p><strong>Phone:</strong> <a href="tel:099877076">099877076</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:internationalconsortiumofempir@gmail.com">internationalconsortiumofempir@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
 
     <div class="system-log-box" id="systemLog">
         [SYSTEM INFO] Core platform engine initialized...<br>
@@ -2466,6 +2503,7 @@ function closeWelcomeModal() {
             autoDisplay: false
         }, 'google_translate_element');
     }
+         
 </script>
   <!-- 2. JavaScript Initialization -->
     <script type="text/javascript">
@@ -2481,6 +2519,54 @@ function closeWelcomeModal() {
 
     <!-- 3. Google Translate Library Script -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.nav-links a');
+            
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
 
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            // Form Mailto Integration Logic
+            const contactForm = document.getElementById('lizkemicapitalfirmContactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const sector = document.getElementById('sector').value;
+                    const message = document.getElementById('message').value;
+
+                    const recipientEmail = "lizkemicapital@gmail.com";
+                    const subject = encodeURIComponent(`lizkemicapital firm Inquiry: ${sector} - from ${name}`);
+                    const body = encodeURIComponent(
+                        `Name: ${name}\n` +
+                        `Email: ${email}\n` +
+                        `Target Sector: ${sector}\n\n` +
+                        `Message/Scope:\n${message}`
+                    );
+
+                    // Trigger the mailto link action
+                    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+                });
+            }
+
+            console.log("Lizkemi capital firm Unified Centralized Portal initialized successfully.");
+        });
+    </script>
 </body>
 </html>
